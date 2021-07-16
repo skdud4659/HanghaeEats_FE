@@ -16,12 +16,12 @@ const Text = (props) => {
 }
 
 Text.defaultProps = {
+    width: "auto",
     children: null,
     bold: false,
     color: "#222831",
-    size: "15px",
-    width: "auto",
     margin: "auto",
+    size: "17px",
 };
 
 const P = styled.p`
@@ -29,7 +29,7 @@ const P = styled.p`
     margin: ${(props) => props.margin};   
     color: ${(props) => props.color};
     font-size: ${(props) => props.size};
-    font-weight: ${(props) => (props.bold? "600" : "400")};
+    font-weight: ${(props) => (props.bold? "700" : "400")};
 `;
 
 export default Text;
