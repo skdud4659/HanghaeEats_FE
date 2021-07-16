@@ -13,11 +13,11 @@ const Text = (props) => {
     )
 }
 
-Text.defulatProps = {
+Text.defaultProps = {
     children: null,
     bold: false,
     color: "#222831",
-    size: "14px",
+    size: "15px",
 };
 
 const P = styled.p`

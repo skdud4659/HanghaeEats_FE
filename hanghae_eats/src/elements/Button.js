@@ -19,7 +19,7 @@ const Button = (props) => {
 
 Button.defaultProps = {
   children: null,
-  bg: "#50A0FF",
+  bg: "#23c8ff",
   width: "100%",
   margin: "auto",
   height: "100%",
