@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 //elements
 import Grid from "./Grid";
 import Button from "./Button";
@@ -8,4 +6,4 @@ import Input from "./Input";
 import Text from "./Text";
 
 export{Grid, Image, Text, Input, Button};
->>>>>>> Stashed changes
+
