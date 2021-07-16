@@ -1,9 +1,9 @@
 import React from 'react';
-
+import Search from '../components/Search';
 const Main = (props) => {
   return (
     <React.Fragment>
-      시작! 안녕안녕
+      <Search />
     </React.Fragment>
   );
 }
