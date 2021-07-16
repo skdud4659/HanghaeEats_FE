@@ -9,7 +9,7 @@ const Search = (props) => {
   return (
     <React.Fragment>
       {/* 레이아웃 */}
-      <Grid is_flex width="50%" margin="2% auto">
+      <Grid is_flex>
         {/* 검색창 */}
         <Grid width="90%">
           {/* 입력인풋 */}

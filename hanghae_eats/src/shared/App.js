@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Grid} from '../elements'
+
 //라우팅
 import { Redirect, Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
@@ -13,26 +15,30 @@ const App = (props) => {
     <React.Fragment>
       <Header />
       <ConnectedRouter history={history}>
-        {/* 메인사이드 */}
-        <Route path="/" exact component={Main} />
-         {/* /stores?category=치킨 */}
-        <Route path="/stores/:CategoryId" exact component={Stores} />
-        <Route path="/storeDetail/:storeId" exact component={StoreDetail} />
-        <Route path="/cart" exact component={Cart} />
-        <Route path="/reviews/:storeId" exact component={Reviews} />
-        {/* 로그인 회원가입 */}
-        <Route path="/login" exact component={Login} />
-        <Route path="/register" exact component={Register} />
-        {/* 마이이츠 사이드 */}
-        <Route path="/myEats/:userId" exact component={MyEats} />
-        <Route path="/favorites/:userId" exact component={Favorites} />
-        <Route path="/coupons" exact component={Coupons} />
-        <Route path="/order:/userId" exact component={Order} />
-        <Route path="/reviewWrite" exact component={ReviewWrite} />
-        {/* 리뷰 수정 */}
-        <Route path="/reviewWrite/:reviewId" exact component={ReviewWrite} />
-        {/* 잘못된 주소면 메인으로 돌아가기 */}
-        {/* <Redirect from="*" to="/" /> */}
+        {/* 너비 고정 */}
+        <Grid width="50%" margin="2% auto">
+            {/* 메인사이드 */}
+            <Route path="/" exact component={Main} />
+            {/* /stores?category=치킨  > url 의논*/}
+            {/* <Route path="/stores/:CategoryId" exact component={Stores} /> */}
+            <Route path="/stores" exact component={Stores} />
+            <Route path="/storeDetail/:name" exact component={StoreDetail} />
+            <Route path="/cart" exact component={Cart} />
+            <Route path="/reviews/:storeId" exact component={Reviews} />
+            {/* 로그인 회원가입 */}
+            <Route path="/login" exact component={Login} />
+            <Route path="/register" exact component={Register} />
+            {/* 마이이츠 사이드 */}
+            <Route path="/myEats/:userId" exact component={MyEats} />
+            <Route path="/favorites/:userId" exact component={Favorites} />
+            <Route path="/coupons" exact component={Coupons} />
+            <Route path="/order:/userId" exact component={Order} />
+            <Route path="/reviewWrite" exact component={ReviewWrite} />
+            {/* 리뷰 수정 */}
+            <Route path="/reviewWrite/:reviewId" exact component={ReviewWrite} />
+            {/* 잘못된 주소면 메인으로 돌아가기 */}
+            {/* <Redirect from="*" to="/" /> */}
+        </Grid>
       </ConnectedRouter>
     </React.Fragment>
   );

@@ -6,11 +6,11 @@ const Button = (props) => {
   const { children, bg, width, margin, height, _onClick, border_radius } = props;
 
   const styles = {
-    bg:bg,
-    width:width,
-    margin:margin,
-    height:height,
-    border_radius:border_radius
+    bg,
+    width,
+    margin,
+    height,
+    border_radius
   }
 
   return <ButtonEle {...styles} onClick={_onClick } type="button">{children}</ButtonEle>;

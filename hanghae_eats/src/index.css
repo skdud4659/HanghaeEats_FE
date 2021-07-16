@@ -24,3 +24,12 @@ a {
 p {
   margin: 0px;
 }
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+div::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
