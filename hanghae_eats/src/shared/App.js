@@ -29,7 +29,7 @@ const App = (props) => {
         {/* 리뷰 수정 */}
         <Route path="/reviewWrite/:reviewId" exact component={ReviewWrite} />
         {/* 잘못된 주소면 메인으로 돌아가기 */}
-        <Redirect from="*" to="/" />
+        {/* <Redirect from="*" to="/" /> */}
       </ConnectedRouter>
     </React.Fragment>
   );

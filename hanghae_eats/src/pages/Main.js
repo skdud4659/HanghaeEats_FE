@@ -1,5 +1,4 @@
 import React from 'react';
-import {Input} from "../elements/index";
 
 const Main = (props) => {
   return (

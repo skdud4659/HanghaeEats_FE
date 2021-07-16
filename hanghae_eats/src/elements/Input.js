@@ -22,10 +22,11 @@ Input.defaultProps = {
   type: "text",
   width: "90%",
   _onChange: () => {},
+  bg: null,
 };
 
 const ElInput = styled.input`
-    border: 1px solid #212121;
+    border: default;
     width: ${(props) => props.width};
     padding: 12px 4px;
     box-sizing: border-box;
