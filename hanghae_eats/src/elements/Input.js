@@ -4,14 +4,21 @@ import styled from "styled-components";
 import { Text, Grid } from "./index";
 
 const Input = (props) => {
-  const { label, placeholder, _onChange, type, width} = props;
+  const { label, placeholder, _onChange, bg, type, border, width, border_radius} = props;
+
+  const styles = {
+    width:width,
+    border_radius:border_radius,
+    bg:bg,
+    border:border,
+  }
   
 
   return (
     <React.Fragment>
       <Grid>
         <Text margin="0px">{label}</Text>
-        <ElInput type={type} placeholder={placeholder} onChange={_onChange} width={width} />
+        <ElInput {...styles} type={type} placeholder={placeholder} onChange={_onChange} />
       </Grid>
     </React.Fragment>
   );
@@ -21,14 +28,23 @@ Input.defaultProps = {
   placeholder: "텍스트를 입력해주세요.",
   type: "text",
   width: "90%",
+  border_radius : "",
+  border: "1px solid black",
+  bg: "",
   _onChange: () => {},
 };
 
 const ElInput = styled.input`
-    border: 1px solid #212121;
+    font-size: 17px;
+    border: ${(props) => props.border};
     width: ${(props) => props.width};
-    padding: 12px 4px;
+    border-radius: ${(props) => props.border_radius};
+    background-color: ${(props) => props.bg};
+    padding: 2%;
     box-sizing: border-box;
+    :focus {
+      outline: none;
+    }
 `;
 
 export default Input;
