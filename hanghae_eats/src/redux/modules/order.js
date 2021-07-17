@@ -6,6 +6,18 @@ import axios from 'axios';
 // import instance from './instance';
 
 //axios
+export const addOrderDB = (menuId, count) => {
+  return function (dispatch, getState, {history}) {
+    axios
+      .post(`http://localhost:3000/data/data.json`, {menuId: menuId, count:count})
+      .then((res) => {
+
+      })
+      .catch((err) => {
+        
+      })
+  }
+}
 
 //initialState
 const initialState = {
