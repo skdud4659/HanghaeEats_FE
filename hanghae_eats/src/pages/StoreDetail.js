@@ -30,11 +30,7 @@ const StoreDetail = (props) => {
 
   //주문하기 버튼
   const orderBtn = () => {
-    ttl_price < 15000 && window.alert('최소 주문 금액은 15,000원 입니다!');
-      history.push('/')
-      // TODO로그인 구현하면 userId로 push 바꾸기, 로그인 시에만 주문 가능하게 바꾸기, 새로운 창으로 바뀌는거니까 props로 cart 데이터 넘겨야하나? 
-        // history.push('/order/:userId')
-    // dispatch(addOrderDB())
+    ttl_price < 15000 ? window.alert('최소 주문 금액은 15,000원 입니다!') : history.push('/cart');
   }
 
   //TODO 시간 남으면 자세히 모달창
@@ -66,7 +62,7 @@ const StoreDetail = (props) => {
                 <Counting>
                   <Text bold color={'#50A0FF'}>{cart_list.length}</Text>
                 </Counting>
-                <Text size="18px" bold color={"white"}>카트 보기</Text>
+                <Text size="18px" bold color={'white'}>카트 보기</Text>
               </Grid>
               <TtlPrice>
                 <Text size="18px" bold color={'white'}>{ttl_price}원</Text>
