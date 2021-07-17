@@ -12,7 +12,7 @@ import axios from 'axios';
 export const getStoresDB = (category) => {
   return function (dispatch, getState, {history}) {
     axios
-      .get(`http://localhost:3000/data/store.json`)
+      .get(`http://localhost:3000/data/data.json`)
       .then((res) => {
         let store_list = res.data.stores.filter((each) => {
           return each.category === category
