@@ -4,7 +4,7 @@ import StoreDetailInfo from '../components/StoreDetailInfo';
 import ReviewList from '../components/ReviewList';
 import Menu from '../components/Menu';
 
-import { Grid, Text } from '../elements';
+import { Button, Grid, Text } from '../elements';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {getMenuDB} from '../redux/modules/store';
@@ -14,12 +14,30 @@ const StoreDetail = (props) => {
   const dispatch = useDispatch()
   const storeId = history.location.pathname.split('/')[2]
   const menu_list = useSelector((state) => state.stores.menus)
+  const cart_list = useSelector((state) => state.order.cart)
 
-  //로드
+   //로드
   React.useEffect(() => {
     dispatch(getMenuDB(storeId))
   },[])
-  
+
+  //현재 카트에 총 합
+  let ttl_price = 0;
+  for(let i=0; i<cart_list.length; i++) {
+    let price = cart_list[i].price
+    ttl_price += price
+  }
+
+  //주문하기 버튼
+  const orderBtn = () => {
+    ttl_price < 15000 && window.alert('최소 주문 금액은 15,000원 입니다!');
+      history.push('/')
+      // TODO로그인 구현하면 userId로 push 바꾸기, 로그인 시에만 주문 가능하게 바꾸기, 새로운 창으로 바뀌는거니까 props로 cart 데이터 넘겨야하나? 
+        // history.push('/order/:userId')
+    // dispatch(addOrderDB())
+  }
+
+  //TODO 시간 남으면 자세히 모달창
   return (
     <React.Fragment>
         <StoreDetailInfo />
@@ -40,6 +58,22 @@ const StoreDetail = (props) => {
         {menu_list.map((m, idx) => {
           return <Menu key={m._id} {...m}/>
         })}
+        <Grid height="50px;" margin="5% 0% 0% 0%;">
+          <Button _onClick={orderBtn}>
+            <Grid is_flex>
+              <Grid width="10vmin"></Grid>
+              <Grid is_flex width="15vmin">
+                <Counting>
+                  <Text bold color={'#50A0FF'}>{cart_list.length}</Text>
+                </Counting>
+                <Text size="18px" bold color={"white"}>카트 보기</Text>
+              </Grid>
+              <TtlPrice>
+                <Text size="18px" bold color={'white'}>{ttl_price}원</Text>
+              </TtlPrice>
+            </Grid>
+          </Button>
+        </Grid>
     </React.Fragment>
   );
 }
@@ -50,5 +84,18 @@ const Detail = styled.span`
   color:gray;
 `;
 
+const TtlPrice = styled.div`
+  width:30vmin;
+  align-items: center;
+`;
+
+const Counting = styled.div`
+  width:4vmin;
+  height: 4vmin;
+  border-radius: 50%;
+  background-color: white;
+  color: transparent;
+  line-height: 4.3vmin;
+`;
 
 export default StoreDetail;

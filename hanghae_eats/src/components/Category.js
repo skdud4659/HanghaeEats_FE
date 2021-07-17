@@ -3,7 +3,6 @@ import { Grid, Image, Text } from '../elements';
 import { history } from '../redux/configStore';
 
 const Category = (props) => {
-  //카테고리 데이터값으로만 들어간다고함..!
   return (
     <React.Fragment>
       <Grid>
