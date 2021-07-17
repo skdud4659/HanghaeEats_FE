@@ -5,18 +5,20 @@ import { Button, Grid, Text } from '../elements';
 import {history} from '../redux/configStore';
 
 const Header = (props) => {
-  //로그인, 회원가입 페이지에서는 헤더 안보이게 설정
-  if(window.location.pathname == '/login' || window.location.pathname == '/register') return null;
-
   //로그인 이동 버튼
   const gotoLogin = () => {
-    history.push('/login')
+    history.replace('/login')
+    window.location.reload();
   }
 
   //회원가입 이동 버튼
   const gotoRegister = () => {
-    history.push('/register')
+    history.replace('/register')
+    window.location.reload();
   }
+
+   //로그인, 회원가입 페이지에서는 헤더 안보이게 설정
+  if(window.location.pathname === '/login' || window.location.pathname === '/register') return null;
   
   return (
     <React.Fragment>

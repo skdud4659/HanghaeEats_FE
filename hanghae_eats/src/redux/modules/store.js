@@ -4,7 +4,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
-//전역
+//전역 > 서버 배포 후 수정
 // import instance from './instance';
 
 //axios
