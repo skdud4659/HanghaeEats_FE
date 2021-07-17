@@ -13,8 +13,8 @@ import {Cart, Coupons, Favorites, Login, Main, MyEats, Order, Register, Reviews,
 const App = (props) => {
   return (
     <React.Fragment>
-      <Header />
       <ConnectedRouter history={history}>
+      <Header />
         {/* 너비 고정 */}
         <Grid width="50%" margin="2% auto">
             {/* 메인사이드 */}
