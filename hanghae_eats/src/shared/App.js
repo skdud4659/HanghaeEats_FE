@@ -16,7 +16,7 @@ const App = (props) => {
       <ConnectedRouter history={history}>
       <Header />
         {/* 너비 고정 */}
-        <Grid width="50%" margin="2% auto">
+        <Grid width="50%" margin="2% auto 1% auto">
             {/* 메인사이드 */}
             <Route path="/" exact component={Main} />
             {/* /stores?category=치킨 */}
@@ -32,7 +32,7 @@ const App = (props) => {
             <Route path="/myEats/:userId" exact component={MyEats} />
             <Route path="/favorites/:userId" exact component={Favorites} />
             <Route path="/coupons" exact component={Coupons} />
-            <Route path="/order:/userId" exact component={Order} />
+            <Route path="/order/:userId" exact component={Order} />
             <Route path="/reviewWrite" exact component={ReviewWrite} />
             {/* 리뷰 수정 */}
             <Route path="/reviewWrite/:reviewId" exact component={ReviewWrite} />

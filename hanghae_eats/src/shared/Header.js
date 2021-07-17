@@ -25,10 +25,10 @@ const Header = (props) => {
       <Grid is_flex padding="1% 0%">
         <Grid></Grid>
         <Button width="15vmin" height="40px" margin="0px 10px 0px 0px" _onClick={gotoLogin}>
-          <Text>로그인</Text>
+          <Text bold color={"white"}>로그인</Text>
         </Button>
         <Button width="15vmin" height="40px" margin="0px 10px 0px 0px" _onClick={gotoRegister}>
-          <Text>회원가입</Text>
+          <Text bold color={"white"}>회원가입</Text>
         </Button>
       </Grid>
       <Hr/>
