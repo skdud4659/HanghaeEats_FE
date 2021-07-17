@@ -23,13 +23,13 @@ const StoreDetail = (props) => {
   return (
     <React.Fragment>
         <StoreDetailInfo />
-        <Grid is_flex margin="5% 0%" width="25%">
-          <Grid width="auto" margin="0px">
-            <Text>배달비</Text>
+        <Grid is_flex margin="5% 0%;" width="25vmin;">
+          <Grid width="8vmin;" margin="0px">
+            <Text margin="10% 0%">배달비</Text>
             <Text>최소주문</Text>
           </Grid>
-          <Grid width="auto" margin="0px">
-            <Text>2,000원 <Detail>자세히</Detail></Text>
+          <Grid width="15vmin;" margin="0px">
+            <Text margin="5% 0%">2,000원 <Detail>자세히</Detail></Text>
             <Text>15,000원</Text>
           </Grid>
         </Grid>
@@ -45,7 +45,8 @@ const StoreDetail = (props) => {
 }
 
 const Detail = styled.span`
-  font-size: 16px;
+  width: 5vmin;
+  font-size: 1rem;
   color:gray;
 `;
 
