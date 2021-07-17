@@ -4,12 +4,12 @@
 # 🙌🏻member
 ## view
 ### 나영
-- Main / Stores / Cart
+- Main / Stores / StoreDetail
 ### 다현
-- Login / Register / StoreDetail
+- Login / Register / Cart
 ## function
 ### 나영
--
+- get stores / get menus
 ### 다현
 - 
 # ✍🏻 프로젝트 소스
