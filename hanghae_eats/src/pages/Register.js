@@ -46,7 +46,13 @@ const Register = (props) => {
   return (
     <React.Fragment>
       <Grid padding="16px" align="center">
-        <Image height="100px" src={coupang_logo} />
+        <Image 
+        height="10vw" 
+        src={coupang_logo}
+        _onClick = {() => {
+          history.push("/");
+        }}
+        />
 
         <FromBox name="registerForm" onSubmit={formik.handleSubmit}>
           <Grid margin="0 0 0 auto">
@@ -57,7 +63,7 @@ const Register = (props) => {
 
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
-              <HiOutlineMail />
+              <HiOutlineMail size="25"/>
             </Grid>
 
             <Grid width="90%">
@@ -78,7 +84,7 @@ const Register = (props) => {
 
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
-              <HiOutlineLockClosed />
+              <HiOutlineLockClosed size="25"/>
             </Grid>
             <Grid width="90%">
               <Input
@@ -98,7 +104,7 @@ const Register = (props) => {
 
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
-              <HiOutlineUser />
+              <HiOutlineUser size="25"/>
             </Grid>
             <Grid width="90%">
               <Input
@@ -118,7 +124,7 @@ const Register = (props) => {
 
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
-              <HiOutlineDeviceMobile />
+              <HiOutlineDeviceMobile size="25"/>
             </Grid>
             <Grid width="90%">
               <Input

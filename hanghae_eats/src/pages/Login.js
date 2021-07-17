@@ -33,7 +33,13 @@ const Login = (props) => {
   return (
     <React.Fragment>
       <Grid padding="16px" align="center">
-        <Image height="100px" src={coupang_logo} />
+        <Image 
+        height="10vw" 
+        src={coupang_logo} 
+        _onClick = {() => {
+          history.push("/");
+        }}
+        />
 
         <FromBox name="loginForm" onSubmit={formik.handleSubmit}>
           <Grid is_flex padding="16px 0px">
@@ -88,7 +94,7 @@ const Login = (props) => {
 
           <Grid padding="16px 0px">
             <Text
-              size="13px"
+              size="15px"
               color="#50A0FF"
               onClick={() => history.push("/register")}
             >
