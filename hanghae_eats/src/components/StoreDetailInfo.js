@@ -25,11 +25,11 @@ const StoreDetailInfo = (props) => {
           <Image height="200px" src={props.image}/>
           <Info>
             <Text size="30px" bold>{props.name}</Text>
-            <Grid is_flex width="40%" height="50%">
+            <Grid is_flex width="20vmin" height="50%">
               <FontAwesomeIcon icon={faStar} size="2x" color={'#ffdd21'}/>
-              <Grid is_flex margin="0px 0px 0px 5px">
+              <Grid is_flex margin="0px">
                 <Text >{props.avgStar}</Text>
-                <Text color={'#50A0FF'} bold>주문 {props.orders}회 > </Text>
+                <Text color={'#50A0FF'} bold>주문 {props.orders}회 </Text>
               </Grid>
             </Grid>
           </Info>

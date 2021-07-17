@@ -9,7 +9,7 @@ const ReviewList = (props) => {
   return (
     <React.Fragment>
       <ReviewItem>
-          <Grid width="25%" margin="0px">
+          <Grid width="30%" margin="0px">
             <Image src={props.image}/>
           </Grid>
           <Grid width="auto" margin="5% 0px">
@@ -24,7 +24,7 @@ const ReviewList = (props) => {
 }
 
 const ReviewItem = styled.div`
-  width:50%;
+  width:40vmin;
   height:100px;
   border: 1px solid gray;
   display: flex;
