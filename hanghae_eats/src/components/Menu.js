@@ -17,14 +17,18 @@ const Menu = (props) => {
   }
 
   //카트에 담기 + 다른 매장인 경우 주문 불가
-  //TODO 수량 추가해야함
   const addCartBtn = () => {
     //카트가 비었을 경우 그냥 담기
+    console.log(cart_list)
     if (cart_list.length === 0) {
       dispatch(addCart({_id, storeId, name, price}))
-    } else { //카트에 리스트가 있을 경우 아이디값 대조하여 return
-    storeId !== cart_list.storeId ? window.alert('동일한 매장에서만 주문이 가능해요!')
-    : dispatch(addCart({_id, storeId, name, price}))
+    } else {
+       //카트에 리스트가 있을 경우 아이디값 대조하여 return
+      if(storeId !== cart_list[0].storeId) {
+        window.alert('동일한 매장에서만 주문이 가능해요!')
+      } else {
+        dispatch(addCart({_id, storeId, name, price}))
+      }
     }
   }
 
