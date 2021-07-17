@@ -18,7 +18,7 @@ const Header = (props) => {
   }
 
    //로그인, 회원가입 페이지에서는 헤더 안보이게 설정
-  if(window.location.pathname === '/login' || window.location.pathname === '/register') return null;
+  if(window.location.pathname === "/login" || window.location.pathname === "/register") return null;
   
   return (
     <React.Fragment>

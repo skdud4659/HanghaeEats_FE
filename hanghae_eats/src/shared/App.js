@@ -29,10 +29,12 @@ const App = (props) => {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             {/* 마이이츠 사이드 */}
-            <Route path="/myEats/:userId" exact component={MyEats} />
+            {/* <Route path="/myEats/:userId" exact component={MyEats} /> */}
+            <Route path="/myEats" exact component={MyEats} />
             <Route path="/favorites/:userId" exact component={Favorites} />
             <Route path="/coupons" exact component={Coupons} />
-            <Route path="/order/:userId" exact component={Order} />
+            {/* <Route path="/order/:userId" exact component={Order} /> */}
+            <Route path="/order" exact component={Order} />
             <Route path="/reviewWrite" exact component={ReviewWrite} />
             {/* 리뷰 수정 */}
             <Route path="/reviewWrite/:reviewId" exact component={ReviewWrite} />

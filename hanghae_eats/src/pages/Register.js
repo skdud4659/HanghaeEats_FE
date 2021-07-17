@@ -5,7 +5,8 @@ import { history } from "../redux/configStore";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 
-import Footer from "../shared/Footer";
+
+// import Footer from "../shared/Footer";
 import coupang_logo from "../img/coupang_logo.jpg";
 
 // 아이디(이메일) icon
@@ -45,25 +46,30 @@ const Register = (props) => {
 
   return (
     <React.Fragment>
-      <Grid padding="16px" align="center">
+      <Grid padding="16px" align="center" margin="15% 0%">
+
         <Image 
         height="10vw" 
         src={coupang_logo}
         _onClick = {() => {
           history.push("/");
+          window.location.reload();
+
         }}
         />
 
         <FromBox name="registerForm" onSubmit={formik.handleSubmit}>
           <Grid margin="0 0 0 auto">
-            <Text bold size="14px">
+            <Text bold size="17px">
+
               회원정보를 입력해주세요
             </Text>
           </Grid>
 
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
-              <HiOutlineMail size="25"/>
+              <HiOutlineMail size="35"/>
+
             </Grid>
 
             <Grid width="90%">
@@ -75,7 +81,6 @@ const Register = (props) => {
                 _onChange={formik.handleChange}
                 value={formik.values.userId}
               />
-
               {formik.touched.userId && formik.errors.userId ? (
                 <HelperMsg>{formik.errors.userId}</HelperMsg>
               ) : null}
@@ -84,7 +89,7 @@ const Register = (props) => {
 
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
-              <HiOutlineLockClosed size="25"/>
+              <HiOutlineLockClosed size="35"/>
             </Grid>
             <Grid width="90%">
               <Input
@@ -104,7 +109,7 @@ const Register = (props) => {
 
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
-              <HiOutlineUser size="25"/>
+              <HiOutlineUser size="35"/>
             </Grid>
             <Grid width="90%">
               <Input
@@ -124,7 +129,7 @@ const Register = (props) => {
 
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
-              <HiOutlineDeviceMobile size="25"/>
+              <HiOutlineDeviceMobile size="35"/>
             </Grid>
             <Grid width="90%">
               <Input
@@ -141,7 +146,6 @@ const Register = (props) => {
               ) : null}
             </Grid>
           </Grid>
-
           <Grid padding="16px 0px">
             <Button width="100%" height="40px">
               <Text bold color="#ffffff">
@@ -151,7 +155,7 @@ const Register = (props) => {
           </Grid>
         </FromBox>
       </Grid>
-      <Footer />
+      {/* <Footer /> */}
     </React.Fragment>
   );
 };

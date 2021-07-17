@@ -1,3 +1,4 @@
+
 import React from "react";
 import styled from "styled-components";
 import { Grid, Input, Button, Text, Image } from "../elements";
@@ -5,8 +6,7 @@ import { history } from "../redux/configStore";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import Footer from "../shared/Footer";
-
+// import Footer from "../shared/Footer";
 import coupang_logo from "../img/coupang_logo.jpg";
 
 const Login = (props) => {
@@ -32,12 +32,39 @@ const Login = (props) => {
 
   return (
     <React.Fragment>
-      <Grid padding="16px" align="center">
+      <Grid padding ="16px" align="center" width="50%">
+        <Grid>
+          로고 이미지
+        </Grid>
+
+        <Grid padding="16px 0px">
+          <Input pading="6px" placeholder="아이디(이메일)입력"/>
+        </Grid>
+
+        <Grid padding="16px 0px">
+          <Input pading="6px" placeholder="비밀번호 입력"/>
+        </Grid>
+
+        <Grid padding="16px 0px">
+          <Button width = "90%" height="40px">
+            <Text bold color="#ffffff">로그인</Text>
+          </Button>
+        </Grid>
+
+        <Grid padding="16px 0px">
+          <Text size="13px" color="#50A0FF">회원가입</Text>
+        </Grid>
+        <Grid padding="16px 0px">
+          <Footer/>
+        </Grid>
+      </Grid>
+      <Grid padding="16px" align="center" margin="25% 0%">
         <Image 
         height="10vw" 
         src={coupang_logo} 
         _onClick = {() => {
           history.push("/");
+          window.location.reload();
         }}
         />
 
@@ -103,7 +130,7 @@ const Login = (props) => {
           </Grid>
         </FromBox>
       </Grid>
-      <Footer />
+      {/* <Footer /> */}
     </React.Fragment>
   );
 };

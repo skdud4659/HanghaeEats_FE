@@ -57,5 +57,16 @@
       "confirmPassword":"abc1234",
       "phone": "01012345678"
     }
-  ]
+  ],
+
+  "orders": [
+    {
+            "menuId": "60f23bb91c7a88804941d9e8",
+            "count": 3
+    }, 
+    {
+            "menuId": "60f23bba1c7a88804941d9eb",
+            "count": 1
+    }
+]
 }
