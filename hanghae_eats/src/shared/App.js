@@ -19,9 +19,9 @@ const App = (props) => {
         <Grid width="50%" margin="2% auto">
             {/* 메인사이드 */}
             <Route path="/" exact component={Main} />
-            {/* /stores?category=치킨  > url 의논*/}
-            {/* <Route path="/stores/:CategoryId" exact component={Stores} /> */}
-            <Route path="/stores" exact component={Stores} />
+            {/* /stores?category=치킨 */}
+            <Route path="/stores/:category" exact component={Stores} />
+            {/* <Route path="/stores" exact component={Stores} /> */}
             <Route path="/storeDetail/:name" exact component={StoreDetail} />
             <Route path="/cart" exact component={Cart} />
             <Route path="/reviews/:storeId" exact component={Reviews} />

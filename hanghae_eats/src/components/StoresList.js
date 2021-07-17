@@ -6,11 +6,10 @@ import BeautyStars from 'beauty-stars';
 import delivery from '../img/chita.jpg'
 
 const StoresList = (props) => {
-  const {name, image} = props
-
-  //매장 상세 페이지로 이동버튼
+  const {_id, image} = props
+//매장 상세 페이지로 이동버튼
   const storeBtn = () => {
-    history.push(`/storeDetail/${name}`)
+    history.push(`/storeDetail/${_id}`)
   }
 
   return (
@@ -36,7 +35,7 @@ const StoresList = (props) => {
 }
 
 StoresList.defaultProps = {
-  name: "bhc",
+  _id : "60f1d842fed5f51e64329954",
   image: "https://www.kedglobal.com/data/ked/image/2020/12/17/ked202012170014.jpg",
 }
 
