@@ -55,7 +55,7 @@ const Login = (props) => {
           <Text size="13px" color="#50A0FF">회원가입</Text>
         </Grid>
         <Grid padding="16px 0px">
-          <Footer/>
+          {/* <Footer/> */}
         </Grid>
       </Grid>
       <Grid padding="16px" align="center" margin="25% 0%">
