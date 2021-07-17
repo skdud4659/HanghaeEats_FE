@@ -30,7 +30,6 @@ Input.defaultProps = {
   width: "90%",
   border_radius : "",
   border: "1px solid black",
-  bg: "",
   _onChange: () => {},
   bg: null,
 };

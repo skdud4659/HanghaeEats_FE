@@ -1,12 +1,10 @@
-<<<<<<< Updated upstream
-import React from 'react';
-=======
 import React from "react";
 import styled from "styled-components";
 import { Grid, Input, Button, Text, Image } from "../elements";
 import { history } from "../redux/configStore";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+
 
 // import Footer from "../shared/Footer";
 import coupang_logo from "../img/coupang_logo.jpg";
@@ -19,27 +17,51 @@ import { HiOutlineLockClosed } from "react-icons/hi";
 import { HiOutlineUser } from "react-icons/hi";
 // 휴대폰번호 icon
 import { HiOutlineDeviceMobile } from "react-icons/hi";
->>>>>>> Stashed changes
 
 const Register = (props) => {
+  const formik = useFormik({
+    initialValues: {
+      userId: "",
+      pwd: "",
+      userName: "",
+      phoneNumber: "",
+    },
+
+    validationSchema: Yup.object({
+      userId: Yup.string()
+        .email("이메일을 올바르게 입력해주세요.")
+        .required("이메일을 입력하세요."),
+      pwd: Yup.string()
+        .min(8, "비밀번호는 8자리 이상이어야 합니다.")
+        .matches(
+          /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/,
+          "영문/숫자 포함 조합 (8~20자)"
+        )
+        .required("비밀번호를 입력하세요."),
+      userName: Yup.string().required("이름을 정확히 입력하세요."),
+    }),
+
+    onSubmit: (values) => {},
+  });
+
   return (
     <React.Fragment>
-<<<<<<< Updated upstream
-
-=======
       <Grid padding="16px" align="center" margin="15% 0%">
+
         <Image 
         height="10vw" 
         src={coupang_logo}
         _onClick = {() => {
           history.push("/");
           window.location.reload();
+
         }}
         />
 
         <FromBox name="registerForm" onSubmit={formik.handleSubmit}>
           <Grid margin="0 0 0 auto">
             <Text bold size="17px">
+
               회원정보를 입력해주세요
             </Text>
           </Grid>
@@ -47,6 +69,7 @@ const Register = (props) => {
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
               <HiOutlineMail size="35"/>
+
             </Grid>
 
             <Grid width="90%">
@@ -58,7 +81,6 @@ const Register = (props) => {
                 _onChange={formik.handleChange}
                 value={formik.values.userId}
               />
-
               {formik.touched.userId && formik.errors.userId ? (
                 <HelperMsg>{formik.errors.userId}</HelperMsg>
               ) : null}
@@ -124,7 +146,6 @@ const Register = (props) => {
               ) : null}
             </Grid>
           </Grid>
-
           <Grid padding="16px 0px">
             <Button width="100%" height="40px">
               <Text bold color="#ffffff">
@@ -135,9 +156,20 @@ const Register = (props) => {
         </FromBox>
       </Grid>
       {/* <Footer /> */}
->>>>>>> Stashed changes
     </React.Fragment>
   );
-}
+};
 
+const FromBox = styled.form`
+  height: 90%;
+  margin: 50px;
+`;
+
+const HelperMsg = styled.div`
+  text-decoration: underline;
+  font-size: 15px;
+  font-weight: 600;
+  color: red;
+  margin: auto;
+`;
 export default Register;
