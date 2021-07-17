@@ -47,5 +47,15 @@
         "image" : "https://cdn.imweb.me/thumbnail/20210324/e9c3958dd079c.png",
         "category" : "jokbal"
     }
+  ],
+
+  "users": [
+    {
+      "nickname": "eatinglover123" ,  
+      "email":"abc@ddd.com",
+      "password":"abc1234",
+      "confirmPassword":"abc1234",
+      "phone": "01012345678"
+    }
   ]
 }
