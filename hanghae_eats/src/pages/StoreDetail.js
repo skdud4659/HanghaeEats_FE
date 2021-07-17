@@ -6,8 +6,20 @@ import Menu from '../components/Menu';
 
 import { Grid, Text } from '../elements';
 
+import {useDispatch, useSelector} from 'react-redux';
+import {getMenuDB} from '../redux/modules/store';
+import { history } from '../redux/configStore';
 
 const StoreDetail = (props) => {
+  const dispatch = useDispatch()
+  const storeId = history.location.pathname.split('/')[2]
+  const menu_list = useSelector((state) => state.stores.menus)
+
+  //로드
+  React.useEffect(() => {
+    dispatch(getMenuDB(storeId))
+  },[])
+  
   return (
     <React.Fragment>
         <StoreDetailInfo />
@@ -25,7 +37,9 @@ const StoreDetail = (props) => {
         <ReviewList />
         <hr/>
         {/* 메뉴 맵돌리기 */}
-        <Menu />
+        {menu_list.map((m, idx) => {
+          return <Menu key={m._id} {...m}/>
+        })}
     </React.Fragment>
   );
 }
