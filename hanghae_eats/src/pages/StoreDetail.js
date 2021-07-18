@@ -8,13 +8,15 @@ import { Button, Grid, Text } from '../elements';
 
 import {useDispatch, useSelector} from 'react-redux';
 import {getMenuDB} from '../redux/modules/store';
+
+import {ttlPrice} from '../redux/modules/cart';
 import { history } from '../redux/configStore';
 
 const StoreDetail = (props) => {
   const dispatch = useDispatch()
   const storeId = history.location.pathname.split('/')[2]
   const menu_list = useSelector((state) => state.stores.menus)
-  const cart_list = useSelector((state) => state.order.cart)
+  const cart_list = useSelector((state) => state.cart.cart)
 
    //로드
   React.useEffect(() => {
@@ -24,13 +26,15 @@ const StoreDetail = (props) => {
   //현재 카트에 총 합
   let ttl_price = 0;
   for(let i=0; i<cart_list.length; i++) {
-    let price = cart_list[i].price
+    let price = cart_list[i].countPrice
     ttl_price += price
   }
 
   //주문하기 버튼
   const orderBtn = () => {
-    ttl_price < 15000 ? window.alert('최소 주문 금액은 15,000원 입니다!') : history.push('/cart');
+    ttl_price < 15000 ? window.alert('최소 주문 금액은 15,000원 입니다!')
+    : history.replace('/cart')
+      dispatch(ttlPrice(ttl_price))
   }
 
   //TODO 시간 남으면 자세히 모달창
