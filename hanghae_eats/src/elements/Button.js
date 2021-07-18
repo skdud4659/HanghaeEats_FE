@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Button = (props) => {
 
-  const { children, bg, width, margin, height, _onClick, border_radius } = props;
+  const { children, bg, is_circle, width, margin, height, _onClick, border_radius } = props;
 
   const styles = {
     bg,
@@ -11,6 +11,10 @@ const Button = (props) => {
     margin,
     height,
     border_radius
+  }
+
+  if(is_circle) {
+    return <CircleBtn {...styles} onClick={_onClick } type="button">{children}</CircleBtn>;
   }
 
   return <ButtonEle {...styles} onClick={_onClick } type="button">{children}</ButtonEle>;
@@ -25,6 +29,7 @@ Button.defaultProps = {
   height: "100%",
   _onClick: () => {},
   border_radius: "0px",
+  is_circle : false,
 };
 
 const ButtonEle = styled.button`
@@ -35,6 +40,16 @@ const ButtonEle = styled.button`
   background-color: ${(props) => props.bg};
   color: ${(props) => props.hover_color};
   border-radius: ${(props) => props.border_radius};
+`;
+
+const CircleBtn = styled.button`
+  border: 1px solid gray;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  border-radius: 50%;
+  margin: ${(props) => props.margin};
+  background-color: white;
+  color: ${(props) => props.hover_color};
 `;
 
 export default Button;

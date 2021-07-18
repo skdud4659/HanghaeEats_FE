@@ -7,6 +7,7 @@ import order from "./modules/order";
 import review from "./modules/review";
 import user from "./modules/user";
 import stores from "./modules/store";
+import cart from './modules/cart'
 
 export const history = createBrowserHistory();
 
@@ -29,6 +30,7 @@ const reducer = combineReducers({
   order: order.reducer,
   review: review.reducer,
   stores: stores.reducer,
+  cart: cart.reducer,
   router: connectRouter(history),
 });
 
