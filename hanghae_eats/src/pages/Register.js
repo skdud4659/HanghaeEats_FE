@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Grid, Input, Button, Text, Image } from "../elements";
 import { history } from "../redux/configStore";
-import * as Yup from "yup";
-import { useFormik } from "formik";
 
+
+import { useDispatch } from "react-redux";
+import { actionCreators as userActions } from "../redux/modules/user";
 
 // import Footer from "../shared/Footer";
 import coupang_logo from "../img/coupang_logo.jpg";
@@ -19,34 +20,7 @@ import { HiOutlineUser } from "react-icons/hi";
 import { HiOutlineDeviceMobile } from "react-icons/hi";
 
 const Register = (props) => {
-<<<<<<< Updated upstream
-  const formik = useFormik({
-    initialValues: {
-      userId: "",
-      pwd: "",
-      userName: "",
-      phoneNumber: "",
-    },
-
-    validationSchema: Yup.object({
-      userId: Yup.string()
-        .email("이메일을 올바르게 입력해주세요.")
-        .required("이메일을 입력하세요."),
-      pwd: Yup.string()
-        .min(8, "비밀번호는 8자리 이상이어야 합니다.")
-        .matches(
-          /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/,
-          "영문/숫자 포함 조합 (8~20자)"
-        )
-        .required("비밀번호를 입력하세요."),
-      userName: Yup.string().required("이름을 정확히 입력하세요."),
-    }),
-
-    onSubmit: (values) => {},
-  });
-=======
   const dispatch = useDispatch();
-
   const [email, setEmail] = React.useState("");
   const [password, setPwd] = React.useState("");
   const [nickname, setUserName] = React.useState("");
@@ -57,68 +31,61 @@ const Register = (props) => {
     console.log(email, password, nickname, phone);
     dispatch(userActions.signUpDB(email, password, nickname, phone))
   };
->>>>>>> Stashed changes
 
   return (
     <React.Fragment>
       <Grid padding="16px" align="center" margin="15% 0%">
-
-        <Image 
-        height="10vw" 
-        src={coupang_logo}
-        _onClick = {() => {
-          history.push("/");
-          window.location.reload();
-
-        }}
+        <Image
+          height="10vw"
+          src={coupang_logo}
+          _onClick={() => {
+            history.push("/");
+            window.location.reload();
+          }}
         />
 
-        <FromBox name="registerForm" onSubmit={formik.handleSubmit}>
+        <FromBox>
           <Grid margin="0 0 0 auto">
             <Text bold size="17px">
-
               회원정보를 입력해주세요
             </Text>
           </Grid>
 
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
-              <HiOutlineMail size="35"/>
-
+              <HiOutlineMail size="35" />
             </Grid>
 
             <Grid width="90%">
               <Input
-                pading="6px"
+                padding="6px"
                 placeholder="아이디(이메일)입력"
                 id="userId"
+                name="userId"
                 type="userId"
-                _onChange={formik.handleChange}
-                value={formik.values.userId}
+                _onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
-              {formik.touched.userId && formik.errors.userId ? (
-                <HelperMsg>{formik.errors.userId}</HelperMsg>
-              ) : null}
             </Grid>
           </Grid>
 
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
-              <HiOutlineLockClosed size="35"/>
+              <HiOutlineLockClosed size="35" />
+  
             </Grid>
             <Grid width="90%">
               <Input
                 padding="6px"
                 placeholder="비밀번호 입력"
                 id="pwd"
+                name="pwd"
                 type="pwd"
-                _onChange={formik.handleChange}
-                value={formik.values.pwd}
+                _onChange={(e) => {
+                  setPwd(e.target.value);
+                }}
               />
-
-              {formik.touched.pwd && formik.errors.pwd ? (
-                <HelperMsg>{formik.errors.pwd}</HelperMsg>
-              ) : null}
             </Grid>
           </Grid>
 
@@ -131,38 +98,42 @@ const Register = (props) => {
                 padding="6px"
                 placeholder="이름"
                 id="userName"
+                name="userName"
                 type="userName"
-                _onChange={formik.handleChange}
-                value={formik.values.userName}
+                _onChange={(e) => {
+                  setUserName(e.target.value);
+                }}
               />
-
-              {formik.touched.userName && formik.errors.userName ? (
-                <HelperMsg>{formik.errors.userName}</HelperMsg>
-              ) : null}
             </Grid>
           </Grid>
 
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
-              <HiOutlineDeviceMobile size="35"/>
+              <HiOutlineDeviceMobile size="35" />
             </Grid>
             <Grid width="90%">
               <Input
                 padding="6px"
                 placeholder="휴대폰 번호"
                 id="phoneNumber"
+                name="phoneNumber"
                 type="phoneNumber"
-                _onChange={formik.handleChange}
-                value={formik.values.phoneNumber}
+                _onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                }}
               />
-
-              {formik.touched.phoneNumber && formik.errors.phoneNumber ? (
-                <HelperMsg>{formik.errors.phoneNumber}</HelperMsg>
-              ) : null}
             </Grid>
           </Grid>
+
+          {/* // 가입 버튼 */}
           <Grid padding="16px 0px">
-            <Button width="100%" height="40px">
+            <Button
+              _onClick={() => {
+                signUp()
+              }}
+              width="100%"
+              height="40px"
+            >
               <Text bold color="#ffffff">
                 가입하기
               </Text>
@@ -187,4 +158,5 @@ const HelperMsg = styled.div`
   color: red;
   margin: auto;
 `;
+
 export default Register;
