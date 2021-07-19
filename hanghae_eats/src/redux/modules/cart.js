@@ -5,6 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   cart: [],
   price: 0,
+  last_price : 0,
 }
 
 //리덕스
@@ -17,13 +18,18 @@ const cart = createSlice({
       state.cart.push(action.payload)
     },
 
-    //총 결제 금액
+    //1차 카트 결제 금액
     ttlPrice: (state, action) => {
       state.price = action.payload
     },
+
+    //결제 전 카트 결제 금액
+    lastPrice: (state, action) => {
+      state.price = action.payload
+    }
   }
 });
 
-export const {addCart, ttlPrice} = cart.actions;
+export const {addCart, ttlPrice, lastPrice} = cart.actions;
 
 export default cart;

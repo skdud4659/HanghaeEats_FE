@@ -35,13 +35,13 @@ const Menu = (props) => {
     //카트가 비었을 경우 그냥 담기
     console.log(cart_list)
     if (cart_list.length === 0) {
-      dispatch(addCart({_id, storeId, name, countPrice, count}))
+      dispatch(addCart({_id, storeId, name, countPrice, count, price}))
     } else {
        //카트에 리스트가 있을 경우 아이디값 대조하여 return
       if(storeId !== cart_list[0].storeId) {
         window.alert('동일한 매장에서만 주문이 가능해요!')
       } else {
-        dispatch(addCart({_id, storeId, name, countPrice, count}))
+        dispatch(addCart({_id, storeId, name, countPrice, count, price}))
       }
     }
   }
