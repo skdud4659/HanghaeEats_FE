@@ -1,6 +1,7 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import axios from "axios";
+import instance from "./instance";
 
 //Action
 const GET_USER = "GET_USER";
@@ -29,9 +30,8 @@ const getUser = createAction(GET_USER, (user) => ({ user }));
 
 const signUpDB = (email, password, nickname, phone) => {
   return function (dispatch, getState, { history }) {
-    axios
-      .post("http://localhost:3000/data/data.json", {
-      
+    instance
+      .post('/api/user', { 
       //빈 배열을 만들었을때는 email.userId이런 식으로 사용가능. 하지만 지금은 각각 갖고 오기 때문에 표현하지 않는다.
         email: email,
         password: password,
