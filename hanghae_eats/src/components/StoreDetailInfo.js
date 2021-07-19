@@ -1,13 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Grid, Image, Button, Text} from '../elements';
+import {useSelector, useDispatch} from 'react-redux';
 
 //별이모지
 import {faStar, faHeart, faExternalLinkAlt} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//매장 정보 가져오기
+import {getOneStoreDB} from '../redux/modules/store';
+import { history } from '../redux/configStore';
 
 const StoreDetailInfo = (props) => {
+  const dispatch = useDispatch()
   const {name, image, avgStar, orders, countStar} = props
+  const storeInfo = useSelector((state) => state.stores.store)
+
+  const storeId = history.location.pathname.split('/')[2]
+   //로드
+  React.useEffect(() => {
+    dispatch(getOneStoreDB(storeId))
+  },[])
 
   return (
     <React.Fragment>
@@ -22,14 +34,14 @@ const StoreDetailInfo = (props) => {
         </Icons>
       {/* 매장 정보 */}
         <Grid>
-          <Image height="200px" src={props.image}/>
+          <Image height="200px" src={storeInfo.image}/>
           <Info>
-            <Text size="30px" bold>{props.name}</Text>
+            <Text size="30px" bold>{storeInfo.name}</Text>
             <Grid is_flex width="20vmin" height="50%">
               <FontAwesomeIcon icon={faStar} size="2x" color={'#ffdd21'}/>
               <Grid is_flex margin="0px">
-                <Text >{props.avgStar}</Text>
-                <Text color={'#50A0FF'} bold>주문 {props.orders}회 </Text>
+                <Text >{storeInfo.avgStar}</Text>
+                <Text color={'#50A0FF'} bold>주문 {storeInfo.orders}회 </Text>
               </Grid>
             </Grid>
           </Info>
