@@ -36,8 +36,8 @@ const cart = createSlice({
       let idx = state.carts.findIndex((d) => d.name === action.payload)
       if (idx !== -1) {
         state.carts.splice(idx, 1);
+        state.carts.length === 0 ? window.location.replace('/') : window.alert('메뉴가 삭제되었습니다!')
       }
-      window.alert('메뉴가 삭제되었습니다!')
     }
   }
 });
