@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Text = (props) => {
-    const {bold, color, size, children, width, margin} = props;
+    const {bold, color, size, children, width, margin, _onClick} = props;
 
     const styles = {
         bold:bold, color:color, size:size, width, margin
@@ -10,7 +10,7 @@ const Text = (props) => {
 
     return(
         <React.Fragment>
-            <P {...styles}> {children} </P>
+            <P {...styles} onClick={_onClick}> {children} </P>
         </React.Fragment>
     )
 }
@@ -22,7 +22,8 @@ Text.defaultProps = {
     color: "#222831",
     margin: "auto",
     size: "17px",
-};
+    _onClick: () => {},
+}; 
 
 const P = styled.p`
     width: ${(props) => props.width};

@@ -12,7 +12,7 @@ import instance from './instance';
 export const getStoresDB = (category) => {
   return function (dispatch, getState, {history}) {
     instance
-      .get(`/api/stores?category=${category}`)
+      .get(`/api/store?category=${category}`)
       .then((res) => {
         let store_list = res.data.stores.filter((each) => {
           return each.category === category
