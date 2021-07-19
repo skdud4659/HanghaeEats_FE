@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { Grid, Text } from "../elements";
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
+import {lastPrice} from '../redux/modules/cart'
 //삭제 icon
 import { HiX } from "react-icons/hi";
 import { faRProject } from '@fortawesome/free-brands-svg-icons';
@@ -8,7 +9,8 @@ import { faRProject } from '@fortawesome/free-brands-svg-icons';
 import Select from "react-select";
 
 const CartMenuList = (props) => {
-  const {name, countPrice, count} = props
+  const {name, countPrice, count, price} = props
+  const dispatch = useDispatch()
 
   //셀렉트박스
   //useMemo = 연산값 재사용하기(성능 최적화)
@@ -29,7 +31,14 @@ const CartMenuList = (props) => {
 
   //가격 관련
   //수량 변경에 따른 메뉴 하나의 가격 변경
- 
+  const [menuPrice, setMenuPrice] = React.useState(`${countPrice}`)
+  const chgCount = (value) => {
+    setMenuPrice((price*value))
+    let extraPrice = (parseInt(menuPrice)+price)
+    console.log(extraPrice)
+    dispatch(lastPrice(extraPrice))
+  }
+
 
   return (
     <React.Fragment>
@@ -41,9 +50,10 @@ const CartMenuList = (props) => {
                 </Grid>
               </Grid>
               <Grid is_flex>
-                <Text margin="20px 20px"> {countPrice}</Text>
+                <Text margin="20px 20px">{menuPrice}</Text>
                 <Grid width="true" margin="20px 20px">
-                  <Select options={options} defaultValue={options[count-1]}/>
+                  <Select options={options} defaultValue={options[count-1]}
+                    onChange={(value) => {chgCount(value.value)}}/>
                 </Grid>
               </Grid>
       </Grid>

@@ -4,15 +4,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
-//전역 > 서버 배포 후 수정
-// import instance from './instance';
+//전역 > 서버 배포
+import instance from './instance';
 
 //axios
 //매장 가져오기
 export const getStoresDB = (category) => {
   return function (dispatch, getState, {history}) {
-    axios
-      .get(`http://localhost:3000/data/data.json`)
+    instance
+      .get(`/api/stores?category=${category}`)
       .then((res) => {
         let store_list = res.data.stores.filter((each) => {
           return each.category === category
@@ -29,8 +29,8 @@ export const getStoresDB = (category) => {
 //메뉴 가져오기
 export const getMenuDB = (storeId) => {
   return function (dispatch, getState, {history}) {
-    axios
-      .get(`http://localhost:3000/data/data.json`)
+    instance
+      .get(`/api/menu/${storeId}`)
       .then((res) => {
         let menu_list = res.data.menus.filter((each) => {
           return each.storeId === storeId

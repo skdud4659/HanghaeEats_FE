@@ -2,14 +2,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
-//전역 > 서버 배포 후 수정
-// import instance from './instance';
+// 전역 > 서버 배포 
+import instance from './instance';
 
 //axios
 export const addOrderDB = (menuId, count) => {
   return function (dispatch, getState, {history}) {
-    axios
-      .post(`http://localhost:3000/data/data.json`, {menuId: menuId, count:count})
+    instance
+      .post(`/api/order`, {menuId: menuId, count:count})
       .then((res) => {
 
       })
