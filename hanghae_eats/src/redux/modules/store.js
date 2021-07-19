@@ -12,7 +12,7 @@ import instance from './instance';
 export const getStoresDB = (category) => {
   return function (dispatch, getState, {history}) {
     instance
-      .get(`/api/stores?category=${category}`)
+      .get(`/api/store?category=${category}`)
       .then((res) => {
         let store_list = res.data.stores.filter((each) => {
           return each.category === category
@@ -21,6 +21,21 @@ export const getStoresDB = (category) => {
       })
       .catch((err) => {
         window.alert('매장 정보를 가져오는데 오류가 발생했어요! 관리자에게 문의해주세요.')
+        console.log(err)
+      })
+  }
+}
+
+//매장 하나 가져오기
+export const getOneStoreDB = (storeID) => {
+  return function (dispatch, getState, {history}) {
+    instance
+      .get(`/api/store/one/${storeID}`)
+      .then((res) => {
+        let oneStore = res.data.store
+        dispatch(getOneStore(oneStore))
+      })
+      .catch((err) => {
         console.log(err)
       })
   }
@@ -48,6 +63,7 @@ export const getMenuDB = (storeId) => {
 const initialState = {
   stores: [],
   menus: [],
+  store:[],
 }
 
 //리덕스
@@ -64,9 +80,14 @@ const store = createSlice({
     getMenus: (state, action) => {
       state.menus = action.payload
     },
+
+    //한 매장만 가져오기 액션
+    getOneStore: (state, action) => {
+      state.store = action.payload
+    }
   }
 });
 
-export const {getStores, getMenus} = store.actions;
+export const {getStores, getMenus, getOneStore} = store.actions;
 
 export default store;
