@@ -1,0 +1,72 @@
+{
+  "menus": [
+    {
+      "_id" : "60f23b2a7686d334ff5cd298",
+      "storeId" :"60f1d842fed5f51e64329954",
+      "name" : "뿌링클",
+      "price" : 17000,
+      "image" : "http://www.bhc.co.kr//upload/bhc/menu//BB(0).jpg",
+      "__v" : 0
+  },
+
+  {
+      "_id" : "60f23b2a7686d334ff5cd29b",
+      "storeId" :"60f1d842fed5f51e64329954",
+      "name" : "뿌링클HOT",
+      "price" : 18000,
+      "image" : "http://www.bhc.co.kr//upload/bhc/menu//BBUHOT.jpg",
+      "__v" : 0
+  }
+  ],
+
+  "stores": [
+    {
+      "_id" : "60f1d842fed5f51e64329954",
+      "orders" : 1034,
+      "avgStar" : "4",
+      "countStar" : 0,
+      "name" : "bhc",
+      "image" : "https://www.kedglobal.com/data/ked/image/2020/12/17/ked202012170014.jpg",
+      "category" : "chicken"
+    },
+    {
+      "_id" : "60f1d842fed5f51e64329958",
+      "orders" : 1034,
+      "avgStar" : "4",
+      "countStar" : 0,
+      "name" : "교촌치킨",
+      "image" : "https://www.kedglobal.com/data/ked/image/2020/12/17/ked202012170014.jpg",
+      "category" : "chicken"
+    },
+    {
+        "_id" : "60f1d842fed5f51e64329956",
+        "orders" : 500,
+        "avgStar" : "5",
+        "countStar" : 0,
+        "name" : "더맛있는족발보쌈",
+        "image" : "https://cdn.imweb.me/thumbnail/20210324/e9c3958dd079c.png",
+        "category" : "jokbal"
+    }
+  ],
+
+  "users": [
+    {
+      "nickname": "eatinglover123" ,  
+      "email":"abc@ddd.com",
+      "password":"abc1234",
+      "confirmPassword":"abc1234",
+      "phone": "01012345678"
+    }
+  ],
+
+  "orders": [
+    {
+            "menuId": "60f23bb91c7a88804941d9e8",
+            "count": 3
+    }, 
+    {
+            "menuId": "60f23bba1c7a88804941d9eb",
+            "count": 1
+    }
+]
+}

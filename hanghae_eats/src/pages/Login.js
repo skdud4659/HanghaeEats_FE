@@ -1,3 +1,4 @@
+
 import React from "react";
 import styled from "styled-components";
 import { Grid, Input, Button, Text, Image } from "../elements";
@@ -5,8 +6,7 @@ import { history } from "../redux/configStore";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import Footer from "../shared/Footer";
-
+// import Footer from "../shared/Footer";
 import coupang_logo from "../img/coupang_logo.jpg";
 
 const Login = (props) => {
@@ -32,12 +32,13 @@ const Login = (props) => {
 
   return (
     <React.Fragment>
-      <Grid padding="16px" align="center">
+      <Grid padding="16px" align="center" margin="25% 0%">
         <Image 
         height="10vw" 
         src={coupang_logo} 
         _onClick = {() => {
           history.push("/");
+          window.location.reload();
         }}
         />
 
@@ -103,7 +104,7 @@ const Login = (props) => {
           </Grid>
         </FromBox>
       </Grid>
-      <Footer />
+      {/* <Footer /> */}
     </React.Fragment>
   );
 };

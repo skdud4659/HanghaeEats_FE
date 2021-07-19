@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Grid, Input, Button, Text, Image } from "../elements";
 import { history } from "../redux/configStore";
 
+
 import { useDispatch } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
 
@@ -81,6 +82,7 @@ const Register = (props) => {
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
               <HiOutlineLockClosed size="35" />
+  
             </Grid>
             <Grid width="90%">
               <Input
@@ -98,7 +100,7 @@ const Register = (props) => {
 
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
-              <HiOutlineUser size="35" />
+              <HiOutlineUser size="35"/>
             </Grid>
             <Grid width="90%">
               <Input

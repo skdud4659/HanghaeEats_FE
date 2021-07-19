@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Grid, Image, Text} from '../elements';
+//TODO 링크 연결
 
 const MiniCategory = (props) => {
   return (
