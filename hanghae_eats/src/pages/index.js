@@ -10,5 +10,6 @@ import Reviews from './Reviews';
 import ReviewWrite from './ReviewWrite';
 import StoreDetail from './StoreDetail';
 import Stores from './Stores';
+import AllStores from './AllStores'
 
-export {Cart, Coupons, Favorites, Login, Main, MyEats, Order, Register, Reviews, ReviewWrite, StoreDetail, Stores}
+export {Cart, Coupons, Favorites, Login, Main, MyEats, Order, Register, Reviews, ReviewWrite, StoreDetail, AllStores, Stores}

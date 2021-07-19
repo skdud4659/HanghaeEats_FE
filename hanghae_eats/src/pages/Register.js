@@ -19,6 +19,7 @@ import { HiOutlineUser } from "react-icons/hi";
 import { HiOutlineDeviceMobile } from "react-icons/hi";
 
 const Register = (props) => {
+<<<<<<< Updated upstream
   const formik = useFormik({
     initialValues: {
       userId: "",
@@ -43,6 +44,20 @@ const Register = (props) => {
 
     onSubmit: (values) => {},
   });
+=======
+  const dispatch = useDispatch();
+
+  const [email, setEmail] = React.useState("");
+  const [password, setPwd] = React.useState("");
+  const [nickname, setUserName] = React.useState("");
+  const [phone, setPhoneNumber] = React.useState("");
+
+  //함수를 실행하면, 데이터를 만들고 액션 실행함.
+  const signUp = () => {
+    console.log(email, password, nickname, phone);
+    dispatch(userActions.signUpDB(email, password, nickname, phone))
+  };
+>>>>>>> Stashed changes
 
   return (
     <React.Fragment>
