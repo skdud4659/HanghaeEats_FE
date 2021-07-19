@@ -1,48 +1,43 @@
-
 import React from "react";
 import styled from "styled-components";
 import { Grid, Input, Button, Text, Image } from "../elements";
 import { history } from "../redux/configStore";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { actionCreators as userActions } from "../redux/modules/user";
 
 // import Footer from "../shared/Footer";
 import coupang_logo from "../img/coupang_logo.jpg";
 
 const Login = (props) => {
-  const formik = useFormik({
-    initialValues: {
-      userId: "",
-      pwd: "",
-    },
+  const dispatch = useDispatch();
 
-    valicationSchema: Yup.object({
-      userId: Yup.string()
-        .email("아이디는 이메일주소 형식으로 입력해주세요.")
-        .required("아이디를 입력해주세요."),
+  const [email, setEmail] = React.useState("");
+  const [password, setPwd] = React.useState("");
 
-      pwd: Yup.string()
-        .min(4, "비밀번호는 4자리 이상이어야 합니다.")
-        .matches(/[a-zA-Z]/, "패스워드는 반드시 영문을 포함해야합니다.")
-        .required("패스워드르 입력해주세요."),
-    }),
-
-    onSubmit: (values) => {},
-  });
+  //login 함수
+  const logIn = () => {
+    if (email === "" || password === "") {
+      window.alert("아이디와 비밀번호를 입력해주세요.");
+      return;
+    }
+    console.log(email, password);
+    dispatch(userActions.logInDB(email, password));
+  }
 
   return (
     <React.Fragment>
+
       <Grid padding="16px" align="center" margin="25% 0%">
-        <Image 
-        height="10vw" 
-        src={coupang_logo} 
-        _onClick = {() => {
-          history.push("/");
-          window.location.reload();
-        }}
+        <Image
+          height="10vw"
+          src={coupang_logo}
+          _onClick={() => {
+            history.push("/");
+            window.location.reload();
+          }}
         />
 
-        <FromBox name="loginForm" onSubmit={formik.handleSubmit}>
+        <FromBox name="loginForm">
           <Grid is_flex padding="16px 0px">
             <Grid width="20%">
               <Text>아이디</Text>
@@ -55,12 +50,10 @@ const Login = (props) => {
                 placeholder="아이디(이메일)입력"
                 id="userId"
                 type="userId"
-                _onChange={formik.handleChange}
-                value={formik.values.userId}
+                _onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
-              {formik.touched.userId && formik.errors.userId ? (
-                <HelperMsg>{formik.errors.userID}</HelperMsg>
-              ) : null}
             </Grid>
           </Grid>
 
@@ -75,29 +68,31 @@ const Login = (props) => {
                 padding="6px"
                 placeholder="비밀번호 입력"
                 pwd="pwd"
-                type="pwd"
-                _onChange={formik.handleChange}
-                value={formik.values.pwd}
+                type="password"
+                _onChange={(e) => {
+                  setPwd(e.target.value);
+                }}
               />
-              {formik.touched.pwd && formik.errors.pwd ? (
-                <HelperMsg>{formik.errors.pwd}</HelperMsg>
-              ) : null}
             </Grid>
           </Grid>
 
           <Grid padding="16px 0px">
-            <Button width="100%" height="40px">
-              <Text bold color="#ffffff">
+            <Button _onClick={() => {
+                logIn()
+              }} width="100%" height="40px">
+              <Text 
+              bold color="#ffffff">
                 로그인
               </Text>
             </Button>
           </Grid>
 
-          <Grid padding="16px 0px">
+          <Grid is_flex padding="16px 0px">
+            <Text size="15px">아직 회원이 아니신가요?</Text>
             <Text
               size="15px"
               color="#50A0FF"
-              onClick={() => history.push("/register")}
+              _onClick={() => history.push("/register")}
             >
               회원가입
             </Text>
