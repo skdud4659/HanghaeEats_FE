@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import { Grid, Text } from "../elements";
+import { Grid, Text, Button } from "../elements";
 import {useSelector,useDispatch} from 'react-redux';
-import {lastPrice} from '../redux/modules/cart'
+import {delCart, chgItem} from '../redux/modules/cart'
 //삭제 icon
 import { HiX } from "react-icons/hi";
 import { faRProject } from '@fortawesome/free-brands-svg-icons';
@@ -9,7 +9,7 @@ import { faRProject } from '@fortawesome/free-brands-svg-icons';
 import Select from "react-select";
 
 const CartMenuList = (props) => {
-  const {name, countPrice, count, price} = props
+  const {_id, name, countPrice, count, price} = props
   const dispatch = useDispatch()
 
   //셀렉트박스
@@ -34,11 +34,14 @@ const CartMenuList = (props) => {
   const [menuPrice, setMenuPrice] = React.useState(`${countPrice}`)
   const chgCount = (value) => {
     setMenuPrice((price*value))
-    let extraPrice = (parseInt(menuPrice)+price)
-    console.log(extraPrice)
-    dispatch(lastPrice(extraPrice))
+    let extraPrice = price*value
+    dispatch(chgItem({extraPrice, value, _id}))
   }
 
+  //삭제 버튼
+  const delBtn = () => {
+    dispatch(delCart(name))
+  }
 
   return (
     <React.Fragment>
@@ -46,7 +49,9 @@ const CartMenuList = (props) => {
               <Grid is_flex>
                 <Text margin="20px 20px">{name}</Text>
                 <Grid width="true" margin="8px 20px">
-                  <HiX />
+                  <Button bg={'white'} _onClick={delBtn}>
+                    <HiX />
+                  </Button>
                 </Grid>
               </Grid>
               <Grid is_flex>

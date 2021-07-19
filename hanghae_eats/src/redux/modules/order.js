@@ -6,15 +6,17 @@ import axios from 'axios';
 import instance from './instance';
 
 //axios
-export const addOrderDB = (menuId, count) => {
+export const addOrderDB = (storeId, menu_list) => {
   return function (dispatch, getState, {history}) {
     instance
-      .post(`/api/order`, {menuId: menuId, count:count})
+      .post(`/api/order`, {storeId: storeId, menus:menu_list})
       .then((res) => {
-
+        window.alert('주문이 완료되었어요! 주문은 항해이츠가 쏜다-!')
+        console.log(res)
       })
       .catch((err) => {
-        
+        window.alert('주문에 오류가 있어요! 관리자에게 문의해주세요!')
+        console.log(err)
       })
   }
 }

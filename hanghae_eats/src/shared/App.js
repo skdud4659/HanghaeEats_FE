@@ -8,7 +8,7 @@ import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configStore";
 import Header from './Header';
 
-import {Cart, Coupons, Favorites, Login, Main, MyEats, Order, Register, Reviews, ReviewWrite, StoreDetail, Stores} from '../pages'
+import {Cart, Coupons, Favorites, Login, Main, MyEats, Order, Register, Reviews, ReviewWrite, StoreDetail, AllStores, Stores} from '../pages'
 
 const App = (props) => {
   return (
@@ -19,9 +19,10 @@ const App = (props) => {
         <Grid width="50%" margin="2% auto 1% auto">
             {/* 메인사이드 */}
             <Route path="/" exact component={Main} />
-            {/* /stores?category=치킨 */}
+            {/* 특정 카테고리로 들어가기 */}
             <Route path="/stores/:category" exact component={Stores} />
-            {/* <Route path="/stores" exact component={Stores} /> */}
+            {/* 모든 카테고리로 들어가기 */}
+            <Route path="/stores" exact component={AllStores} />
             <Route path="/storeDetail/:name" exact component={StoreDetail} />
             <Route path="/cart" exact component={Cart} />
             <Route path="/reviews/:storeId" exact component={Reviews} />
