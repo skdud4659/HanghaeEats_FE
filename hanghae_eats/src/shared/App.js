@@ -8,7 +8,7 @@ import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configStore";
 import Header from './Header';
 
-import {Cart, Coupons, Favorites, Login, Main, MyEats, Order, Register, Reviews, ReviewWrite, StoreDetail, Stores} from '../pages'
+import {Cart, Coupons, Favorites, Login, Main, MyEats, Order, Register, Aboutus, Reviews, ReviewWrite, StoreDetail, AllStores, Stores} from '../pages'
 
 const App = (props) => {
   return (
@@ -19,25 +19,30 @@ const App = (props) => {
         <Grid width="50%" margin="2% auto 1% auto">
             {/* 메인사이드 */}
             <Route path="/" exact component={Main} />
-            {/* /stores?category=치킨 */}
+            {/* 특정 카테고리로 들어가기 */}
             <Route path="/stores/:category" exact component={Stores} />
-            {/* <Route path="/stores" exact component={Stores} /> */}
+            {/* 모든 카테고리로 들어가기 */}
+            <Route path="/stores" exact component={AllStores} />
             <Route path="/storeDetail/:name" exact component={StoreDetail} />
             <Route path="/cart" exact component={Cart} />
             <Route path="/reviews/:storeId" exact component={Reviews} />
             {/* 로그인 회원가입 */}
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
+
+
             {/* 마이이츠 사이드 */}
             {/* <Route path="/myEats/:userId" exact component={MyEats} /> */}
             <Route path="/myEats" exact component={MyEats} />
-            <Route path="/favorites/:userId" exact component={Favorites} />
+            {/* <Route path="/favorites/:userId" exact component={Favorites} /> */}
+            <Route path="/favorites" exact component={Favorites} />
             <Route path="/coupons" exact component={Coupons} />
             {/* <Route path="/order/:userId" exact component={Order} /> */}
             <Route path="/order" exact component={Order} />
             <Route path="/reviewWrite" exact component={ReviewWrite} />
             {/* 리뷰 수정 */}
             <Route path="/reviewWrite/:reviewId" exact component={ReviewWrite} />
+            <Route path="/aboutus" exact component={Aboutus} />
             {/* 잘못된 주소면 메인으로 돌아가기 */}
             {/* <Redirect from="*" to="/" /> */}
         </Grid>

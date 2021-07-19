@@ -22,7 +22,6 @@ import { HiOutlineDeviceMobile } from "react-icons/hi";
 
 const Register = (props) => {
   const dispatch = useDispatch();
-
   const [email, setEmail] = React.useState("");
   const [password, setPwd] = React.useState("");
   const [nickname, setUserName] = React.useState("");
@@ -44,7 +43,6 @@ const Register = (props) => {
       window.alert("비밀번호 형식이 맞지 않습니다.");
       return;
     }
-
     console.log(email, password, nickname, phone);
     dispatch(userActions.signUpDB(email, password, nickname, phone))
   };

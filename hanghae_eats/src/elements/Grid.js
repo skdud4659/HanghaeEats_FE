@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Grid = (props) => {
-  const {children, align, overflowX, width, is_flex, bg, padding, margin, height, border_radius, _onClick,
+  const {children, border, align, overflowX, width, is_flex, bg, padding, margin, height, border_radius, _onClick,
   } = props;
 
   const styles = {
@@ -14,7 +14,8 @@ const Grid = (props) => {
     bg,
     border_radius,
     align,
-    overflowX
+    overflowX,
+    border
   };
   return (
     <Wrapper onClick={_onClick} {...styles}>
@@ -34,6 +35,7 @@ Grid.defaultProps = {
   border_radius: "",
   align: false,
   overflowX: "",
+  border:false,
   _onClick: () => {},
 };
 
@@ -42,6 +44,7 @@ const Wrapper = styled.div`
   height: ${(props) => props.height};
   ${(props) =>props.is_flex &&`display: flex; justify-content: space-between; align-items: center;`}
   padding : ${(props) => props.padding};
+  border: ${(props) => props.border};
   margin: ${(props) => props.margin};
   background-color: ${(props) => props.bg};
   border-radius: ${(props) => props.border_radius};
