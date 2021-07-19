@@ -27,17 +27,9 @@ const Register = (props) => {
   const [nickname, setUserName] = React.useState("");
   const [phone, setPhoneNumber] = React.useState("");
 
-  // 리덕스에서 함수를 만들때 데이터 묶음이 아니라 따로따로 인자로 받는다고 정해둠.
-  // 리덕스를 불러오니까 리덕스 규칙을 따라야 함.
-  // const data = {
-  //   email : email,
-  //   password : password,
-  //   nickname : nickname,
-  //   phone : phone,
-  // }
-
   //함수를 실행하면, 데이터를 만들고 액션 실행함.
   const signUp = () => {
+    console.log(signUp(email, password, nickname, phone));
     dispatch(userActions.signUpDB(email, password, nickname, phone))
   };
 
