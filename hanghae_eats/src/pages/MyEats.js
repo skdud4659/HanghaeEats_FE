@@ -7,24 +7,25 @@ import {history} from '../redux/configStore'
 //이모지
 import { FiHeart, FiTag, FiMessageSquare, FiPhone } from "react-icons/fi";
 import { BiWrench, BiFoodMenu } from "react-icons/bi";
+import { useSelector } from 'react-redux';
 
 const MyEats = (props) => {
-  const {nickname, phone} = props
+  const user_name = useSelector((state) => state.user.user_info)
 
   return (
     <React.Fragment>
       <Grid>
         {/* 내 정보 */}
         <Grid height="100px">
-          <Text bold size="40px" margin="0% 0% 1% 0%">{props.nickname}</Text>
-          <Text size="20px">{props.phone}</Text>
+          <Text bold size="40px" margin="0% 0% 1% 0%">{user_name}</Text>
+          <Text size="20px">항해이츠에 오신 것을 환영해요!</Text>
         </Grid>
         {/* 쿠폰 */}
         <Grid height="200px">
           <Image src={coupon}/>
         </Grid>
         {/* 목록 */}
-        <Grid is_flex margin="3% 0%;" _onClick={() => {history.push('/order')}}>
+        <Grid is_flex margin="3% 0%;" _onClick={() => {history.push(`/order/${user_name}`)}}>
           <BiFoodMenu size="65" />
           <Text width="40vmin" margin="auto 3%" size="20px" cursor>주문 내역</Text>
           <Grid></Grid>
@@ -54,11 +55,6 @@ const MyEats = (props) => {
       </Grid>
     </React.Fragment>
   );
-}
-
-MyEats.defaultProps = {
-  nickname: "fall_of_jul",
-  phone: '010-9597-6951',
 }
 
 export default MyEats;
