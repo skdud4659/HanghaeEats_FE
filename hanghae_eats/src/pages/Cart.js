@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 //치타 이미지
 import chita from "../img/chita.jpg";
-import { addOrderDB } from "../redux/modules/order";
+import { OrderDB, addOrder } from "../redux/modules/order";
 
 const Cart = (props) => {
   const dispatch = useDispatch();
@@ -34,11 +34,11 @@ const Cart = (props) => {
   const orderBtn = () => {
     let menu_list = []
     for(let i=0; i<cart_list.length; i++) {
-      let id = cart_list[i]._id
+      let menuId = cart_list[i]._id
       let count = cart_list[i].count
-      menu_list.push({id, count})
+      menu_list.push({menuId, count})
     }
-    dispatch(addOrderDB({store_id, menu_list}))
+    dispatch(OrderDB(store_id, menu_list))
   }
 
   return (
