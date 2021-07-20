@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-import { Grid, Input, Button, Text, Image } from "../elements";
+import { Grid, Button, Text, Image } from "../elements";
 import { history } from "../redux/configStore";
 import CartMenuList from '../components/CartMenuList';
 
@@ -8,22 +7,38 @@ import {useDispatch, useSelector} from 'react-redux';
 
 //치타 이미지
 import chita from "../img/chita.jpg";
+import { addOrderDB } from "../redux/modules/order";
 
 const Cart = (props) => {
   const dispatch = useDispatch();
   const {address, store_name, _id } = props
-  const cart_list = useSelector((state)=> state.cart.cart)
+  const cart_list = useSelector((state)=> state.cart.carts)
   const store_id = cart_list[0].storeId
 
   //주문금액
-  let ttlPrice = useSelector((state)=> state.cart.price)
+  let _price = 0;
+  for(let i=0; i<cart_list.length; i++) {
+    let price = cart_list[i].countPrice
+    _price+=price
+  }
 
   //배달비
-  let deliveryPrice = ttlPrice >= 50000 ? 0 : 2000  
+  let deliveryPrice = _price >= 50000 ? 0 : 2000  
 
   //메뉴추가버튼
   const addMenu = () => {
     history.push(`storeDetail/${store_id}`)
+  }
+
+  //주문하기 버튼
+  const orderBtn = () => {
+    let menu_list = []
+    for(let i=0; i<cart_list.length; i++) {
+      let id = cart_list[i]._id
+      let count = cart_list[i].count
+      menu_list.push({id, count})
+    }
+    dispatch(addOrderDB({store_id, menu_list}))
   }
 
   return (
@@ -74,7 +89,7 @@ const Cart = (props) => {
             <Grid padding="8px 0px 0px 0px" bg="#ffffff">
               <Grid is_flex>
                 <Text margin="20px 20px"> 주문금액 </Text>
-                <Text margin="20px 20px"> {ttlPrice}원 </Text>
+                <Text margin="20px 20px"> {_price}원 </Text>
               </Grid>
 
               <Grid is_flex>
@@ -86,21 +101,17 @@ const Cart = (props) => {
 
               <Grid is_flex padding="15px 0px">
                 <Text margin="4px 20px" bold> 총 결제금액 </Text>
-                <Text margin="4px 20px" bold size="20px"> 총 {ttlPrice + deliveryPrice}원 </Text>
+                <Text margin="4px 20px" bold size="20px"> 총 {_price + deliveryPrice}원 </Text>
               </Grid>
             </Grid>
           </Grid>
-          <Button height="70px"> 
+          <Button height="70px" _onClick={orderBtn}> 
             <Text color="#ffffff" bold> 결제하기 </Text> 
           </Button>
         </Grid>
     </React.Fragment>
   );
 };
-
-const SelectBox = styled.div`
-  margin : 8px 20px;
-`;
 
 Cart.defaultProps = {
   user : {

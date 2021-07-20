@@ -16,7 +16,7 @@ const Image = (props) => {
   if(is_circle) {
     return (
     <React.Fragment>
-      <CircleImage {...styles} src={src} />
+      <CircleImage {...styles} src={src} onClick={_onClick}/>
     </React.Fragment>
     )
   }

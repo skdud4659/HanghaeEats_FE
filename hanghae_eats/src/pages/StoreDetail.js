@@ -16,7 +16,7 @@ const StoreDetail = (props) => {
   const dispatch = useDispatch()
   const storeId = history.location.pathname.split('/')[2]
   const menu_list = useSelector((state) => state.stores.menus)
-  const cart_list = useSelector((state) => state.cart.cart)
+  const cart_list = useSelector((state) => state.cart.carts)
 
    //로드
   React.useEffect(() => {
