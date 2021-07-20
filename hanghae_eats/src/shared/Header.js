@@ -3,8 +3,13 @@ import styled from 'styled-components';
 import { Button, Grid, Text } from '../elements';
 
 import {history} from '../redux/configStore';
+import {useSelector, useDispatch} from 'react-redux'
+import {LogOut} from '../redux/modules/user'
 
 const Header = (props) => {
+  const dispatch = useDispatch()
+  const loginChk = useSelector((state) => state.user.is_login)
+
   //로그인 이동 버튼
   const gotoLogin = () => {
     history.replace('/login')
@@ -17,8 +22,36 @@ const Header = (props) => {
     window.location.reload();
   }
 
+  //마이페이지 이동 버튼
+  const gotoMyEats = () => {
+    history.push('/myEats')
+  }
+
+  //로그아웃 버튼
+  const logOutBtn = () => {
+    dispatch(LogOut())
+  }
+
    //로그인, 회원가입 페이지에서는 헤더 안보이게 설정
   if(window.location.pathname === "/login" || window.location.pathname === "/register") return null;
+  
+  //로그인 상태일 때 헤더
+  if(loginChk === true) {
+    return (
+      <React.Fragment>
+      <Grid is_flex padding="1% 0%">
+        <Grid></Grid>
+        <Button width="15vmin" height="40px" margin="0px 10px 0px 0px" _onClick={gotoMyEats}>
+          <Text bold color={"white"}>마이페이지</Text>
+        </Button>
+        <Button width="15vmin" height="40px" margin="0px 10px 0px 0px" _onClick={logOutBtn}>
+          <Text bold color={"white"}>로그아웃</Text>
+        </Button>
+      </Grid>
+      <Hr/>
+    </React.Fragment>
+    )
+  }
   
   return (
     <React.Fragment>

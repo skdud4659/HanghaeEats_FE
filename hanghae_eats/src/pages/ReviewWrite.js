@@ -1,11 +1,11 @@
 import React from 'react';
 import {Grid, Text, Button, Input} from '../elements';
+
 import styled from 'styled-components'
 import {useDispatch, useSelector} from "react-redux";
 import { actionCreators as reviewActions } from '../redux/modules/review';
 
 //이모지
-
 import { FaShoppingBasket, FaRegEdit } from "react-icons/fa";
 import BeautyStars from 'beauty-stars';
 
@@ -20,14 +20,16 @@ const ReviewWrite = (props) => {
     setChgRate(value)
   }
 
-const ReviewWrite = (props) => {
   return (
     <React.Fragment>
       <P>만족도 평가 및 리뷰</P>
       <Grid margin="3% 0px">
+        {/* 음식평가 title */}
         <Grid is_flex>
-          <FaShoppingBasket style={{width:"30px", height:"30px", borderRadius:"50%", backgroundColor:"#23c8ff", color:"white", padding:"10px"}}/>
-          <Text margin="0px 0px 0px 10px" width="15%" size="23px" bold>음식 평가</Text>
+          <Grid width="auto">
+            <FaShoppingBasket style={{width:"30px", height:"30px", borderRadius:"50%", backgroundColor:"#23c8ff", color:"white", padding:"10px"}}/>
+          </Grid>
+          <Text margin="0px 0px 0px 10px" width="50%" size="23px" bold>음식 평가</Text>
           <Grid></Grid>
         </Grid>
 
@@ -64,7 +66,6 @@ const ReviewWrite = (props) => {
         >
         <Text color={'white'} bold>작성하기</Text>
         </Button>
-
       </Grid>
     </React.Fragment>
   );
@@ -76,6 +77,16 @@ const P = styled.p`
   font-weight: bold;
   font-size: 30px;
   padding-bottom: 20px;
+`; 
+
+const Textarea = styled.textarea`
+  width:95%;
+  padding:20px;
+  font-size:18px;
+  resize: none;
+  :focus {
+    outline: none;
+  }
 `;
 
 export default ReviewWrite;

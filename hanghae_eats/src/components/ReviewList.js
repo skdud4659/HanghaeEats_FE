@@ -3,12 +3,19 @@ import styled from 'styled-components';
 import { Grid, Image, Text } from '../elements';
 import BeautyStars from 'beauty-stars';
 
+import {history} from '../redux/configStore';
+
 const ReviewList = (props) => {
   const {_id, shopId, image, menuId, userId, orderId, reviewDate, content, star} = props
 
+  //리뷰 페이지로 이동
+  const gotoReview = () => {
+    history.push(`/reviews/${shopId}`)
+  }
+
   return (
     <React.Fragment>
-      <ReviewItem>
+      <ReviewItem onClick={gotoReview}>
           <Grid width="30%" margin="0px">
             <Image src={props.image}/>
           </Grid>
@@ -26,9 +33,11 @@ const ReviewList = (props) => {
 const ReviewItem = styled.div`
   width:40vmin;
   height:100px;
-  border: 1px solid gray;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
   display: flex;
   margin-bottom: 5%;
+  cursor: pointer;
 `;
 
 ReviewList.defaultProps = {

@@ -4,7 +4,7 @@ import { Grid, Input, Button, Text, Image } from "../elements";
 import { history } from "../redux/configStore";
 
 import { useDispatch } from "react-redux";
-import { actionCreators as userActions } from "../redux/modules/user";
+import { SignUpDB } from "../redux/modules/user";
 
 import { emailCheck, passwordCheck } from "../shared/common";
 
@@ -43,8 +43,7 @@ const Register = (props) => {
       window.alert("비밀번호 형식이 맞지 않습니다.");
       return;
     }
-    console.log(email, password, nickname, phone);
-    dispatch(userActions.signUpDB(email, password, nickname, phone))
+    dispatch(SignUpDB(email, password, nickname, phone))
   };
 
   return (

@@ -52,7 +52,14 @@ const StoreDetail = (props) => {
           </Grid>
         </Grid>
         {/* 리뷰 맵돌리기 */}
-        <ReviewList />
+        <Grid is_flex>
+          <ReviewList />
+          <Grid border="1px solid gray" padding="10px" width="10%" height="80px" margin="0px 0px 5% auto" border_radius="5px" >
+            <Button bg={'white'} margin="0px auto;">
+              <Text margin="0px auto;" cursor bold>리뷰 <br/> 더 보기</Text>
+            </Button>
+          </Grid>
+        </Grid>
         <hr/>
         {/* 메뉴 맵돌리기 */}
         {menu_list.map((m, idx) => {
