@@ -5,12 +5,22 @@ import {history} from '../redux/configStore'
 import moment from 'moment'
 
 import OrderMenuList from '../components/OrderMenuList';
+import {useDispatch} from 'react-redux';
 
 const OrderList = (props) => {
-  const {name, orderDate, price, menus, _id} = props
-  const menu_list = menus
+  const dispatch=useDispatch()
+  const menu_list = props.menus
+  
+  //시간 가공
+  const orderDT = moment(props.orderDate).format('YYYY-MM-DD hh:mm a')
 
-  const orderDT = moment(orderDate).format('YYYY-MM-DD hh:mm a')
+  //리뷰를 작성한 상태인가?
+  const is_write = props.checkReview
+  const [btnDisabled, setBtnDisabled] = React.useState()
+
+  React.useEffect(() => {
+    is_write && setBtnDisabled('disabled')
+  })
   
   return (
     <React.Fragment>
@@ -19,21 +29,23 @@ const OrderList = (props) => {
         <Grid is_flex>
           {/* 주문 정보 */}
           <Grid width="60%" margin="0px">
-            <Text bold size="35px">{name}</Text>
+            <Text bold size="35px">{props.storeId.name}</Text>
             <Text color={'gray'} margin="0px 0px 3% 0px">{orderDT}</Text>
             <Text>주문 완료</Text>
           </Grid>
-          <Image width="30%" height="100px"src="https://blog.kakaocdn.net/dn/bZXBw8/btqZefYyrZx/EZ4Zo0gm3HUdeM6ky4kfHK/img.png"/>
+          <Image width="40%" height="130px"src={props.storeId.image}/>
         </Grid>
         {/* 주문한 메뉴 정보 - 맵돌리기*/}
-        <OrderMenuList />
+        {menu_list.map((m, idx) => {
+          return <OrderMenuList key={m.menuId} {...m}/>
+        })}
         {/* 합계 */}
         <Grid margin="0px 0px 5% 0px">
-          <Text size="18px">합계: <Span>{price}원</Span></Text>
+          <Text size="18px">합계: <Span>{props.price}원</Span></Text>
         </Grid>
         {/* 리뷰쓰기 버튼 */}
         <Grid>
-          <Review onClick={() => {history.push(`/reviewWrite/${_id}`)}}>
+          <Review onClick={() => {history.push(`/reviewWrite/${props._id}`)}} disabled={btnDisabled}>
             <Text color={'#23c8ff'} bold size="18px">리뷰 쓰기</Text>
           </Review>
         </Grid>
