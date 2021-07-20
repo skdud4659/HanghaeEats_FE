@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button, Grid, Text } from '../elements';
+import { Button, Grid, Text, Image } from '../elements';
 
 import {history} from '../redux/configStore';
 import {useSelector, useDispatch} from 'react-redux'
 import {LogOut} from '../redux/modules/user'
+
+import logo from '../shared/logo.PNG'
 
 const Header = (props) => {
   const dispatch = useDispatch()
@@ -30,6 +32,7 @@ const Header = (props) => {
   //로그아웃 버튼
   const logOutBtn = () => {
     dispatch(LogOut())
+    history.replace('/')
   }
 
    //로그인, 회원가입 페이지에서는 헤더 안보이게 설정
@@ -40,7 +43,9 @@ const Header = (props) => {
     return (
       <React.Fragment>
       <Grid is_flex padding="1% 0%">
-        <Grid></Grid>
+        <Grid margin="0px 0px 0px 1%" _onClick={() => {history.push('/')}}>
+          <Image width="13vmin" height="50px" src={logo}/>
+        </Grid>
         <Button width="15vmin" height="40px" margin="0px 10px 0px 0px" _onClick={gotoMyEats}>
           <Text bold color={"white"}>마이페이지</Text>
         </Button>
@@ -56,7 +61,9 @@ const Header = (props) => {
   return (
     <React.Fragment>
       <Grid is_flex padding="1% 0%">
-        <Grid></Grid>
+        <Grid margin="0px 0px 0px 1%" _onClick={() => {history.push('/')}}>
+          <Image width="15vmin" height="40px" src={logo}/>
+        </Grid>
         <Button width="15vmin" height="40px" margin="0px 10px 0px 0px" _onClick={gotoLogin}>
           <Text bold color={"white"}>로그인</Text>
         </Button>

@@ -2,8 +2,21 @@ import React from 'react';
 import FavoriteList from '../components/FavoriteList';
 import {Grid, Text} from '../elements';
 import styled from 'styled-components'
+import {useDispatch, useSelector} from 'react-redux'; 
+
+import {getAllLikeDB} from '../redux/modules/favorite';
+import {getAllStoreDB} from '../redux/modules/store';
 
 const Favorites = (props) => {
+  const dispatch = useDispatch()
+  const favorite_list = useSelector((state) => state.favorite.favorite_list)
+  console.log(favorite_list)
+
+  React.useEffect(() => {
+    dispatch(getAllLikeDB())
+    dispatch(getAllStoreDB())
+  },[])
+
   return (
     <React.Fragment>
       <Wrap>
@@ -13,7 +26,9 @@ const Favorites = (props) => {
         </Grid>
       </Wrap>
       {/* 즐겨찾기 맵돌리기*/}
-      <FavoriteList />
+      {favorite_list.map((f, idx) => {
+        return <FavoriteList key={f.idx} {...{f}}/>
+      })}
     </React.Fragment>
   );
 }
