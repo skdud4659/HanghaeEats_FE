@@ -70,7 +70,6 @@ const ReviewWrite = (props) => {
     </React.Fragment>
   );
 }
-}
 
 const P = styled.p`
   text-align: center;
