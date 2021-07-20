@@ -33,6 +33,7 @@ Button.defaultProps = {
 };
 
 const ButtonEle = styled.button`
+  display: block;
   border: none;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
