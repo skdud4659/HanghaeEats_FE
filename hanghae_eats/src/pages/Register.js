@@ -3,9 +3,10 @@ import styled from "styled-components";
 import { Grid, Input, Button, Text, Image } from "../elements";
 import { history } from "../redux/configStore";
 
-
 import { useDispatch } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
+
+import { emailCheck, passwordCheck } from "../shared/common";
 
 // import Footer from "../shared/Footer";
 import coupang_logo from "../img/coupang_logo.jpg";
@@ -28,6 +29,20 @@ const Register = (props) => {
 
   //함수를 실행하면, 데이터를 만들고 액션 실행함.
   const signUp = () => {
+    if (email === "" || password === "" || nickname === "" || phone === ""){
+      window.alert("모든 정보를 입력해주세요.");
+      return;
+    }
+
+    if(!emailCheck(email)) {
+      window.alert("이메일 형식이 맞지 않습니다.");
+      return;
+    }
+
+    if(!passwordCheck(password)) {
+      window.alert("비밀번호 형식이 맞지 않습니다.");
+      return;
+    }
     console.log(email, password, nickname, phone);
     dispatch(userActions.signUpDB(email, password, nickname, phone))
   };
@@ -73,15 +88,15 @@ const Register = (props) => {
           <Grid is_flex padding="16px 0px">
             <Grid width="10%">
               <HiOutlineLockClosed size="35" />
-  
             </Grid>
+
             <Grid width="90%">
               <Input
                 padding="6px"
                 placeholder="비밀번호 입력"
                 id="pwd"
                 name="pwd"
-                type="pwd"
+                type="password"
                 _onChange={(e) => {
                   setPwd(e.target.value);
                 }}
@@ -149,6 +164,18 @@ const Register = (props) => {
 const FromBox = styled.form`
   height: 90%;
   margin: 50px;
+`;
+
+const Alert = styled.p`
+  color: red;
+  font-size: 13px;
+  margin-left: 5px;
+`;
+
+const Check = styled.p`
+  color: rgb(114, 203, 128);
+  font-size: 13px;
+  margin-left: 5px;
 `;
 
 const HelperMsg = styled.div`
