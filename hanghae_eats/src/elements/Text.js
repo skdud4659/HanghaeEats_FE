@@ -24,11 +24,11 @@ Text.defaultProps = {
     color: "#222831",
     margin: "auto",
     size: "17px",
+    cursor: false,
 
     _onClick: () => {},
 }; 
-    cursor: false,
-};
+    
 
 const P = styled.p`
     width: ${(props) => props.width};
