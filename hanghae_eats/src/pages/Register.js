@@ -111,7 +111,7 @@ const Register = (props) => {
             <Grid width="90%">
               <Input
                 padding="6px"
-                placeholder="이름"
+                placeholder="닉네임"
                 id="userName"
                 name="userName"
                 type="userName"
