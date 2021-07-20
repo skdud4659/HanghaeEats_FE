@@ -24,9 +24,7 @@ Text.defaultProps = {
     color: "#222831",
     margin: "auto",
     size: "17px",
-
     _onClick: () => {},
-}; 
     cursor: false,
 };
 
