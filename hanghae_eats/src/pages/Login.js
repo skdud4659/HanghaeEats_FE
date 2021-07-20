@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Grid, Input, Button, Text, Image } from "../elements";
 import { history } from "../redux/configStore";
 import { useDispatch } from "react-redux";
-import { actionCreators as userActions } from "../redux/modules/user";
+import { LogInDB } from "../redux/modules/user";
 
 // import Footer from "../shared/Footer";
 import coupang_logo from "../img/coupang_logo.jpg";
@@ -20,8 +20,7 @@ const Login = (props) => {
       window.alert("아이디와 비밀번호를 입력해주세요.");
       return;
     }
-    console.log(email, password);
-    dispatch(userActions.logInDB(email, password));
+    dispatch(LogInDB(email, password));
   }
 
   return (

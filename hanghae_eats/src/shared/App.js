@@ -7,10 +7,21 @@ import { Redirect, Route } from "react-router-dom";
 import { ConnectedRouter } from "connected-react-router";
 import { history } from "../redux/configStore";
 import Header from './Header';
-
 import {Cart, Coupons, Favorites, Login, Main, MyEats, Order, Register, Aboutus, Reviews, ReviewWrite, StoreDetail, AllStores, Stores} from '../pages'
+//로그인 인증
+import { useSelector, useDispatch } from 'react-redux';
+import { LogInChk } from '../redux/modules/user'
 
 const App = (props) => {
+  const dispatch = useDispatch()
+  const is_login = useSelector((state) => state.user.is_login);
+
+  React.useEffect(() => {
+    if(!is_login) {
+      dispatch(LogInChk());
+    }
+  },[])
+
   return (
     <React.Fragment>
       <ConnectedRouter history={history}>
@@ -32,7 +43,6 @@ const App = (props) => {
 
 
             {/* 마이이츠 사이드 */}
-            {/* <Route path="/myEats/:userId" exact component={MyEats} /> */}
             <Route path="/myEats" exact component={MyEats} />
             {/* <Route path="/favorites/:userId" exact component={Favorites} /> */}
             <Route path="/favorites" exact component={Favorites} />

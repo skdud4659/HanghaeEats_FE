@@ -21,6 +21,9 @@ const StoreDetailInfo = (props) => {
     dispatch(getOneStoreDB(storeId))
   },[])
 
+  // 별점 소수점 첫째자리까지
+  const rateStar = Number(storeInfo.avgStar).toFixed(1)
+
   return (
     <React.Fragment>
       <Grid>
@@ -40,7 +43,7 @@ const StoreDetailInfo = (props) => {
             <Grid is_flex width="20vmin" height="50%">
               <FontAwesomeIcon icon={faStar} size="2x" color={'#ffdd21'}/>
               <Grid is_flex margin="0px">
-                <Text >{storeInfo.avgStar}</Text>
+                <Text >{rateStar}</Text>
                 <Text color={'#50A0FF'} bold>주문 {storeInfo.orders}회 </Text>
               </Grid>
             </Grid>
