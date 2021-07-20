@@ -3,12 +3,16 @@ import styled from 'styled-components';
 import {Grid, Image, Button, Text} from '../elements';
 import {useSelector, useDispatch} from 'react-redux';
 
-//별이모지
-import {faStar, faHeart, faExternalLinkAlt} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//이모지
+import { FaStar, FaHeart } from "react-icons/fa";
+import { BiDownload, BiHeart } from "react-icons/bi";
+
 //매장 정보 가져오기
 import {getOneStoreDB} from '../redux/modules/store';
 import { history } from '../redux/configStore';
+
+//즐겨찾기
+import {likeToggleDB, getLikeDB, unlikeToggleDB} from '../redux/modules/favorite';
 
 const StoreDetailInfo = (props) => {
   const dispatch = useDispatch()
@@ -16,23 +20,38 @@ const StoreDetailInfo = (props) => {
   const storeInfo = useSelector((state) => state.stores.store)
 
   const storeId = history.location.pathname.split('/')[2]
+
    //로드
   React.useEffect(() => {
     dispatch(getOneStoreDB(storeId))
+    dispatch(getLikeDB(storeId))
   },[])
 
   // 별점 소수점 첫째자리까지
   const rateStar = Number(storeInfo.avgStar).toFixed(1)
+
+   //즐겨찾기 버튼
+  const is_like = useSelector((state) => state.favorite.is_like)
+  //선택버튼
+  const likeBtn = () => {
+    dispatch(likeToggleDB(storeId))
+  }
+  //해제버튼
+  const unlikeBtn = () => {
+    dispatch(unlikeToggleDB(storeId))
+  }
 
   return (
     <React.Fragment>
       <Grid>
         <Icons>
           <Grid width="auto" margin="0px">
-            <FontAwesomeIcon icon={faHeart} size="2x" color={'#fb6c89'}/>
+          {/* color={'#fb6c89'} */}
+          {is_like && <FaHeart size="40px" cursor="pointer" onClick={unlikeBtn} color={'#fb6c89'}/>}
+          {!is_like && <BiHeart size="40px" cursor="pointer" onClick={likeBtn}/>}
           </Grid>
           <Grid width="auto" margin="0px 2%">
-            <FontAwesomeIcon icon={faExternalLinkAlt} size="2x"/>
+            <BiDownload size="40px" cursor="pointer"/>
           </Grid>
         </Icons>
       {/* 매장 정보 */}
@@ -41,10 +60,10 @@ const StoreDetailInfo = (props) => {
           <Info>
             <Text size="30px" bold>{storeInfo.name}</Text>
             <Grid is_flex width="20vmin" height="50%">
-              <FontAwesomeIcon icon={faStar} size="2x" color={'#ffdd21'}/>
+              <FaStar size="30px" color={'#ffdd21'}/>
               <Grid is_flex margin="0px">
-                <Text >{rateStar}</Text>
-                <Text color={'#50A0FF'} bold>주문 {storeInfo.orders}회 </Text>
+                <Text margin="auto 3%">{rateStar}</Text>
+                <Text color={'#50A0FF'} bold margin="auto 0px">주문 {storeInfo.orders}회 </Text>
               </Grid>
             </Grid>
           </Info>

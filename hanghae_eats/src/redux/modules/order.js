@@ -32,7 +32,7 @@ export const getOrderDB = () => {
         dispatch(getOrder(res.data.orders))
       })
       .catch((err) => {
-        window.alert(err.data.message)
+        window.alert(err)
         console.log(err)
       })
   }
