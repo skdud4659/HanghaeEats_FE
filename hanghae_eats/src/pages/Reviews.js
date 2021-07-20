@@ -5,7 +5,18 @@ import {Grid, Text} from '../elements';
 import ReviewItem from '../components/ReviewItem';
 import BeautyStars from 'beauty-stars';
 
+import { useSelector, useDispatch} from 'react-redux';
+import { actionCreators as reviewActions } from '../redux/modules/review';
+
 const Reviews = (props) => {
+  const {history} = props;
+  const dispatch = useDispatch();
+  const review_list = useSelector((state) => state.review.list);
+
+  React.useEffect(() => {
+    dispatch(reviewActions.getReviewDB())
+  }, [])
+
   return (
     <React.Fragment>
       {/* 매장 데이터 가져오기 */}
@@ -23,6 +34,9 @@ const Reviews = (props) => {
         </Grid>
       </Grid>
       {/* 리뷰 맵돌리기*/}
+      {review_list.map((r, idx) => {
+            return <Reviews key={r.id} {...r}/>
+          })}
       <ReviewItem />
     </React.Fragment>
   );

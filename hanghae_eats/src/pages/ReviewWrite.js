@@ -13,11 +13,28 @@ import BeautyStars from 'beauty-stars';
 //수정도 한 페이지에서!
 const ReviewWrite = (props) => {
   const dispatch = useDispatch();
+  const {history} = props;
 
+  //리뷰 콘텐츠
+  const [content, setContent] = React.useState();
+  const orderId = props.match.params.orderId;
+  console.log(props.match.params.orderId);
+
+  const input_content = (e) => {
+    setContent(e.target.value);
+  };
+
+  const review_list = useSelector((state)=>state.review.list);
+  
   //별점
   const [chgRate, setChgRate] = React.useState()
   const chgStar = (value) => {
     setChgRate(value)
+  }
+
+  //작성버튼
+  const AddBtn = () => {
+    dispatch(reviewActions.addReviewDB(orderId, content, chgRate))
   }
 
   return (
@@ -53,8 +70,8 @@ const ReviewWrite = (props) => {
           <Grid></Grid>
         </Grid>
         {/* 작성 textarea */}
-        <Grid>
-          {/* <Textarea rows={10}/> */}
+        <Grid >
+          <Textarea rows={10} onChange={input_content}/>
         </Grid>
         {/* 작성하기 버튼 */}
         <Button 
@@ -62,7 +79,7 @@ const ReviewWrite = (props) => {
         argin="3% auto" 
         width="20%" 
         height="40px"
-        _onClick = {reviewActions.addReview()}
+        _onClick = {() => {AddBtn()}}
         >
         <Text color={'white'} bold>작성하기</Text>
         </Button>
