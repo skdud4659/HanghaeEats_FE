@@ -21,6 +21,23 @@ export const OrderDB = (storeId, menu_list) => {
   }
 }
 
+export const getOrderDB = () => {
+  return function (dispatch, getState, {history}) {
+    instance
+      .get('/api/order')
+      .then((res) => {
+        if(res.data.message !=="success") {
+          window.alert(res.data.message)
+        }
+        dispatch(getOrder(res.data.orders))
+      })
+      .catch((err) => {
+        window.alert(err.data.message)
+        console.log(err)
+      })
+  }
+}
+
 //initialState
 const initialState = {
   order: [],
@@ -33,13 +50,16 @@ const order = createSlice({
   reducers: {
    //주문하기
     addOrder: (state, action) => {
-      const storeId = action.payload.storeId;
-      const menu_list = action.payload.menu_list; 
-      state.order = {storeId, menu_list}
+
     },
+
+    //주문 불러오기
+    getOrder: (state, action) => {
+      state.order = action.payload
+    }
   }
 });
 
-export const {addOrder} = order.actions;
+export const {addOrder, getOrder} = order.actions;
 
 export default order;

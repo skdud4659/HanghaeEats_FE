@@ -24,7 +24,7 @@ export const SignUpDB = (email, password, nickname, phone) => {
     });
   }
 }
-
+//TODO 리덕스 지속저장 알아보기 >> 닉네임 저장하려고(react-persist)
 export const LogInDB = (email, password) => {
   return function(dispatch, getState, {history}) {
     instance
@@ -64,7 +64,7 @@ export const LogInChk = () => {
         if(res.data.message !== 'success') {
           window.alert(res.data.message)
         }
-        dispatch(setUserName(res.data.nickname));
+        dispatch(setUserName(res.data.user));
       })
       .catch((err) =>{
         window.alert('로그인 정보를 확인해주세요.')
