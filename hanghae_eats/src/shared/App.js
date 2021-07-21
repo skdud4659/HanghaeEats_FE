@@ -44,12 +44,8 @@ const App = (props) => {
             {/* 마이이츠 사이드 */}
             {is_login && <Route path="/myEats" exact component={MyEats} />}
             <Route path="/order/:user_name" exact component={Order} />
-
-            {/* <Route path="/favorites/:userId" exact component={Favorites} /> */}
             <Route path="/favorites" exact component={Favorites} />
             <Route path="/coupons" exact component={Coupons} />
-            
-
             <Route path="/reviewWrite/:orderId" exact component={ReviewWrite} />
             {/* 리뷰 수정 */}
             {/* <Route path="/reviewWrite/:reviewId" exact component={ReviewWrite} /> */}
