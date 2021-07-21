@@ -2,6 +2,8 @@ import React from 'react';
 import Search from '../components/Search';
 import Promotion from '../components/Promotion';
 import Category from '../components/Category';
+import MiniCategory from '../components/MiniCategory';
+import {Grid} from '../elements';
 
 import {useSelector} from 'react-redux';
 import StoresList from '../components/StoresList'
@@ -14,6 +16,9 @@ const Main = (props) => {
     return (
       <React.Fragment>
         <Search />
+        <Grid margin="3% auto">
+          <MiniCategory/>
+        </Grid>
         {search_list.map((s, idx) => {
         return <StoresList key={s._id} {...s}/>
         })}

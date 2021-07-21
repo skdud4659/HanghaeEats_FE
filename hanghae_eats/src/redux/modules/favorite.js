@@ -1,6 +1,5 @@
 // //import
 import { createSlice } from "@reduxjs/toolkit";
-import axios from 'axios';
 
 //전역 > 서버 배포
 import instance from './instance';

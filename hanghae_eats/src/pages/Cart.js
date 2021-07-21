@@ -47,11 +47,7 @@ const Cart = (props) => {
           {/* 상단 */}
           <Grid padding="16px 0px" bg="#ffffff">
             <Text margin="20px 20px" bold>
-              집(으)로 배달
-            </Text>
-            <Text margin="20px 20px" size="15">
-              {/* TODO 나중에 주소 입력하는 부분을 따로 만들 수 있을까? */}
-              {props.user.address}
+              내 마음속(으)로 배달
             </Text>
           </Grid>
           {/* 레이아웃 */}
