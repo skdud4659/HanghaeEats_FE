@@ -14,7 +14,6 @@ import {history} from '../redux/configStore'
 const Reviews = (props) => {
   const dispatch = useDispatch();
   const review_list = useSelector((state) => state.review.list);
-
   const store_Id = history.location.pathname.split('/')[2]
   
   //매장 이름 찾기
@@ -25,7 +24,10 @@ const Reviews = (props) => {
     dispatch(getMenuDB(store_Id))
     dispatch(getOneStoreDB(store_Id))
     dispatch(reviewActions.getReviewDB(store_Id))
+
   }, [])
+
+  console.log(review_list);
 
   return (
     <React.Fragment>
@@ -45,7 +47,9 @@ const Reviews = (props) => {
       </Grid>
       {/* 리뷰 맵돌리기*/}
       {review_list.map((r, idx) => {
-          return <ReviewItem key={r._id} {...r}/>
+            return <ReviewItem key={r._id} {...r}/>
+          })}
+      <ReviewItem />
       })}
     </React.Fragment>
   );
