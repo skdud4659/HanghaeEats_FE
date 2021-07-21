@@ -11,12 +11,22 @@ import {Cart, Coupons, Favorites, Login, Main, MyEats, Order, Register, Aboutus,
 //로그인 인증
 import { useSelector, useDispatch } from 'react-redux';
 import { LogInChk } from '../redux/modules/user'
+//소셜 로그인
+import OAuth2RedirectHandler from '../shared/OAuth2RedirectHandeler';
+import { setCookie } from './Cookie';
 
 const App = (props) => {
   const dispatch = useDispatch()
   const is_login = useSelector((state) => state.user.is_login);
 
   React.useEffect(() => {
+    if(!window.location.href === "http://hanghaeeats.shop/") {
+      const token = window.location.href.split('/')[3].split('=')[1];
+      setCookie("token", token);
+      is_login = true;
+      history.replace('/')
+    }
+
     if(!is_login) {
       dispatch(LogInChk());
     }
@@ -52,6 +62,7 @@ const App = (props) => {
             <Route path="/aboutus" exact component={Aboutus} />
             {/* 잘못된 주소면 메인으로 돌아가기 */}
             {/* <Redirect from="*" to="/" /> */}
+            {/* <Route path="/api/user/kakao/callback" component={OAuth2RedirectHandler}></Route> */}
         </Grid>
     </React.Fragment>
   );
