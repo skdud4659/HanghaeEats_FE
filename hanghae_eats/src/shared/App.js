@@ -1,11 +1,10 @@
 import React from 'react';
-
 import {Grid} from '../elements'
 
 //라우팅
 import { Redirect, Route } from "react-router-dom";
 import Header from './Header';
-import {Cart, Coupons, Favorites, Login, Main, MyEats, Order, Register, Aboutus, Reviews, ReviewWrite, StoreDetail, AllStores, Stores} from '../pages'
+import {Cart, Coupons, Favorites, Login, Main, MyEats, Order, Register, Aboutus, Reviews, ReviewWrite, ReviewEdit, StoreDetail, AllStores, Stores} from '../pages'
 //로그인 인증
 import { useSelector, useDispatch } from 'react-redux';
 import { LogInChk } from '../redux/modules/user'
@@ -62,7 +61,7 @@ const App = (props) => {
             <Route path="/coupons" exact component={Coupons} />
             <Route path="/reviewWrite/:orderId" exact component={ReviewWrite} />
             {/* 리뷰 수정 */}
-            <Route path="/reviewWrite/:reviewId" exact component={ReviewWrite} />
+            <Route path="/reviewEdit/:reviewId" exact component={ReviewEdit} />
             <Route path="/aboutus" exact component={Aboutus} />
             {/* 잘못된 주소면 메인으로 돌아가기 */}
             {/* <Redirect from="*" to="/" /> */}
