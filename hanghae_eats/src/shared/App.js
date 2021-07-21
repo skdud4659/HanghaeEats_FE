@@ -17,7 +17,7 @@ import { setCookie } from './Cookie';
 
 const App = (props) => {
   const dispatch = useDispatch()
-  const is_login = useSelector((state) => state.user.is_login);
+  let is_login = useSelector((state) => state.user.is_login);
 
   React.useEffect(() => {
     const isToken = window.location.href.includes("token")
