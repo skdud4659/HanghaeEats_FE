@@ -62,7 +62,7 @@ const App = (props) => {
             <Route path="/coupons" exact component={Coupons} />
             <Route path="/reviewWrite/:orderId" exact component={ReviewWrite} />
             {/* 리뷰 수정 */}
-            {/* <Route path="/reviewWrite/:reviewId" exact component={ReviewWrite} /> */}
+            <Route path="/reviewWrite/:reviewId" exact component={ReviewWrite} />
             <Route path="/aboutus" exact component={Aboutus} />
             {/* 잘못된 주소면 메인으로 돌아가기 */}
             {/* <Redirect from="*" to="/" /> */}

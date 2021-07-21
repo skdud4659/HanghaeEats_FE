@@ -25,9 +25,7 @@ const ReviewItem = (props) => {
   const deleteBtn = () => {
     dispatch(reviewActions.deleteReviewDB(_id))
   }
-
-
-
+  
   return (
     <React.Fragment>
       <Wrap>
