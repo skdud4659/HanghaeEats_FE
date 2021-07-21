@@ -31,13 +31,18 @@ const Reviews = (props) => {
 
   }, [])
 
+  //뒤로가기
+  const GoBack = () => {
+    history.goBack();
+  };
+
   console.log(review_list);
 
   return (
     <React.Fragment>
       {/* 매장 데이터 가져오기 */}
       <Grid if_flex is_slide>
-        <P> <BiArrowBack/> {store_name}메뉴</P>
+        <P onClick = {() => {GoBack()}}> <BiArrowBack/> {store_name}메뉴</P>
       </Grid>
       <Grid is_flex>
         {/* 별점(서버에서는 소수점 첫째자리로 주고 표출도 그렇게 하지만 별은 반올림해서 표출될 예정) */}

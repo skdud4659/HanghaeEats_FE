@@ -10,8 +10,7 @@ import Menu from "../components/Menu";
 import { FaShoppingBasket, FaRegEdit } from "react-icons/fa";
 import BeautyStars from "beauty-stars";
 
-//수정도 한 페이지에서!
-const ReviewWrite = (props) => {
+const ReviewEdit = (props) => {
   const dispatch = useDispatch();
   const { history } = props;
 
@@ -19,30 +18,30 @@ const ReviewWrite = (props) => {
   const storeInfo = useSelector((state) => state.stores.store);
   const storeName = storeInfo.name;
 
-  //메뉴 가져오기 - 내가 고른 것만 가져와야해!!! < 맵 사용 ?!?
-  const menu_list = useSelector((state) => state.stores.menus);
-  console.log(menu_list);
+  //수정
+  const review_list = useSelector((state) => state.review.list);
+  const review_id = history.location.pathname.split("/")[2];
+
+  let _review = review_list.find((r) => r._id === review_id);
+
+  //별점
+  const [chgRate, setChgRate] = React.useState(_review.star);
+  const chgStar = (value) => {
+    setChgRate(value);
+  };
 
   //리뷰 콘텐츠
-  const [content, setContent] = React.useState();
+  const [content, setContent] = React.useState(_review.content);
   const orderId = props.match.params.orderId;
   const input_content = (e) => {
     setContent(e.target.value);
   };
 
-  //별점
-  const [chgRate, setChgRate] = React.useState();
-  const chgStar = (value) => {
-    setChgRate(value);
+  //수정 버튼
+  const editBtn = () => {
+    dispatch(reviewActions.updateReviewDB(review_id, content, chgRate));
   };
 
-  //작성버튼
-  const AddBtn = () => {
-    dispatch(reviewActions.addReviewDB(orderId, content, chgRate));
-  };
-
-  
-  //글쓰기일때
   return (
     <React.Fragment>
       <P>만족도 평가 및 리뷰</P>
@@ -70,8 +69,12 @@ const ReviewWrite = (props) => {
         {/* 매장 이름 > 주문 내역 데이터 끌고와서 표출 */}
         <Grid margin="2% 0px">
           <Text size="18px" margin="0px 0px 1% 0px">
-          {storeName}
+            {storeName}
           </Text>
+
+          {/* 메뉴 > 주문 내역 메뉴 데이터 끌고와서 맵돌리기 */}
+          <Grid>신전떡볶이</Grid>
+
           {/* 별점 > value값으로 평점 가져오기 */}
           <BeautyStars
             value={chgRate}
@@ -80,8 +83,6 @@ const ReviewWrite = (props) => {
             activeColor={"#f7d57f"}
           />
         </Grid>
-        {/* 메뉴 > 주문 내역 메뉴 데이터 끌고와서 맵돌리기 */}
-        <Grid>치즈 떡볶이</Grid>
 
         {/* 리뷰 작성 title */}
         <Grid is_flex margin="5% 0px 2% 0px">
@@ -104,7 +105,7 @@ const ReviewWrite = (props) => {
         </Grid>
         {/* 작성 textarea */}
         <Grid>
-          <Textarea rows={10} onChange={input_content} />
+          <Textarea rows={10} value={content} onChange={input_content} />
         </Grid>
         {/* 작성하기 버튼 */}
         <Button
@@ -112,18 +113,17 @@ const ReviewWrite = (props) => {
           argin="3% auto"
           width="20%"
           height="40px"
-          _onClick={() => {
-            AddBtn();
-          }}
+          _onClick={editBtn}
         >
           <Text color={"white"} bold>
-            작성하기
+            등록하기
           </Text>
         </Button>
       </Grid>
     </React.Fragment>
   );
 };
+
 
 const P = styled.p`
   text-align: center;
@@ -142,4 +142,4 @@ const Textarea = styled.textarea`
   }
 `;
 
-export default ReviewWrite;
+export default ReviewEdit;
