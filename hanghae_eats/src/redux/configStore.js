@@ -28,7 +28,7 @@ const reducer = combineReducers({
   user: user.reducer,
   favorite: favorite.reducer,
   order: order.reducer,
-  review: review.reducer,
+  review: review,
   stores: stores.reducer,
   cart: cart.reducer,
   router: connectRouter(history),

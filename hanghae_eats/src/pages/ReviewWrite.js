@@ -1,31 +1,36 @@
 import React from 'react';
-import {Button, Grid, Text} from '../elements';
+import {Grid, Text, Button, Input} from '../elements';
+
 import styled from 'styled-components'
+import {useDispatch, useSelector} from "react-redux";
+import { actionCreators as reviewActions } from '../redux/modules/review';
 
 //이모지
 import { FaShoppingBasket, FaRegEdit } from "react-icons/fa";
 import BeautyStars from 'beauty-stars';
+
 //TODO 각 페이지 세로 중앙 정렬 찾아보기
 //수정도 한 페이지에서!
 const ReviewWrite = (props) => {
-<<<<<<< Updated upstream
-=======
   const dispatch = useDispatch();
   const {history} = props;
 
   //리뷰 콘텐츠
   const [content, setContent] = React.useState();
   const orderId = props.match.params.orderId;
-
   const input_content = (e) => {
     setContent(e.target.value);
   };
->>>>>>> Stashed changes
-
+  
   //별점
   const [chgRate, setChgRate] = React.useState()
   const chgStar = (value) => {
     setChgRate(value)
+  }
+
+  //작성버튼
+  const AddBtn = () => {
+    dispatch(reviewActions.addReviewDB(orderId, content, chgRate))
   }
 
   return (
@@ -40,6 +45,7 @@ const ReviewWrite = (props) => {
           <Text margin="0px 0px 0px 10px" width="50%" size="23px" bold>음식 평가</Text>
           <Grid></Grid>
         </Grid>
+
         {/* 매장 이름 > 주문 내역 데이터 끌고와서 표출 */}
         <Grid margin="2% 0px">
           <Text size="18px" margin="0px 0px 1% 0px">신전떡볶이</Text>
@@ -60,12 +66,18 @@ const ReviewWrite = (props) => {
           <Grid></Grid>
         </Grid>
         {/* 작성 textarea */}
-        <Grid>
-          <Textarea rows={10}/>
+        <Grid >
+          <Textarea rows={10} onChange={input_content}/>
         </Grid>
         {/* 작성하기 버튼 */}
-        <Button border_radius="7px" margin="3% auto" width="20%" height="40px">
-          <Text color={'white'} bold>작성하기</Text>
+        <Button 
+        border_radius="7px" 
+        argin="3% auto" 
+        width="20%" 
+        height="40px"
+        _onClick = {() => {AddBtn()}}
+        >
+        <Text color={'white'} bold>작성하기</Text>
         </Button>
       </Grid>
     </React.Fragment>

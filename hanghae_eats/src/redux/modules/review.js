@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { createSlice } from "@reduxjs/toolkit";
@@ -80,5 +78,3 @@ export const actionCreators = {
     getReviewDB,
 
 };
-
->>>>>>> Stashed changes
