@@ -35,7 +35,7 @@ const Reviews = (props) => {
       </Grid>
       {/* 리뷰 맵돌리기*/}
       {review_list.map((r, idx) => {
-            return <Reviews key={r.id} {...r}/>
+            return <Reviews key={r._id} {...r}/>
           })}
       <ReviewItem />
     </React.Fragment>
