@@ -37,7 +37,7 @@ const ReviewItem = (props) => {
   const reviewBtn = () => {
     history.push(`/reviewEdit/${reviewMenu}`)
   }
-
+  
   return (
     <React.Fragment>
       <Wrap>
