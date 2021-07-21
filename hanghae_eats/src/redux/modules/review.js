@@ -35,7 +35,7 @@ const addReviewDB = (orderId, content, star) => {
       .post("/api/review", { orderId: orderId, content: content, star: star })
       .then((res) => {
         console.log(res);
-        // history.push("/"); //위치 적용하기.
+        history.push("/"); //위치 적용하기. => 해당 가게로 가기
       })
       .catch((err) => {
         window.alert("리뷰 작성에 오류가 있어요! 관리자에게 문의해주세요.");
@@ -47,7 +47,7 @@ const addReviewDB = (orderId, content, star) => {
 const getReviewDB = () => {
   return function (dispatch, getState, {history}){
     instance
-    .get("/api/review/{stroeId}")
+    .get("/api/review/{storeId}") ///api/review/{stroeId} 일케 되어있음. 여기 오타 맞는지 확인하기!
     .then((res) => {
       let review_list = res.data.review;
       dispatch(getReview(review_list));
@@ -74,5 +74,8 @@ export default handleActions({
 export const actionCreators = {
     addReview,
     addReviewDB,
+    getReview,
+    getReviewDB,
+
 };
 

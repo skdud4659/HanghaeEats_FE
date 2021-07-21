@@ -37,6 +37,11 @@ const StoreDetail = (props) => {
       dispatch(ttlPrice(ttl_price))
   }
 
+  //리뷰 페이지로 이동
+  const gotoReview = () => {
+    history.push(`/reviews/${storeId}`)
+  }
+
   //TODO 시간 남으면 자세히 모달창
   return (
     <React.Fragment>
@@ -55,7 +60,7 @@ const StoreDetail = (props) => {
         <Grid is_flex>
           <ReviewList />
           <Grid border="1px solid gray" padding="10px" width="10%" height="80px" margin="0px 0px 5% auto" border_radius="5px" >
-            <Button bg={'white'} margin="0px auto;">
+            <Button _onClick={gotoReview} bg={'white'} margin="0px auto;">
               <Text margin="0px auto;" cursor bold>리뷰 <br/> 더 보기</Text>
             </Button>
           </Grid>
