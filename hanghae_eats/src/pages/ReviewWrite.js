@@ -18,13 +18,9 @@ const ReviewWrite = (props) => {
   //리뷰 콘텐츠
   const [content, setContent] = React.useState();
   const orderId = props.match.params.orderId;
-  console.log(props.match.params.orderId);
-
   const input_content = (e) => {
     setContent(e.target.value);
   };
-
-  // const review_list = useSelector((state)=>state.review.list);
   
   //별점
   const [chgRate, setChgRate] = React.useState()

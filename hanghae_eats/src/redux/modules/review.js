@@ -34,8 +34,7 @@ const addReviewDB = (orderId, content, star) => {
     instance
       .post("/api/review", { orderId: orderId, content: content, star: star })
       .then((res) => {
-        console.log(res);
-        dispatch(addReview(content, star))
+        dispatch(addReview({content, star}))
         history.push("/"); //위치 적용하기. => 해당 가게로 가기
       })
       .catch((err) => {
@@ -79,4 +78,3 @@ export const actionCreators = {
     getReviewDB,
 
 };
-
