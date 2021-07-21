@@ -75,39 +75,6 @@ export const LogInChk = () => {
   }
 }
 
-//카카오로 로그인하기
-export const KaKaoLoginDB = (code) => {
-  return function (dispatch, getState, { history }) {
-    axios.get(`http://3.36.97.199/api/user/kakao/callback?code=${code}`)
-    .then((res) => {
-        console.log(res); // 토큰이 넘어올 것임
-        const ACCESS_TOKEN = res.data.accessToken;
-        localStorage.setItem("token", ACCESS_TOKEN);    //예시로 로컬에 저장함    
-        history.replace("/main") // 토큰 받았았고 로그인됐으니 화면 전환시켜줌(메인으로)
-        
-        })
-      .catch((err) => {
-        console.log("소셜로그인 에러", err);
-        window.alert("로그인에 실패하였습니다.");
-        history.replace("/login"); // 로그인 실패하면 로그인화면으로 돌려보냄
-        })
-  }
-}
-
-//구글로 로그인하기
-export const GoogleLoginDB = () => {
-  return function(dispatch, getState, {history}) {
-    instance
-      .get('/api/user/google')
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }
-}
-
 //initialState
 const initialState = {
   user_info: "",

@@ -12,7 +12,6 @@ import {Cart, Coupons, Favorites, Login, Main, MyEats, Order, Register, Aboutus,
 import { useSelector, useDispatch } from 'react-redux';
 import { LogInChk } from '../redux/modules/user'
 //소셜 로그인
-import OAuth2RedirectHandler from '../shared/OAuth2RedirectHandeler';
 import { setCookie } from './Cookie';
 
 const App = (props) => {
@@ -63,7 +62,6 @@ const App = (props) => {
             <Route path="/aboutus" exact component={Aboutus} />
             {/* 잘못된 주소면 메인으로 돌아가기 */}
             {/* <Redirect from="*" to="/" /> */}
-            {/* <Route path="/api/user/kakao/callback" component={OAuth2RedirectHandler}></Route> */}
         </Grid>
     </React.Fragment>
   );
