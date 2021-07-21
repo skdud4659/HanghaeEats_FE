@@ -23,8 +23,8 @@ const App = (props) => {
     if(isToken) {
       const token = window.location.href.split('/')[3].split('=')[1];
       setCookie("token", token);
+      window.location.replace('/');
       is_login = true;
-      window.location.replace('/')
     }
 
     if(!is_login) {
