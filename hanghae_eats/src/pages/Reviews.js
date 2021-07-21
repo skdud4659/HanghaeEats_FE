@@ -7,16 +7,24 @@ import BeautyStars from 'beauty-stars';
 
 import { useSelector, useDispatch} from 'react-redux';
 import { actionCreators as reviewActions } from '../redux/modules/review';
+import {getMenuDB, getOneStoreDB} from '../redux/modules/store'
+
+import {history} from '../redux/configStore'
 
 const Reviews = (props) => {
-  const {history} = props;
   const dispatch = useDispatch();
   const review_list = useSelector((state) => state.review.list);
-
-  const storeId = history.location.pathname.split('/')[2]
+  const store_Id = history.location.pathname.split('/')[2]
+  
+  //매장 이름 찾기
+  const store_list = useSelector((state) => state.stores.store)
+  const store_name = store_list.name
 
   React.useEffect(() => {
-    dispatch(reviewActions.getReviewDB(storeId))
+    dispatch(getMenuDB(store_Id))
+    dispatch(getOneStoreDB(store_Id))
+    dispatch(reviewActions.getReviewDB(store_Id))
+
   }, [])
 
   console.log(review_list);
@@ -24,7 +32,7 @@ const Reviews = (props) => {
   return (
     <React.Fragment>
       {/* 매장 데이터 가져오기 */}
-      <P>신전떡볶이 메뉴</P>
+      <P>{store_name}메뉴</P>
       <Grid is_flex>
         {/* 별점(서버에서는 소수점 첫째자리로 주고 표출도 그렇게 하지만 별은 반올림해서 표출될 예정) */}
         <Grid width="auto">
@@ -34,7 +42,7 @@ const Reviews = (props) => {
           {/* 별점 데이터의 평균값 > value에 평균값 데이터 넣으면 됨! */}
             <BeautyStars value={5} size="20px" activeColor={'#f7d57f'}/>
             {/* 이것도 데이터에 있는 리뷰데이터의 length! */}
-            <Text margin="1% 0px 0px 0px">리뷰 1개</Text>
+            <Text margin="1% 0px 0px 0px">리뷰 {review_list.length}개</Text>
         </Grid>
       </Grid>
       {/* 리뷰 맵돌리기*/}
@@ -42,6 +50,7 @@ const Reviews = (props) => {
             return <ReviewItem key={r._id} {...r}/>
           })}
       <ReviewItem />
+      })}
     </React.Fragment>
   );
 }
