@@ -3,6 +3,8 @@ import {Grid, Text, Image, Button} from '../elements';
 import BeautyStars from 'beauty-stars';
 import styled from 'styled-components'
 import logo from '../shared/logo.PNG'
+import {useSelector} from 'react-redux';
+import ReviewMenuItem from './ReviewMenuItem';
 
 //이모지
 import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
@@ -10,14 +12,17 @@ import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
 const ReviewItem = (props) => {
   // 나중에 데이터에 따라 변경해도 무방!
   const {user_name,star,content,menu} = props
+  const nickname = useSelector((state) => state.user.user_info)
+
+  const menuId = props.menuIdList
 
   return (
     <React.Fragment>
       <Wrap>
-        <Text size="18px">{props.user_name}</Text>
+        <Text size="18px">닉네임 : {nickname}</Text>
         <Grid margin="1% 0% 0% 0%">
           {/* 별점 데이터 > value에 데이터 넣으면 됨! */}
-            <BeautyStars value={4} size="13px" activeColor={'#f7d57f'}/>
+            <BeautyStars value={props.star} size="13px" activeColor={'#f7d57f'}/>
         </Grid>
         {/* 우선은 사진업로드 없읍!! 임의로 내 마음에 드는 사진 ㅎㅎㅎ */}
         <Image height="400px" src={logo}/>
@@ -28,8 +33,13 @@ const ReviewItem = (props) => {
         {/* 주문메뉴 */}
         <Grid is_flex>
           <Text width="10vmin" color={'#9c9c9c'}>주문메뉴</Text>
-          {/* 메뉴가 여러개인 경우 중간점(·)으로 연결 가능? */}
-          <Text width="30vmin">{props.menu}</Text>
+          {menuId.map((m, idx) => {
+            return (
+            <Grid is_flex width="auto">
+              <ReviewMenuItem key={m} {...{m}}/>
+            </Grid>
+            )
+          })}
           <Grid></Grid>
         </Grid>
         {/* 리뷰가 도움이 되었나요? > 여기 버튼은 그냥 클릭하면 색만 변하도록!!! > useState를 사용하면 가능해요!*/}

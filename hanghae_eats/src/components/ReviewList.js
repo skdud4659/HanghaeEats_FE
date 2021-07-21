@@ -9,13 +9,13 @@ const ReviewList = (props) => {
   const {_id, shopId, image, menuId, userId, orderId, reviewDate, content, star} = props
 
   //리뷰 페이지로 이동
-  const gotoReview = () => {
-    history.push(`/reviews/${shopId}`)
-  }
+  // const gotoReview = () => {
+  //   history.push(`/reviews/${shopId}`)
+  // }
 
   return (
     <React.Fragment>
-      <ReviewItem onClick={gotoReview}>
+      <ReviewItem>
           <Grid width="30%" margin="0px">
             <Image src={props.image}/>
           </Grid>
