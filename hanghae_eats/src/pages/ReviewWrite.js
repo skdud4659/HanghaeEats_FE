@@ -24,7 +24,6 @@ const ReviewWrite = (props) => {
     setContent(e.target.value);
   };
 
-  // const review_list = useSelector((state)=>state.review.list);
   
   //별점
   const [chgRate, setChgRate] = React.useState()

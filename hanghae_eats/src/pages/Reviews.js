@@ -13,9 +13,13 @@ const Reviews = (props) => {
   const dispatch = useDispatch();
   const review_list = useSelector((state) => state.review.list);
 
+  const storeId = history.location.pathname.split('/')[2]
+
   React.useEffect(() => {
-    dispatch(reviewActions.getReviewDB())
+    dispatch(reviewActions.getReviewDB(storeId))
   }, [])
+
+  console.log(review_list);
 
   return (
     <React.Fragment>
@@ -35,7 +39,7 @@ const Reviews = (props) => {
       </Grid>
       {/* 리뷰 맵돌리기*/}
       {review_list.map((r, idx) => {
-            return <Reviews key={r._id} {...r}/>
+            return <ReviewItem key={r._id} {...r}/>
           })}
       <ReviewItem />
     </React.Fragment>

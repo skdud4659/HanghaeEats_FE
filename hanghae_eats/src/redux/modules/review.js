@@ -34,8 +34,7 @@ const addReviewDB = (orderId, content, star) => {
     instance
       .post("/api/review", { orderId: orderId, content: content, star: star })
       .then((res) => {
-        console.log(res);
-        dispatch(addReview(content, star))
+        dispatch(addReview({content, star})); //양식 확인
         history.push("/"); //위치 적용하기. => 해당 가게로 가기
       })
       .catch((err) => {
@@ -45,10 +44,11 @@ const addReviewDB = (orderId, content, star) => {
   };
 };
 
-const getReviewDB = () => {
+//storeId 값을 넣어주고
+const getReviewDB = (storeId) => {
   return function (dispatch, getState, {history}){
     instance
-    .get("/api/review/{storeId}")
+    .get(`/api/review/${storeId}`)
     .then((res) => {
       let review_list = res.data.review;
       dispatch(getReview(review_list));
@@ -68,7 +68,7 @@ export default handleActions({
     }),
 
     [GET_REVIEW]: (state, action) => produce(state, (draft) => {
-      draft.list = action.payload.review_list;
+      draft.list = action.payload.storeId;
     })
 }, initialState);
 

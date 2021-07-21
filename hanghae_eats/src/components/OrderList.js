@@ -18,9 +18,9 @@ const OrderList = (props) => {
   const is_write = props.checkReview
   const [btnDisabled, setBtnDisabled] = React.useState()
 
-  React.useEffect(() => {
-    is_write && setBtnDisabled('disabled')
-  })
+  // React.useEffect(() => {
+  //   is_write && setBtnDisabled('disabled')
+  // })
   
   return (
     <React.Fragment>
