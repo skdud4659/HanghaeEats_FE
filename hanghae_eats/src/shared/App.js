@@ -22,6 +22,10 @@ const App = (props) => {
     const isToken = window.location.href.includes("token")
     if(isToken) {
       const token = window.location.href.split('/')[3].split('=')[1];
+      if(token.includes('#')) {
+        const G_token = token.split('#')[0]
+        token = G_token
+      }
       setCookie("token", token);
       window.location.replace('/');
       is_login = true;
