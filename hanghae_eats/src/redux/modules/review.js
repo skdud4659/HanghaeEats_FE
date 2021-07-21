@@ -5,12 +5,12 @@ import { getCookie } from "../../shared/Cookie";
 import instance from "./instance";
 
 //action
-const ADD_REVIEW = "reivew/ADD_REVIEW";
+const ADD_REVIEW = "review/ADD_REVIEW";
 const GET_REVIEW = "review/GET_REVIEW";
 
 //action creator
-const addReview = createAction(ADD_REVIEW, (review) => ({ review }));
-const getReview = createAction(GET_REVIEW, (review) => ({review}));
+const addReview = createAction(ADD_REVIEW, (review) => ({review}));
+const getReview = createAction(GET_REVIEW, (storeId) => ({storeId}));
 
 //initialState
 const initialState = {
@@ -44,10 +44,10 @@ const addReviewDB = (orderId, content, star) => {
   };
 };
 
-const getReviewDB = () => {
+const getReviewDB = (storeId) => {
   return function (dispatch, getState, {history}){
     instance
-    .get("/api/review/{storeId}")
+    .get(`/api/review/${storeId}`)
     .then((res) => {
       let review_list = res.data.review;
       dispatch(getReview(review_list));
@@ -67,7 +67,7 @@ export default handleActions({
     }),
 
     [GET_REVIEW]: (state, action) => produce(state, (draft) => {
-      draft.list = action.payload.review_list;
+      draft.list = action.payload.storeId;
     })
 }, initialState);
 

@@ -24,7 +24,6 @@ const App = (props) => {
 
   return (
     <React.Fragment>
-      <ConnectedRouter history={history}>
       <Header />
         {/* 너비 고정 */}
         <Grid width="50%" margin="2% auto 1% auto">
@@ -58,7 +57,6 @@ const App = (props) => {
             {/* 잘못된 주소면 메인으로 돌아가기 */}
             {/* <Redirect from="*" to="/" /> */}
         </Grid>
-      </ConnectedRouter>
     </React.Fragment>
   );
 }
