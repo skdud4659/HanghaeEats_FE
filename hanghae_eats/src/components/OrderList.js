@@ -18,9 +18,14 @@ const OrderList = (props) => {
   const is_write = props.checkReview
   const [btnDisabled, setBtnDisabled] = React.useState()
 
-  // React.useEffect(() => {
-  //   is_write && setBtnDisabled('disabled')
-  // })
+  const reviewWriteBtn = () => {
+    if (is_write) {
+      setBtnDisabled('disabled');
+      window.alert('이미 작성한 리뷰는 리뷰 페이지에서 수정 및 삭제가 가능해요!');
+    } else {
+      history.push(`/reviewWrite/${props._id}`)
+    }
+  }
   
   return (
     <React.Fragment>
@@ -45,7 +50,7 @@ const OrderList = (props) => {
         </Grid>
         {/* 리뷰쓰기 버튼 */}
         <Grid>
-          <Review onClick={() => {history.push(`/reviewWrite/${props._id}`)}} disabled={btnDisabled}>
+          <Review onClick={reviewWriteBtn} disabled={btnDisabled}>
             <Text color={'#23c8ff'} bold size="18px">리뷰 쓰기</Text>
           </Review>
         </Grid>

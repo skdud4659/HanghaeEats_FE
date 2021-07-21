@@ -3,19 +3,33 @@ import {Grid} from '../elements'
 
 //라우팅
 import { Redirect, Route } from "react-router-dom";
-import { ConnectedRouter } from "connected-react-router";
-import { history } from "../redux/configStore";
 import Header from './Header';
 import {Cart, Coupons, Favorites, Login, Main, MyEats, Order, Register, Aboutus, Reviews, ReviewWrite, ReviewEdit, StoreDetail, AllStores, Stores} from '../pages'
 //로그인 인증
 import { useSelector, useDispatch } from 'react-redux';
 import { LogInChk } from '../redux/modules/user'
+//소셜 로그인
+import { setCookie } from './Cookie';
 
 const App = (props) => {
   const dispatch = useDispatch()
-  const is_login = useSelector((state) => state.user.is_login);
+  let is_login = useSelector((state) => state.user.is_login);
 
   React.useEffect(() => {
+    //소셜 로그인 할 때 토큰값 가져오기
+    const isToken = window.location.href.includes("token")
+    if(isToken) {
+      let token = window.location.href.split('/')[3].split('=')[1];
+      //구글로 로그인 때 토큰에 자꾸 '#'이 들어와서 가공!
+      if(token.includes('#')) {
+        const G_token = token.split('#')[0]
+        token = G_token
+      }
+      setCookie("token", token);
+      window.location.replace('/');
+      is_login = true;
+    }
+
     if(!is_login) {
       dispatch(LogInChk());
     }
@@ -41,14 +55,10 @@ const App = (props) => {
 
 
             {/* 마이이츠 사이드 */}
-            {is_login && <Route path="/myEats" exact component={MyEats} />}
+            <Route path="/myEats" exact component={MyEats} />
             <Route path="/order/:user_name" exact component={Order} />
-
-            {/* <Route path="/favorites/:userId" exact component={Favorites} /> */}
             <Route path="/favorites" exact component={Favorites} />
             <Route path="/coupons" exact component={Coupons} />
-            
-
             <Route path="/reviewWrite/:orderId" exact component={ReviewWrite} />
             {/* 리뷰 수정 */}
             <Route path="/reviewEdit/:reviewId" exact component={ReviewEdit} />

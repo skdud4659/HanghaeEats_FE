@@ -41,12 +41,12 @@ const MyEats = (props) => {
           <Text width="40vmin" margin="auto 3%" size="20px" cursor>할인쿠폰</Text>
           <Grid></Grid>
         </Grid>
-        {/* TODO 나중에 */}
-        <Grid is_flex margin="3% 0%;">
+        {/* 프로필 기능 없앰! */}
+        {/* <Grid is_flex margin="3% 0%;">
           <BiWrench size="65" />
           <Text width="40vmin" margin="auto 3%" size="20px" cursor>설정</Text>
           <Grid></Grid>
-        </Grid>
+        </Grid> */}
         <Grid is_flex margin="3% 0%;" _onClick={() => {history.push('/aboutus')}}>
           <FiPhone size="65" />
           <Text width="40vmin" margin="auto 3%" size="20px" cursor>고객 지원</Text>

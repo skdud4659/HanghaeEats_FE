@@ -3,10 +3,14 @@ import styled from "styled-components";
 import { Grid, Input, Button, Text, Image } from "../elements";
 import { history } from "../redux/configStore";
 import { useDispatch } from "react-redux";
-import { LogInDB } from "../redux/modules/user";
+import { LogInDB, KaKaoLoginDB, GoogleLoginDB } from "../redux/modules/user";
 
 // import Footer from "../shared/Footer";
 import coupang_logo from "../img/coupang_logo.jpg";
+
+//소셜로그인
+import KaKaoLogin from 'react-kakao-login';
+import { KAKAO_AUTH_URL, GOOGLE_AUTH_URL } from "../redux/modules/OAuth";
 
 const Login = (props) => {
   const dispatch = useDispatch();
@@ -86,7 +90,22 @@ const Login = (props) => {
             </Button>
           </Grid>
 
-          <Grid is_flex padding="16px 0px">
+          {/* 구글로 로그인 */}
+          <Text margin="2% auto">소설 계정으로 로그인하기</Text>
+          <WrapBtn>
+            <Grid width="7vmin" margin="0px">
+              <a name="googleLogin" href={GOOGLE_AUTH_URL} >
+                <Image cursor src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvOX5hnNn7kVZ_XHdbTBhgVEa0yERoyi2R_g&usqp=CAU'} width="65px" height="65px" />
+              </a>
+            </Grid>
+            <Grid width="7vmin" margin="0px">
+              <a name="kakaoLogin" href={KAKAO_AUTH_URL}>
+                <Image  cursor src={'http://seoulallnet.org/wp-content/uploads/2020/10/kakaotalk.png'} width="65px" height="65px" />
+              </a>
+            </Grid>
+          </WrapBtn>
+
+          <Grid is_flex padding="30px 0px">
             <Text size="15px">아직 회원이 아니신가요?</Text>
             <Text
               size="15px"
@@ -115,4 +134,30 @@ const HelperMsg = styled.div`
   color: red;
   margin: auto;
 `;
+
+const WrapBtn = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width:30vmin;
+  margin: auto;
+`;
+
+const KaKaoBtn = styled(KaKaoLogin)`
+  padding: 0;
+  width: 300px;
+  height: 45px;
+  line-height: 44px;
+  color: #783c00;
+  background-color: #ffeb00;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.2);
+  }
+`;
+
 export default Login;

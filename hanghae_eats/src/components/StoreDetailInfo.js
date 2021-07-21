@@ -14,6 +14,9 @@ import { history } from '../redux/configStore';
 //즐겨찾기
 import {likeToggleDB, getLikeDB, unlikeToggleDB} from '../redux/modules/favorite';
 
+//클립보드 복사하기
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+
 const StoreDetailInfo = (props) => {
   const dispatch = useDispatch()
   const {name, image, avgStar, orders, countStar} = props
@@ -32,13 +35,21 @@ const StoreDetailInfo = (props) => {
 
    //즐겨찾기 버튼
   const is_like = useSelector((state) => state.favorite.is_like)
+  //비로그인 시 좋아요 클릭 안됨
+  const is_login = useSelector((state) => state.user.is_login)
   //선택버튼
   const likeBtn = () => {
-    dispatch(likeToggleDB(storeId))
+    is_login ? dispatch(likeToggleDB(storeId)) : window.alert('즐겨찾기는 로그인 시에만 이용이 가능합니다!')
   }
   //해제버튼
   const unlikeBtn = () => {
     dispatch(unlikeToggleDB(storeId))
+  }
+
+  //클립보드 url
+  const url = window.location.href;
+  const copy = () => {
+    window.alert('클립보드에 복사되었습니다.')
   }
 
   return (
@@ -51,7 +62,9 @@ const StoreDetailInfo = (props) => {
           {!is_like && <BiHeart size="40px" cursor="pointer" onClick={likeBtn}/>}
           </Grid>
           <Grid width="auto" margin="0px 2%">
-            <BiDownload size="40px" cursor="pointer"/>
+            <CopyToClipboard text={url} onCopy={copy}>
+              <BiDownload size="40px" cursor="pointer"/>
+            </CopyToClipboard>
           </Grid>
         </Icons>
       {/* 매장 정보 */}

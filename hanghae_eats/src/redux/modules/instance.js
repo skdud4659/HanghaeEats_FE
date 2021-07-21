@@ -1,5 +1,5 @@
 import axios from "axios";
-import { deleteCookie, getCookie, setCookie } from "../../shared/Cookie";
+import { getCookie } from "../../shared/Cookie";
 
 const instance = axios.create({
   //fake json > public - data에 파일 있음

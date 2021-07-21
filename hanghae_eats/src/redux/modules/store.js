@@ -41,6 +41,20 @@ export const getAllStoreDB = () => {
   }
 }
 
+//페이지네이션
+export const getStorePageDB = page => {
+  return function (dispatch, getState, {history}) {
+    instance
+      .get(`/api/store/all/${page}`)
+      .then((res) => {
+        dispatch(getStorePage(res.data.stores))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+}
+
 //매장 하나 가져오기
 export const getOneStoreDB = (storeID) => {
   return function (dispatch, getState, {history}) {
@@ -74,11 +88,34 @@ export const getMenuDB = (storeId) => {
   }
 }
 
+//검색한 매장 가져오기
+export const searchStoreDB = (word) => {
+  return function (dispatch, getState, {history}) {
+    instance
+      .get(`/api/store/search?q=${word}`)
+      .then((res) => {
+        dispatch(searchStore(res.data.searchList))
+      })
+      .catch((err) => {
+        window.alert('검색어가 존재하지 않습니다.')
+        history.push('/')
+        console.log(err)
+      })
+  }
+}
+
 //initialState
 const initialState = {
+  //모든 매장
   stores: [],
+  //모든 메뉴
   menus: [],
+  //하나의 매장(상세)
   store:[],
+  //검색 여부
+  is_search: false,
+  //검색 매장
+  search_list: [],
 }
 
 //리덕스
@@ -104,10 +141,21 @@ const store = createSlice({
     //모든 매장 가져오기 액션
     getAllStore: (state, action) => {
       state.stores = action.payload
+    },
+
+    //매장 페이지네이션
+    getStorePage: (state, action) => {
+      state.stores = action.payload
+    },
+
+    //매장 검색
+    searchStore: (state, action) => {
+      state.search_list = action.payload
+      state.is_search = true
     }
   }
 });
 
-export const {getStores, getMenus, getOneStore, getAllStore} = store.actions;
+export const {getStores, getMenus, getOneStore, getAllStore, getStorePage, searchStore} = store.actions;
 
 export default store;

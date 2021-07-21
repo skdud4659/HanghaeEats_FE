@@ -19,7 +19,7 @@ const Stores = (props) => {
 
   return (
     <React.Fragment>
-        <MiniCategory />
+        <MiniCategory category={category}/>
         {/* 매장 목록 맵돌리기 */}
         {store_list.map((s, idx) => {
           return <StoresList key={s._id} {...s}/>
