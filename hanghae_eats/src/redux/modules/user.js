@@ -24,7 +24,7 @@ export const SignUpDB = (email, password, nickname, phone) => {
     });
   }
 }
-//TODO 리덕스 지속저장 알아보기 >> 닉네임 저장하려고(react-persist)
+
 export const LogInDB = (email, password) => {
   return function(dispatch, getState, {history}) {
     instance
@@ -69,6 +69,34 @@ export const LogInChk = () => {
       .catch((err) =>{
         window.alert('로그인 정보를 확인해주세요.')
         console.log(err);
+      })
+  }
+}
+
+//카카오로 로그인하기
+export const KaKaoLoginDB = () => {
+  return function(dispatch, getState, {history}) {
+    instance
+      .get('/api/user/kakao')
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+}
+
+//구글로 로그인하기
+export const GoogleLoginDB = () => {
+  return function(dispatch, getState, {history}) {
+    instance
+      .get('/api/user/google')
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err)
       })
   }
 }

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Grid, Input, Button, Text, Image } from "../elements";
 import { history } from "../redux/configStore";
 import { useDispatch } from "react-redux";
-import { LogInDB } from "../redux/modules/user";
+import { LogInDB, KaKaoLoginDB, GoogleLoginDB } from "../redux/modules/user";
 
 // import Footer from "../shared/Footer";
 import coupang_logo from "../img/coupang_logo.jpg";
@@ -23,6 +23,15 @@ const Login = (props) => {
     dispatch(LogInDB(email, password));
   }
 
+  //카카오로 로그인
+  const kakaoLogin = () => {
+    dispatch(KaKaoLoginDB())
+  }
+
+  //구글로 로그인
+  const googleLogin = () => {
+    dispatch(GoogleLoginDB())
+  }
   return (
     <React.Fragment>
 
@@ -86,7 +95,23 @@ const Login = (props) => {
             </Button>
           </Grid>
 
-          <Grid is_flex padding="16px 0px">
+          {/* 구글로 로그인 */}
+          <Text margin="2% auto">소설 계정으로 로그인하기</Text>
+          <WrapBtn>
+            <Grid width="7vmin" margin="0px">
+              <Grid name="googleLogin" _onClick={googleLogin} >
+                <Image cursor src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvOX5hnNn7kVZ_XHdbTBhgVEa0yERoyi2R_g&usqp=CAU'} width="65px" height="65px" />
+              </Grid>
+            </Grid>
+              {/* 카카오 로그인 */}
+            <Grid width="7vmin" margin="0px">
+              <Grid name="kakaoLogin" >
+                <Image _onClick={kakaoLogin} cursor src={'http://seoulallnet.org/wp-content/uploads/2020/10/kakaotalk.png'} width="65px" height="65px" />
+              </Grid>
+            </Grid>
+          </WrapBtn>
+
+          <Grid is_flex padding="30px 0px">
             <Text size="15px">아직 회원이 아니신가요?</Text>
             <Text
               size="15px"
@@ -115,4 +140,12 @@ const HelperMsg = styled.div`
   color: red;
   margin: auto;
 `;
+
+const WrapBtn = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width:30vmin;
+  margin: auto;
+`;
+
 export default Login;
