@@ -20,7 +20,7 @@ const App = (props) => {
   const is_login = useSelector((state) => state.user.is_login);
 
   React.useEffect(() => {
-    if(!window.location.href === "http://localhost:3000/") {
+    if(!window.location.href === "http://hanghaeeats.shop/") {
       const token = window.location.href.split('/')[3].split('=')[1];
       setCookie("token", token);
       is_login = true;
