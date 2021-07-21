@@ -7,10 +7,12 @@ import instance from "./instance";
 //action
 const ADD_REVIEW = "review/ADD_REVIEW";
 const GET_REVIEW = "review/GET_REVIEW";
+const DELETE_REVIEW = "review/DELETE_REVIEW";
 
 //action creator
 const addReview = createAction(ADD_REVIEW, (review) => ({review}));
 const getReview = createAction(GET_REVIEW, (storeId) => ({storeId}));
+const deleteReview = createAction(DELETE_REVIEW, (review) => ({review}));
 
 //initialState
 const initialState = {
@@ -60,15 +62,41 @@ const getReviewDB = (storeId) => {
   }
 }
 
+//orderId가져와보기! payload._id
+const deleteReviewDB = (reviewId) => {
+  console.log(reviewId);
+  return function (dispatch, getState, {history}){
+    instance
+    .delete(`/api/review/${reviewId}`)
+    .then((res) => {
+      console.log(res);
+      dispatch(deleteReview(reviewId));
+      window.alert("리뷰가 삭제되었습니다.");
+    })
+    .catch((err) => {
+      window.alert("리뷰 삭제에 오류가 있어요! 관리자에게 문의 부탁드립니다.");
+      console.log("err");
+    });
+  };
+};
+
 //handleActions
 
 export default handleActions({
     [ADD_REVIEW]: (state, action) => produce(state, (draft) => {
-        draft.list.unshift(action.payload.review);
+      draft.list.unshift(action.payload.review);
     }),
 
     [GET_REVIEW]: (state, action) => produce(state, (draft) => {
       draft.list = action.payload.storeId;
+    }),
+
+    [DELETE_REVIEW]: (state,action) => produce(state, (draft) => {
+      //리듀서에서 리덕스에 남아있는 인덱스값 지우기, splice 사용!
+      console.log(action.payload.review); //지우고픈 리뷰의 아이디
+      let idx = draft.list.findIndex((r) => 
+      r._id === action.payload.review);
+      draft.list.splice(idx, 1); //조건에 만족하는 idx를 갖고있는 1개를 지워라
     })
 }, initialState);
 
@@ -77,5 +105,6 @@ export const actionCreators = {
     addReviewDB,
     getReview,
     getReviewDB,
-
+    deleteReview,
+    deleteReviewDB,
 };

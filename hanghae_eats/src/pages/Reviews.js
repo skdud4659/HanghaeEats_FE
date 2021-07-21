@@ -11,10 +11,14 @@ import {getMenuDB, getOneStoreDB} from '../redux/modules/store'
 
 import {history} from '../redux/configStore'
 
+//뒤로가기 아이콘
+import { BiArrowBack } from "react-icons/bi";
+
 const Reviews = (props) => {
   const dispatch = useDispatch();
   const review_list = useSelector((state) => state.review.list);
   const store_Id = history.location.pathname.split('/')[2]
+  
   
   //매장 이름 찾기
   const store_list = useSelector((state) => state.stores.store)
@@ -32,7 +36,9 @@ const Reviews = (props) => {
   return (
     <React.Fragment>
       {/* 매장 데이터 가져오기 */}
-      <P>{store_name}메뉴</P>
+      <Grid if_flex is_slide>
+        <P> <BiArrowBack/> {store_name}메뉴</P>
+      </Grid>
       <Grid is_flex>
         {/* 별점(서버에서는 소수점 첫째자리로 주고 표출도 그렇게 하지만 별은 반올림해서 표출될 예정) */}
         <Grid width="auto">
@@ -45,12 +51,14 @@ const Reviews = (props) => {
             <Text margin="1% 0px 0px 0px">리뷰 {review_list.length}개</Text>
         </Grid>
       </Grid>
+
+      <hr style={{ border: "1px solid #E5E5E5" }} />
+      
       {/* 리뷰 맵돌리기*/}
       {review_list.map((r, idx) => {
             return <ReviewItem key={r._id} {...r}/>
-          })}
-      <ReviewItem />
       })}
+      
     </React.Fragment>
   );
 }
