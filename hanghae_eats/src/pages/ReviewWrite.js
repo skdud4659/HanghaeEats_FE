@@ -21,8 +21,6 @@ const ReviewWrite = (props) => {
   const input_content = (e) => {
     setContent(e.target.value);
   };
-
-
   
   //별점
   const [chgRate, setChgRate] = React.useState()

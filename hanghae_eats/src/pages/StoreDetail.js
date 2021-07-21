@@ -12,6 +12,9 @@ import {getMenuDB} from '../redux/modules/store';
 import {ttlPrice} from '../redux/modules/cart';
 import { history } from '../redux/configStore';
 
+//자세히 모달창 패키지
+import Modal from 'react-awesome-modal';
+
 const StoreDetail = (props) => {
   const dispatch = useDispatch()
   const storeId = history.location.pathname.split('/')[2]
@@ -42,7 +45,16 @@ const StoreDetail = (props) => {
     history.push(`/reviews/${storeId}`)
   }
 
-  //TODO 시간 남으면 자세히 모달창
+  //모달창
+  const [visible, setVisible] = React.useState();
+  const showModal = () => {
+    setVisible(true)
+  }
+  const closeModal = () => {
+    setVisible(false)
+  }
+
+
   return (
     <React.Fragment>
         <StoreDetailInfo />
@@ -52,7 +64,25 @@ const StoreDetail = (props) => {
             <Text>최소주문</Text>
           </Grid>
           <Grid width="15vmin;" margin="0px">
-            <Text margin="5% 0%">2,000원 <Detail>자세히</Detail></Text>
+            <Text margin="5% 0%">2,000원
+            <Detail onClick={showModal}> 자세히 </Detail>
+            <Modal visible={visible} width="400px" height="150px" effect="fadeInDown" onClickAway={closeModal}>
+              <Grid>
+                <Grid align="center" height="auto" margin="5% auto">
+                  <Text>배달비 안내</Text>
+                </Grid>
+                <Grid is_flex height="auto">
+                  <Text>주문금액</Text>
+                  <Text>배달비</Text>
+                </Grid>
+                <hr style={{color:"#e2e2e2", width:"90%"}}/>
+                <Grid is_flex height="auto">
+                  <Text>5만원 ~</Text>
+                  <Text>무료</Text>
+                </Grid>
+              </Grid>
+            </Modal>
+            </Text>
             <Text>15,000원</Text>
           </Grid>
         </Grid>
