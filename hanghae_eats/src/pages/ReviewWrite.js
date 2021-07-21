@@ -8,6 +8,19 @@ import BeautyStars from 'beauty-stars';
 //TODO 각 페이지 세로 중앙 정렬 찾아보기
 //수정도 한 페이지에서!
 const ReviewWrite = (props) => {
+<<<<<<< Updated upstream
+=======
+  const dispatch = useDispatch();
+  const {history} = props;
+
+  //리뷰 콘텐츠
+  const [content, setContent] = React.useState();
+  const orderId = props.match.params.orderId;
+
+  const input_content = (e) => {
+    setContent(e.target.value);
+  };
+>>>>>>> Stashed changes
 
   //별점
   const [chgRate, setChgRate] = React.useState()
