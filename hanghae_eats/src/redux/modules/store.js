@@ -41,6 +41,20 @@ export const getAllStoreDB = () => {
   }
 }
 
+//페이지네이션
+export const getStorePageDB = page => {
+  return function (dispatch, getState, {history}) {
+    instance
+      .get(`/api/store/all/${page}`)
+      .then((res) => {
+        dispatch(getStorePage(res.data.stores))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+}
+
 //매장 하나 가져오기
 export const getOneStoreDB = (storeID) => {
   return function (dispatch, getState, {history}) {
@@ -104,10 +118,15 @@ const store = createSlice({
     //모든 매장 가져오기 액션
     getAllStore: (state, action) => {
       state.stores = action.payload
+    },
+
+    //매장 페이지네이션
+    getStorePage: (state, action) => {
+      state.stores = action.payload
     }
   }
 });
 
-export const {getStores, getMenus, getOneStore, getAllStore} = store.actions;
+export const {getStores, getMenus, getOneStore, getAllStore, getStorePage} = store.actions;
 
 export default store;
