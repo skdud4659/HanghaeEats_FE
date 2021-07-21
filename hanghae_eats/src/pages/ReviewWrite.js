@@ -88,7 +88,6 @@ const ReviewWrite = (props) => {
   );
 }
 
-
 const P = styled.p`
   text-align: center;
   font-weight: bold;

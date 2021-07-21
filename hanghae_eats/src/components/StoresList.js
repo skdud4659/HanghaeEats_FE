@@ -22,7 +22,7 @@ const StoresList = (props) => {
             <Grid width="40%" margin="0px 5%">
               <Text size="22px" bold width="auto">{props.name}</Text>
               <Image is_slide width="35%" height="40px"src={delivery}/>
-              <Text size="18px" width="auto" >1.1km · 배달비 2,000원</Text>
+              <Text size="18px" width="auto" >항해 깊숙한 바닷속km · 배달비 2,000원</Text>
               <Grid width="30%" margin="4% 0%">
                 <BeautyStars value={4} size="25px" activeColor={'#f7d57f'}/>
               </Grid>

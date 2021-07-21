@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Grid, Text} from '../elements';
+import {Grid} from '../elements';
 
 import OrderList from '../components/OrderList';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrderDB } from '../redux/modules/order';
-import { getAllStoreDB } from '../redux/modules/store'
 
 const Order = (props) => {
   const dispatch = useDispatch()
@@ -14,7 +13,6 @@ const Order = (props) => {
 
   React.useEffect(() => {
     dispatch(getOrderDB())
-    dispatch(getAllStoreDB())
   },[])
 
   return (
