@@ -46,8 +46,9 @@ const Reviews = (props) => {
       </Grid>
       <Grid is_flex>
         {/* 별점(서버에서는 소수점 첫째자리로 주고 표출도 그렇게 하지만 별은 반올림해서 표출될 예정) */}
-        <Grid width="auto">
-          <Text size="55px" bold>{rateStar}</Text>
+
+        <Grid width="auto" m_width="auto">
+          <Text size="55px" bold m_size="40px">{rateStar}</Text>
         </Grid>
         <Grid margin="0% 0% 0% 3%">
           {/* 별점 데이터의 평균값 > value에 평균값 데이터 넣으면 됨! */}

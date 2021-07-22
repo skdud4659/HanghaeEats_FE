@@ -31,17 +31,22 @@ const ReviewList = (props) => {
 
   return (
     <React.Fragment>
-      <ReviewItem onClick={gotoReview}>
-        <Grid width="30%" margin="0px">
-          <Image back_size="cover" src={props.image} />
-        </Grid>
-        <Grid width="auto" margin="5% 0px">
-          {/* 리뷰 가져오기 */}
-          {content}
 
-          <Grid margin="7% 0% 0% 0%">
-            {/* // 별점 확인 */}
-            <BeautyStars value={star} size="20px" /> 
+    <ReviewItem onClick={gotoReview}>
+        <Grid width="30%" margin="0px" m_width="30%">
+            <Image 
+              back_size="cover" 
+              src={props.image}
+              //모바일
+              m_width="60px"
+              m_height="80px"
+              />
+          </Grid>
+          <Grid width="auto" margin="5% 0px">
+            <Text>{props.content}</Text>
+            <Grid margin="7% 0% 0% 0%">
+              <BeautyStars value={props.star} size="15px"/>
+            </Grid>
           </Grid>
         </Grid>
       </ReviewItem>
@@ -57,6 +62,11 @@ const ReviewItem = styled.div`
   display: flex;
   margin-bottom: 5%;
   cursor: pointer;
+
+  @media only screen and (max-width:375px) {
+    width:230px;
+    height:80px
+  }
 `;
 
 ReviewList.defaultProps = {

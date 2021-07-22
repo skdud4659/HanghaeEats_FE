@@ -48,7 +48,7 @@ const Register = (props) => {
 
   return (
     <React.Fragment>
-      <Grid padding="16px" align="center">
+      <Grid padding="16px 0px" align="center">
         <Image
           back_size="cover"
           height="10vw"
@@ -57,6 +57,8 @@ const Register = (props) => {
             history.push("/");
             window.location.reload();
           }}
+          //모바일
+          m_height="13vh"
         />
 
         <FromBox>
@@ -148,6 +150,8 @@ const Register = (props) => {
               }}
               width="100%"
               height="40px"
+              //모바일
+              m_height="30px"
             >
               <Text bold color="#ffffff">
                 가입하기

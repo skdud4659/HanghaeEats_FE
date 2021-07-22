@@ -28,7 +28,7 @@ const Login = (props) => {
 
   return (
     <React.Fragment>
-      <Grid padding="16px" align="center">
+      <Grid padding="16px auto" align="center">
         <Image
           back_size="cover"
           height="10vw"
@@ -37,6 +37,8 @@ const Login = (props) => {
             history.push("/");
             window.location.reload();
           }}
+          //모바일
+          m_height="13vh"
         />
 
         <FromBox name="loginForm">
@@ -78,7 +80,12 @@ const Login = (props) => {
           </Grid>
 
           <Grid padding="16px 0px">
-            <Button _onClick={logIn} width="100%" height="40px">
+            <Button
+              _onClick={logIn}
+              width="100%"
+              height="40px"
+              //모바일
+              m_height="30px">
               <Text 
               bold color="#ffffff">
                 로그인
@@ -88,14 +95,29 @@ const Login = (props) => {
 
           {/* 소셜 로그인 */}
           <WrapBtn>
-            <Grid width="7vmin" margin="0px">
+            <Grid margin="0px" width="auto">
               <a name="googleLogin" href={GOOGLE_AUTH_URL} >
-                <Image back_size="cover" cursor src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvOX5hnNn7kVZ_XHdbTBhgVEa0yERoyi2R_g&usqp=CAU'} width="50px" height="50px" />
+                <Image
+                  back_size="cover"
+                  src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvOX5hnNn7kVZ_XHdbTBhgVEa0yERoyi2R_g&usqp=CAU'}
+                  width="50px"
+                  height="50px"
+                  //모바일
+                  m_width="40px"
+                  m_height="40px"
+                  />
               </a>
             </Grid>
-            <Grid width="7vmin" margin="0px">
+            <Grid margin="0px" width="auto">
               <a name="kakaoLogin" href={KAKAO_AUTH_URL}>
-                <Image back_size="cover" cursor src={'http://seoulallnet.org/wp-content/uploads/2020/10/kakaotalk.png'} width="50px" height="50px" />
+                <Image
+                  back_size="cover" 
+                  src={'http://seoulallnet.org/wp-content/uploads/2020/10/kakaotalk.png'}
+                  width="50px"
+                  height="50px"
+                  //모바일
+                  m_width="40px"
+                  m_height="40px"/>
               </a>
             </Grid>
           </WrapBtn>
@@ -133,7 +155,7 @@ const HelperMsg = styled.div`
 const WrapBtn = styled.div`
   display: flex;
   justify-content: space-between;
-  width:25vmin;
+  width:30vmin;
   margin: auto;
 `;
 

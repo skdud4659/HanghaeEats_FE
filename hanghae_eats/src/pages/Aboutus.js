@@ -5,7 +5,7 @@ import styled from 'styled-components'
 //이모지
 import { BiPaperPlane } from "react-icons/bi";
 import { GrBlog, GrGithub } from "react-icons/gr";
-import { SiNotion } from "react-icons/si";
+import { SiNotion, SiBlogger } from "react-icons/si";
 
 const Aboutus = (props) => {
   return (
@@ -33,8 +33,10 @@ const Aboutus = (props) => {
           <Grid is_flex margin="3% 0px">
             <GrBlog size="40px"/>
             <Grid padding="20px">
-              <a href="https://hihellohru.tistory.com/"><Text bold size="20px" margin="0px 0px 3px 0px">양다현</Text></a>
-              <Text color={'gray'} size="16px">프론트엔드 · email:dahyunyang.0824@gmail.com</Text>
+              <a href="https://hihellohru.tistory.com">
+                <Text bold size="20px" margin="0px 0px 3px 0px">양다현</Text>
+              </a>
+              <Text color={'gray'} size="16px" m_size="13px">프론트엔드 · email:dahyunyang.0824@gmail.com</Text>
             </Grid>
           </Grid>
           {/* 정원 */}
@@ -65,5 +67,10 @@ const P = styled.p`
   font-weight: bold;
   font-size: 30px;
   padding-bottom: 20px;
+
+  @media only screen and (max-width:375px) {
+    font-size: 25px;
+    padding-bottom: 15px;
+  }
 `;
 export default Aboutus;

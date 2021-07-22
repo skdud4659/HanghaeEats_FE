@@ -56,12 +56,12 @@ const StoreDetailInfo = (props) => {
     <React.Fragment>
       <Grid>
         <Icons>
-          <Grid width="auto" margin="0px">
+          <Grid width="auto" margin="0px" m_width="15vmin">
           {/* color={'#fb6c89'} */}
           {is_like && <FaHeart size="40px" cursor="pointer" onClick={unlikeBtn} color={'#fb6c89'}/>}
           {!is_like && <BiHeart size="40px" cursor="pointer" onClick={likeBtn}/>}
           </Grid>
-          <Grid width="auto" margin="0px 2%">
+          <Grid width="auto" margin="0px 2%" m_width="15vmin">
             <CopyToClipboard text={url} onCopy={copy}>
               <BiDownload size="40px" cursor="pointer"/>
             </CopyToClipboard>
@@ -69,10 +69,16 @@ const StoreDetailInfo = (props) => {
         </Icons>
       {/* 매장 정보 */}
         <Grid>
-          <Image back_size="100% 100%" height="200px" src={storeInfo.image}/>
+          <Image
+            back_size="100% 100%"
+            height="200px"
+            src={storeInfo.image}
+            //모바일
+            m_height="150px"
+            />
           <Info>
             <Text size="30px" bold>{storeInfo.name}</Text>
-            <Grid is_flex width="20vmin" height="50%">
+            <Grid is_flex width="20vmin" height="50%" m_width="35vmin">
               <FaStar size="30px" color={'#ffdd21'}/>
               <Grid is_flex margin="0px">
                 <Text margin="auto 3%">{rateStar}</Text>
@@ -103,6 +109,10 @@ const Info = styled.div`
   margin: -5.5% auto 0px auto;
   text-align: center;
   padding:2% 0%;
+
+  @media only screen and (max-width:375px) {
+    margin: -10.5% auto 0px auto;   
+  }
 `;
 
 const Icons = styled.div`

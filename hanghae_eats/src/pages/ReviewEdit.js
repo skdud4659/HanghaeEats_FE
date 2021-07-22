@@ -53,7 +53,7 @@ const ReviewEdit = (props) => {
       <Grid margin="3% 0px">
         {/* 음식평가 title */}
         <Grid is_flex>
-          <Grid width="auto">
+          <Grid width="auto" m_width="auto">
             <FaShoppingBasket
               style={{
                 width: "30px",
@@ -65,7 +65,7 @@ const ReviewEdit = (props) => {
               }}
             />
           </Grid>
-          <Text margin="0px 0px 0px 10px" width="50%" size="23px" bold>
+          <Text margin="0px 0px 0px 10px" width="50%" size="23px" bold m_margin="0px 0px 0px 10px">
             음식 평가
           </Text>
           <Grid></Grid>
@@ -94,7 +94,7 @@ const ReviewEdit = (props) => {
 
         {/* 리뷰 작성 title */}
         <Grid is_flex margin="5% 0px 2% 0px">
-          <Grid width="auto">
+          <Grid width="auto" m_width="auto">
             <FaRegEdit
               style={{
                 width: "30px",
@@ -106,10 +106,10 @@ const ReviewEdit = (props) => {
               }}
             />
           </Grid>
-          <Text margin="0px 0px 0px 10px" width="50%" size="23px" bold>
+          <Text margin="0px 0px 0px 10px" width="50%" size="23px" bold m_margin="0px 0px 0px 10px">
             리뷰 작성하기
           </Text>
-          <Grid></Grid>
+          <Grid m_width="80%"></Grid>
         </Grid>
         {/* 작성 textarea */}
         <Grid>
@@ -122,6 +122,7 @@ const ReviewEdit = (props) => {
           width="20%"
           height="40px"
           _onClick={editBtn}
+          m_height="40px"
         >
           <Text color={"white"} bold>
             수정하기
@@ -147,6 +148,10 @@ const Textarea = styled.textarea`
   resize: none;
   :focus {
     outline: none;
+  }
+
+  @media only screen and (max-width:375px) {
+    width: 87%
   }
 `;
 
