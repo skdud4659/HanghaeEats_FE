@@ -110,7 +110,7 @@ const Info = styled.div`
   text-align: center;
   padding:2% 0%;
 
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     margin: -10.5% auto 0px auto;   
   }
 `;

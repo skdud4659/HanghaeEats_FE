@@ -77,7 +77,7 @@ const Wrap = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
 
-  @media only screen and (max-width: 375px) {
+  @media only screen and (max-width: 500px) {
     width: 90%;
   }
 `;
@@ -86,7 +86,7 @@ const WrapEx = styled.div`
   width:50%;
   margin:2% auto;
 
-  @media only screen and (max-width: 375px) {
+  @media only screen and (max-width: 500px) {
     width: 90%;
   }
 `;

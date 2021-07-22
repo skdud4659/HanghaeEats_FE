@@ -152,7 +152,7 @@ const P = styled.p`
   width:30%;
   color:"#9c9c9c";
 
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     width:40%;
     font-size: 15px;
   }

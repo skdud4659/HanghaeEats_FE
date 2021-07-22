@@ -15,7 +15,7 @@ const P = styled.p`
   width:8vmin;
   margin:0px;
 
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     width:20vmin;
     font-size: 15px;
   }

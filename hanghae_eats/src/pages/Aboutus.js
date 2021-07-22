@@ -68,7 +68,7 @@ const P = styled.p`
   font-size: 30px;
   padding-bottom: 20px;
 
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     font-size: 25px;
     padding-bottom: 15px;
   }

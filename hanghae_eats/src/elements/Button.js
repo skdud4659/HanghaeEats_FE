@@ -46,7 +46,7 @@ const ButtonEle = styled.button`
   color: ${(props) => props.hover_color};
   border-radius: ${(props) => props.border_radius};
 
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     width: ${(props) => props.m_width};
     height: ${(props) => props.m_height};
   }
@@ -61,7 +61,7 @@ const CircleBtn = styled.button`
   background-color: white;
   color: ${(props) => props.hover_color};
 
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     width: ${(props) => props.m_width};
     height: ${(props) => props.m_height};
   }

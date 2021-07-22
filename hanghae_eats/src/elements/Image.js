@@ -66,7 +66,7 @@ const DefaultImage = styled.div`
   background-repeat: no-repeat;
   ${(props) => (props.cursor ? `cursor: pointer;` : "")};
   
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     width: ${(props) => props.m_width};
     height: ${(props) => props.m_height};
   }

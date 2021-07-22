@@ -153,7 +153,7 @@ const TtlPrice = styled.div`
   width: 30vmin;
   align-items: center;
 
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     width: 50%
   }
 `;
@@ -166,7 +166,7 @@ const Counting = styled.div`
   color: transparent;
   line-height: 4.3vmin;
 
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     width: 6vmin;
     height: 6vmin;
     line-height: 6.3vmin ;
