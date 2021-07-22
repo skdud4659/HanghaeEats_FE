@@ -12,6 +12,10 @@ import { useSelector } from 'react-redux';
 const MyEats = (props) => {
   const user_name = useSelector((state) => state.user.user_info)
 
+  const couponBtn = () => {
+    window.alert('아직 이벤트 준비중이예요!');
+  }
+
   return (
     <React.Fragment>
       <Grid>
@@ -22,7 +26,7 @@ const MyEats = (props) => {
         </Grid>
         {/* 쿠폰 */}
         <Grid height="190px" >
-          <Image back_size="100%" src={coupon} m_height="100px"/>
+          <Image back_size="100%" src={coupon} m_height="100px" _onClick={couponBtn}/>
         </Grid>
         {/* 목록 */}
         <Grid is_flex margin="3% 0%;" _onClick={() => {history.push(`/order/${user_name}`)}}>
@@ -36,7 +40,7 @@ const MyEats = (props) => {
           <Grid></Grid>
         </Grid>
         {/* TODO 나중에 */}
-        <Grid is_flex margin="3% 0%;">
+        <Grid is_flex margin="3% 0%;" _onClick={couponBtn}>
           <FiTag size="65" />
           <Text width="40vmin" margin="auto 3%" size="20px" cursor>할인쿠폰</Text>
           <Grid></Grid>
