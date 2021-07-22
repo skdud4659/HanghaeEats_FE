@@ -18,7 +18,6 @@ import { BiEditAlt } from "react-icons/bi";
 const ReviewItem = (props) => {
   const dispatch = useDispatch();
 
-  const nickname = useSelector((state) => state.user.user_info);
   const reviewMenu = props._id;
   const menuInfo = props.menuIdList;
 
@@ -35,32 +34,61 @@ const ReviewItem = (props) => {
   return (
     <React.Fragment>
       <Wrap>
+<<<<<<< Updated upstream
         <Text size="18px" bold>
           {nickname}
         </Text>
         <Grid margin="1% 0% 0% 0%">
+=======
+        <Grid is_flex >
+            <Text size="18px" bold width="70%">
+              {props.nickname}
+            </Text>
+          {/* 수정, 삭제 버튼 */}
+          <Grid is_flex width="30%" margin="8px" m_width="40%">
+            <Text _onClick={reviewBtn} size="15px" cursor>
+              <BiEditAlt /> 수정
+            </Text>
+            <Text _onClick={deleteBtn} size="15px" cursor>
+              <BsTrashFill />
+              삭제
+            </Text>
+          </Grid>
+        </Grid>
+
+        <Grid margin="1% 0% 0% 0%" padding="10px 0px">
+>>>>>>> Stashed changes
           {/* 별점 데이터 > value에 데이터 넣으면 됨! */}
           <BeautyStars value={props.star} size="13px" activeColor={"#f7d57f"} />
         </Grid>
         {/* 우선은 사진업로드 없읍!! 임의로 내 마음에 드는 사진 ㅎㅎㅎ */}
-        <Image back_size="cover" height="400px" src={logo} />
+        <Image back_size="100% 80%" height="400px" src={logo} m_height="200px"/>
         {/* 리뷰 내용 */}
         <Grid margin="2% 0px">
           <Text size="18px">{props.content}</Text>
         </Grid>
         {/* 주문메뉴 */}
         <Grid is_flex>
-          <Text width="30%" color={"#9c9c9c"}>
+          <P>
             주문메뉴
-          </Text>
+          </P>
           {/* 메뉴아이디 있을때만 map사용 */}
           {menuInfo.map((m, idx) => {
+<<<<<<< Updated upstream
               return (
                 <Grid width="auto" is_flex>
                   <ReviewMenuItem key={m.menuId} {...m} />
                 </Grid>
               );
             })}
+=======
+            return (
+              <Grid width="30%" is_flex m_width="30%">
+                <ReviewMenuItem key={m.menuId} {...m} />
+              </Grid>
+            );
+          })}
+>>>>>>> Stashed changes
           <Grid></Grid>
         </Grid>
         {/* 수정, 삭제 버튼 */}
@@ -89,8 +117,18 @@ const ReviewItem = (props) => {
               padding="1.5%"
               border_radius="10px"
             >
+<<<<<<< Updated upstream
               <Text color={"#9c9c9c"}>
                 <FaRegThumbsUp /> 도움이 돼요
+=======
+              <Text 
+              color={chgLike} 
+              _onClick={chgLikeColorBtn}
+              cursor
+              >
+                <FaRegThumbsUp
+                /> 도움이 돼요
+>>>>>>> Stashed changes
               </Text>
             </Grid>
             {/* 안돼요!. */}
@@ -100,6 +138,7 @@ const ReviewItem = (props) => {
               align="center"
               padding="1.5%"
               border_radius="10px"
+              cursor
             >
               <Text color={"#9c9c9c"}>
                 <FaRegThumbsDown /> 도움이 안돼요
@@ -115,6 +154,16 @@ const ReviewItem = (props) => {
 
 const Wrap = styled.div`
   margin: 5% auto;
+`;
+
+const P = styled.p`
+  width:30%;
+  color:"#9c9c9c";
+
+  @media only screen and (max-width:375px) {
+    width:40%;
+    font-size: 15px;
+  }
 `;
 
 export default ReviewItem;
