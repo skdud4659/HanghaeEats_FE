@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Grid, Image, Button, Text} from '../elements';
+import {Grid, Image, Text} from '../elements';
 import {useSelector, useDispatch} from 'react-redux';
 
 //이모지
@@ -69,7 +69,7 @@ const StoreDetailInfo = (props) => {
         </Icons>
       {/* 매장 정보 */}
         <Grid>
-          <Image height="200px" src={storeInfo.image}/>
+          <Image back_size="100% 100%" height="200px" src={storeInfo.image}/>
           <Info>
             <Text size="30px" bold>{storeInfo.name}</Text>
             <Grid is_flex width="20vmin" height="50%">

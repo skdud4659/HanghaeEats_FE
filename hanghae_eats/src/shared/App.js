@@ -1,5 +1,6 @@
 import React from 'react';
-import {Grid} from '../elements'
+import styled, {ThemeProvider} from 'styled-components'
+import theme from '../elements/theme';
 
 //라우팅
 import { Redirect, Route } from "react-router-dom";
@@ -40,7 +41,7 @@ const App = (props) => {
     <React.Fragment>
       <Header />
         {/* 너비 고정 */}
-        <Grid width="50%" margin="2% auto 1% auto">
+        <WrapEx>
             {/* 메인사이드 */}
             <Route path="/" exact component={Main} />
             {/* 특정 카테고리로 들어가기 */}
@@ -50,9 +51,6 @@ const App = (props) => {
             <Route path="/storeDetail/:name" exact component={StoreDetail} />
             <Route path="/cart" exact component={Cart} />
             <Route path="/reviews/:storeId" exact component={Reviews} />
-            {/* 로그인 회원가입 */}
-            <Route path="/login" exact component={Login} />
-            <Route path="/register" exact component={Register} />
             {/* 마이이츠 사이드 */}
             <Route path="/myEats" exact component={MyEats} />
             <Route path="/order/:user_name" exact component={Order} />
@@ -60,12 +58,33 @@ const App = (props) => {
             <Route path="/coupons" exact component={Coupons} />
             <Route path="/reviewWrite/:orderId" exact component={ReviewWrite} />
             <Route path="/reviewEdit/:reviewId" exact component={ReviewEdit} />
-            <Route path="/aboutus" exact component={Aboutus} />
             {/* 잘못된 주소면 메인으로 돌아가기 */}
             {/* <Redirect from="*" to="/" /> */}
-        </Grid>
+        </WrapEx>
+        <Wrap>
+          {/* 로그인 회원가입 */}
+          <Route path="/login" exact component={Login} />
+          <Route path="/register" exact component={Register} />
+          <Route path="/aboutus" exact component={Aboutus} />
+        </Wrap> 
     </React.Fragment>
   );
 }
+
+const Wrap = styled.div`
+  width:50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const WrapEx = styled.div`
+  width:50%;
+  margin:2% auto;
+  @media ${({theme}) => theme.device.mobile} {
+      width: 70%;
+    }
+`;
 
 export default App;

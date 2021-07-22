@@ -3,7 +3,7 @@ import {Grid, Text} from '../elements';
 import styled from 'styled-components'
 
 //이모지
-import { BiPaperPlane, BiSmile } from "react-icons/bi";
+import { BiPaperPlane } from "react-icons/bi";
 import { GrBlog, GrGithub } from "react-icons/gr";
 import { SiNotion } from "react-icons/si";
 

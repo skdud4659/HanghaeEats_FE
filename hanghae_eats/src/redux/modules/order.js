@@ -13,7 +13,8 @@ export const OrderDB = (storeId, menu_list) => {
       .then((res) => {
         window.alert('주문이 완료되었어요! 주문은 항해이츠가 쏜다-!')
         dispatch(addOrder({storeId, menu_list}))
-        history.push('/')
+        const user_name = getState((state) => state.user.user_info)
+        history.push(`/order/${user_name}`)
       })
       .catch((err) => {
         window.alert('주문에 오류가 있어요! 관리자에게 문의해주세요!')

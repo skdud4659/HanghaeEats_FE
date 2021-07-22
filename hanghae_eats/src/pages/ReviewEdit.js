@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Text, Button, Input } from "../elements";
+import { Grid, Text, Button } from "../elements";
 
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";

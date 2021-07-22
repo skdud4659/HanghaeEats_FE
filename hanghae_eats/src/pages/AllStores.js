@@ -2,7 +2,7 @@ import React from 'react';
 import MiniCategory from '../components/MiniCategory';
 import StoresList from '../components/StoresList';
 
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import PaginationPage from '../components/Pagination';
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Text, Button, Input } from "../elements";
+import { Grid, Text, Button } from "../elements";
 
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
@@ -29,6 +29,7 @@ const ReviewWrite = (props) => {
   //메뉴 가져오기 
   const menu_name = storeInfo[_storeId].menus; //맵은 배열로 돌린다.
   console.log(menu_name);
+
 
   //리뷰 콘텐츠
   const [content, setContent] = React.useState();

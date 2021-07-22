@@ -28,9 +28,9 @@ const Login = (props) => {
 
   return (
     <React.Fragment>
-
-      <Grid padding="16px" align="center" margin="25% 0%">
+      <Grid padding="16px" align="center">
         <Image
+          back_size="cover"
           height="10vw"
           src={coupang_logo}
           _onClick={() => {
@@ -87,16 +87,15 @@ const Login = (props) => {
           </Grid>
 
           {/* 소셜 로그인 */}
-          <Text margin="2% auto">소설 계정으로 로그인하기</Text>
           <WrapBtn>
             <Grid width="7vmin" margin="0px">
               <a name="googleLogin" href={GOOGLE_AUTH_URL} >
-                <Image cursor src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvOX5hnNn7kVZ_XHdbTBhgVEa0yERoyi2R_g&usqp=CAU'} width="65px" height="65px" />
+                <Image back_size="cover" cursor src={'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvOX5hnNn7kVZ_XHdbTBhgVEa0yERoyi2R_g&usqp=CAU'} width="50px" height="50px" />
               </a>
             </Grid>
             <Grid width="7vmin" margin="0px">
               <a name="kakaoLogin" href={KAKAO_AUTH_URL}>
-                <Image  cursor src={'http://seoulallnet.org/wp-content/uploads/2020/10/kakaotalk.png'} width="65px" height="65px" />
+                <Image back_size="cover" cursor src={'http://seoulallnet.org/wp-content/uploads/2020/10/kakaotalk.png'} width="50px" height="50px" />
               </a>
             </Grid>
           </WrapBtn>
@@ -134,7 +133,7 @@ const HelperMsg = styled.div`
 const WrapBtn = styled.div`
   display: flex;
   justify-content: space-between;
-  width:30vmin;
+  width:25vmin;
   margin: auto;
 `;
 

@@ -7,6 +7,8 @@ import axios from 'axios';
 //전역 > 서버 배포
 import instance from './instance';
 
+import {getAllLikeDB} from './favorite';
+
 //axios
 //특정 카테고리 매장들 가져오기
 export const getStoresDB = (category) => {
@@ -34,6 +36,7 @@ export const getAllStoreDB = () => {
       .then((res) => {
         let stores_list = res.data.stores
         dispatch(getAllStore(stores_list))
+        dispatch(getAllLikeDB())
       })
       .catch((err) => {
         console.log(err)

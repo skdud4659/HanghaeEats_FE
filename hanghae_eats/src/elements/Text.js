@@ -23,7 +23,7 @@ Text.defaultProps = {
     bold: false,
     color: "#222831",
     margin: "auto",
-    size: "17px",
+    size: "1.1em",
     _onClick: () => {},
     _onChange: () => {},
     cursor: false,

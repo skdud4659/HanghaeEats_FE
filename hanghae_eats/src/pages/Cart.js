@@ -7,7 +7,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 //치타 이미지
 import chita from "../img/chita.jpg";
-import { OrderDB, addOrder } from "../redux/modules/order";
+import { OrderDB } from "../redux/modules/order";
 
 const Cart = (props) => {
   const dispatch = useDispatch();
@@ -60,7 +60,7 @@ const Cart = (props) => {
               </Text>
               <Image
                 is_slide
-                width="10%"
+                width="15%"
                 height="30px"
                 margin="8px"
                 src={chita}

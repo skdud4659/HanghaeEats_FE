@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Grid, Input } from '../elements';
+import styled from 'styled-components';
 
 //검색 icon
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
@@ -26,11 +27,11 @@ const Search = (props) => {
   }
 
   return (
-    <React.Fragment>
+    <Grid>
       {/* 레이아웃 */}
       <Grid is_flex>
         {/* 검색창 */}
-        <Grid width="90%">
+        <Search_media>
           {/* 입력인풋 */}
           <Input
             _onChange={input_word}
@@ -44,7 +45,7 @@ const Search = (props) => {
             bg={'#e0e2e1'}
             border="none"
             />
-        </Grid>
+        </Search_media>
         {/* 검색하기 버튼 */}
         <Grid width="10%">
           <Button bg="white" _onClick={searchBtn}>
@@ -52,8 +53,16 @@ const Search = (props) => {
           </Button>
         </Grid>
       </Grid>
-    </React.Fragment>
+    </Grid>
   );
 }
+
+const Search_media = styled.div`
+    width: 90%;
+
+    @media ${(props) => props.theme.mobile} {
+      width: 90%;
+    }
+`;
 
 export default Search;

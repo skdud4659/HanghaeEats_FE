@@ -1,6 +1,5 @@
 import React from 'react';
-import {Text, Grid} from '../elements';
-import {useSelector} from 'react-redux';
+import {Text} from '../elements';
 
 const ReviewMenuItem = (props) => {
   console.log(props)
