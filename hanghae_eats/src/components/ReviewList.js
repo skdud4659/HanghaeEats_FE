@@ -6,17 +6,19 @@ import BeautyStars from 'beauty-stars';
 import {history} from '../redux/configStore';
 
 const ReviewList = (props) => {
-  const {_id, shopId, image, menuId, userId, orderId, reviewDate, content, star} = props
+  const {_id, shopId, image, menuId, userId, orderId, reviewDate, content, star} = props;
+  const storeId = history.location.pathname.split('/')[2]
+  console.log(storeId);
 
   //리뷰 페이지로 이동
-  // const gotoReview = () => {
-  //   history.push(`/reviews/${shopId}`)
-  // }
+  const gotoReview = () => {
+    history.push(`/reviews/${storeId}`)
+  }
 
   return (
     <React.Fragment>
-      <ReviewItem>
-          <Grid width="30%" margin="0px">
+      <ReviewItem onClick={gotoReview}>
+        <Grid width="30%" margin="0px">
             <Image src={props.image}/>
           </Grid>
           <Grid width="auto" margin="5% 0px">

@@ -39,6 +39,7 @@ const addReviewDB = (orderId, content, star) => {
       .post("/api/review", { orderId: orderId, content: content, star: star })
       .then((res) => {
         dispatch(addReview({ content, star })); //양식 확인
+        window.alert("리뷰 작성 성공!");
         history.push("/"); //위치 적용하기. => 해당 가게로 가기
       })
       .catch((err) => {
@@ -88,7 +89,7 @@ const updateReviewDB = (reviewId, content, star) => {
       .put(`/api/review/${reviewId}`, {content: content, star: star})
       .then((res) => {
         console.log(res);
-        window.alert("수정완료!");
+        window.alert("리뷰 수정이 완료되었습니다!");
         history.replace("/");
       })
       .catch((err) => {

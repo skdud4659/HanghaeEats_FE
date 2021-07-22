@@ -24,7 +24,6 @@ const ReviewItem = (props) => {
 
   const nickname = useSelector((state) => state.user.user_info);
   const reviewMenu = props._id;
-  console.log(reviewMenu);
   const menuId = props.menuIdList;
 
 

@@ -88,7 +88,7 @@ const StoreDetail = (props) => {
         </Grid>
         {/* 리뷰 맵돌리기 */}
         <Grid is_flex>
-          <ReviewList />
+          <ReviewList/>
           <Grid border="1px solid gray" padding="10px" width="10%" height="80px" margin="0px 0px 5% auto" border_radius="5px" >
             <Button _onClick={gotoReview} bg={'white'} margin="0px auto;">
               <Text margin="0px auto;" cursor bold>리뷰 <br/> 더 보기</Text>
