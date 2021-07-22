@@ -17,6 +17,7 @@ const StoresList = (props) => {
   // const store_list = useSelector((state) => state.stores.stores)
   // const store_idx = store_list.findIndex((s) => s._id === _id)
   // const store_info = store_list[store_idx]
+  // const rateStar = Math.round(store_info.avgStar)
   // const rateStar = Number(store_info.avgStar).toFixed(1)
 
   return (
