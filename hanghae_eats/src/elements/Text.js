@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 const Text = (props) => {
 
-    const {bold, color, size, children, cursor, width, margin, _onClick, _onChange} = props;
+    const {m_size, bold, color, size, children, m_margin, cursor, width, margin, _onClick, _onChange} = props;
 
 
     const styles = {
-        bold, color, size, width, margin, cursor
+        m_size, bold, color, size, width, margin, cursor, m_margin
     };
 
     return(
@@ -24,6 +24,8 @@ Text.defaultProps = {
     color: "#222831",
     margin: "auto",
     size: "1.1em",
+    m_size: "15px",
+    m_margin:"auto",
     _onClick: () => {},
     _onChange: () => {},
     cursor: false,
@@ -36,6 +38,11 @@ const P = styled.p`
     font-size: ${(props) => props.size};
     font-weight: ${(props) => (props.bold? "700" : "400")};
     ${(props) => props.cursor ? `cursor : pointer` : ""};
+
+    @media only screen and (max-width:375px) {
+        ${(props) => props.m_size ? `font-size : ${props.m_size}` : `font-size : ${props.size}`};
+        ${(props) => props.m_margin ? `margin : ${props.m_margin}` : `margin : ${props.margin}`};
+    }
 `;
 
 export default Text;

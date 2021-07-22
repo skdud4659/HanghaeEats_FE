@@ -60,25 +60,25 @@ const StoreDetail = (props) => {
       {/* 매장 정보 */}
         <StoreDetailInfo />
         <Grid is_flex margin="5% 0%;" width="25vmin;">
-          <Grid width="8vmin;" margin="0px">
+          <Grid width="8vmin;" margin="0px" m_width="25%">
             <Text margin="10% 0%">배달비</Text>
             <Text>최소주문</Text>
           </Grid>
           <Grid width="15vmin;" margin="0px">
-            <Text margin="5% 0%">2,000원
+            <Text margin="5% 0%" m_margin="0%">2,000원
             <Detail onClick={showModal}> 자세히 </Detail>
             {/* 모달창 */}
-            <Modal visible={visible} width="400px" height="150px" effect="fadeInDown" onClickAway={closeModal}>
+            <Modal visible={visible} width="70%" height="150px" effect="fadeInDown" onClickAway={closeModal}>
               <Grid>
-                <Grid align="center" height="auto" margin="5% auto">
+                <Grid align="center" height="auto" margin="5% auto" m_height="30px">
                   <Text>배달비 안내</Text>
                 </Grid>
-                <Grid is_flex height="auto">
+                <Grid is_flex height="auto" m_height="20px">
                   <Text>주문금액</Text>
                   <Text>배달비</Text>
                 </Grid>
                 <hr style={{color:"#e2e2e2", width:"90%"}}/>
-                <Grid is_flex height="auto">
+                <Grid is_flex height="auto" m_height="20px">
                   <Text>5만원 ~</Text>
                   <Text>무료</Text>
                 </Grid>
@@ -93,7 +93,14 @@ const StoreDetail = (props) => {
         <Grid is_flex>
           <ReviewList />
           {/* 리뷰 더보기 버튼 */}
-          <Grid border="1px solid gray" padding="10px" width="10%" height="80px" margin="0px 0px 5% auto" border_radius="5px" >
+          <Grid
+            border="1px solid gray"
+            padding="10px"
+            width="15%"
+            height="80px"
+            margin="0px 0px 5% auto"
+            border_radius="5px"
+            m_width="19%">
             <Button _onClick={gotoReview} bg={'white'} margin="0px auto;">
               <Text margin="0px auto;" cursor bold>리뷰 <br/> 더 보기</Text>
             </Button>
@@ -104,15 +111,15 @@ const StoreDetail = (props) => {
         {menu_list.map((m, idx) => {
           return <Menu key={m._id} {...m}/>
         })}
-        <Grid height="50px;" margin="5% 0% 0% 0%;">
+        <Grid height="50px;" margin="5% 0% 0% 0%;" m_height="30px">
           <Button _onClick={orderBtn}>
             <Grid is_flex>
-              <Grid width="10vmin"></Grid>
-              <Grid is_flex width="15vmin">
+              <Grid width="10vmin" m_width="80%"></Grid>
+              <Grid is_flex width="15vmin" m_width="90%">
                 <Counting>
                   <Text bold color={'#50A0FF'}>{cart_list.length}</Text>
                 </Counting>
-                <Text size="18px" bold color={'white'}>카트 보기</Text>
+                <Text size="18px" bold color={'white'} m_margin="auto auto auto 2%">카트 보기</Text>
               </Grid>
               <TtlPrice>
                 <Text size="18px" bold color={'white'}>{ttl_price}원</Text>
@@ -133,6 +140,10 @@ const Detail = styled.span`
 const TtlPrice = styled.div`
   width:30vmin;
   align-items: center;
+
+  @media only screen and (max-width:375px) {
+    width: 50%
+  }
 `;
 
 const Counting = styled.div`
@@ -142,6 +153,12 @@ const Counting = styled.div`
   background-color: white;
   color: transparent;
   line-height: 4.3vmin;
+
+  @media only screen and (max-width:375px) {
+    width: 6vmin;
+    height: 6vmin;
+    line-height: 6.3vmin ;
+  }
 `;
 
 export default StoreDetail;

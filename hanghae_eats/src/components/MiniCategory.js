@@ -22,7 +22,11 @@ const MiniCategory = (props) => {
               history.push("/stores/chicken")
               dispatch(getStoresDB('chicken'))
             }}
-            src="https://i.pinimg.com/564x/08/e5/8a/08e58ae73d00d466360e84cda6cd868e.jpg"/>
+            src="https://i.pinimg.com/564x/08/e5/8a/08e58ae73d00d466360e84cda6cd868e.jpg"
+            //모바일
+            m_width="60px"
+            m_height="60px"
+            />
           <Text>치킨</Text>
         </Grid>
 
@@ -33,7 +37,11 @@ const MiniCategory = (props) => {
               history.push("/stores/jokbal")
               dispatch(getStoresDB('jokbal'))
             }}
-            src="https://i.pinimg.com/564x/05/e9/3e/05e93e646df7356c3d5ce948416488ae.jpg"/>
+            src="https://i.pinimg.com/564x/05/e9/3e/05e93e646df7356c3d5ce948416488ae.jpg"
+            //모바일
+            m_width="60px"
+            m_height="60px"
+            />
           <Text>족발/보쌈</Text>
         </Grid>
 
@@ -45,7 +53,11 @@ const MiniCategory = (props) => {
                 history.push("/stores/chinese")
                 dispatch(getStoresDB('chinese'))
             }}
-            src="https://i.pinimg.com/564x/98/8e/b7/988eb734dd17a5107ed8bfc7900e3a3e.jpg"/>
+            src="https://i.pinimg.com/564x/98/8e/b7/988eb734dd17a5107ed8bfc7900e3a3e.jpg"
+            //모바일
+            m_width="60px"
+            m_height="60px"
+            />
           <Text>중식</Text>
         </Grid>
 
@@ -57,7 +69,11 @@ const MiniCategory = (props) => {
                 history.push("/stores/japanese")
                 dispatch(getStoresDB('japanese'))
             }}
-            src="https://i.pinimg.com/564x/01/8b/43/018b434d6696b99595f116003775b4eb.jpg"/>
+            src="https://i.pinimg.com/564x/01/8b/43/018b434d6696b99595f116003775b4eb.jpg"
+            //모바일
+            m_width="60px"
+            m_height="60px"
+            />
           <Text>일식</Text>
         </Grid>
 
@@ -69,7 +85,11 @@ const MiniCategory = (props) => {
                 history.push("/stores/pizza")
                 dispatch(getStoresDB('pizza'))
             }}
-            src="https://i.pinimg.com/474x/9f/08/c1/9f08c1375157edbead237fbac9ed5f7c.jpg"/>
+            src="https://i.pinimg.com/474x/9f/08/c1/9f08c1375157edbead237fbac9ed5f7c.jpg"
+            //모바일
+            m_width="60px"
+            m_height="60px"
+            />
           <Text>피자</Text>
         </Grid>
 
@@ -80,7 +100,11 @@ const MiniCategory = (props) => {
               history.push("/stores/fastfood")
               dispatch(getStoresDB('fastfood'))
             }}
-            src="https://i.pinimg.com/564x/e3/e5/b0/e3e5b0ed2b932874e435ce1e06413969.jpg"/>
+            src="https://i.pinimg.com/564x/e3/e5/b0/e3e5b0ed2b932874e435ce1e06413969.jpg"
+            //모바일
+            m_width="60px"
+            m_height="60px"
+            />
           <Text>패스트푸드</Text>
         </Grid>
 
@@ -92,7 +116,11 @@ const MiniCategory = (props) => {
                 history.push("/stores/bunsik")
                 dispatch(getStoresDB('bunsik'))
             }}
-            src="https://i.pinimg.com/564x/c5/7e/a3/c57ea38ddd52d8d4c115d04d6bb965ae.jpg"/>
+            src="https://i.pinimg.com/564x/c5/7e/a3/c57ea38ddd52d8d4c115d04d6bb965ae.jpg"
+            //모바일
+            m_width="60px"
+            m_height="60px"
+            />
           <Text>분식</Text>
         </Grid>
 
@@ -103,7 +131,11 @@ const MiniCategory = (props) => {
               history.push("/stores/dessert")
               dispatch(getStoresDB('dessert'))
             }}
-            src="https://i.pinimg.com/564x/29/80/44/298044b73bacb4cab2a811468649596c.jpg"/>
+            src="https://i.pinimg.com/564x/29/80/44/298044b73bacb4cab2a811468649596c.jpg"
+            //모바일
+            m_width="60px"
+            m_height="60px"
+            />
           <Text>디저트</Text>
         </Grid>      
       </Grid>
@@ -118,6 +150,10 @@ const AllBtn = styled.button`
   background-color: #eaeceb;
   font-size: 18px;
   cursor: pointer;
+  @media only screen and (max-width:375px) {
+    width:60px;
+    height:60px;
+  }
 `;
 
 export default MiniCategory;

@@ -1,6 +1,5 @@
 import React from 'react';
-import styled, {ThemeProvider} from 'styled-components'
-import theme from '../elements/theme';
+import styled from 'styled-components'
 
 //라우팅
 import { Redirect, Route } from "react-router-dom";
@@ -53,6 +52,7 @@ const App = (props) => {
             <Route path="/reviews/:storeId" exact component={Reviews} />
             {/* 마이이츠 사이드 */}
             <Route path="/myEats" exact component={MyEats} />
+            <Route path="/aboutus" exact component={Aboutus} />
             <Route path="/order/:user_name" exact component={Order} />
             <Route path="/favorites" exact component={Favorites} />
             <Route path="/coupons" exact component={Coupons} />
@@ -65,7 +65,6 @@ const App = (props) => {
           {/* 로그인 회원가입 */}
           <Route path="/login" exact component={Login} />
           <Route path="/register" exact component={Register} />
-          <Route path="/aboutus" exact component={Aboutus} />
         </Wrap> 
     </React.Fragment>
   );
@@ -77,14 +76,19 @@ const Wrap = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+
+  @media only screen and (max-width: 375px) {
+    width: 90%;
+  }
 `;
 
 const WrapEx = styled.div`
   width:50%;
   margin:2% auto;
-  @media ${({theme}) => theme.device.mobile} {
-      width: 70%;
-    }
+
+  @media only screen and (max-width: 375px) {
+    width: 90%;
+  }
 `;
 
 export default App;

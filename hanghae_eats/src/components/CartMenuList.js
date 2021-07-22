@@ -46,16 +46,16 @@ const CartMenuList = (props) => {
     <React.Fragment>
       <Grid padding="8px 0px">
               <Grid is_flex>
-                <Text margin="20px 20px">{name}</Text>
-                <Grid width="true" margin="8px 20px">
+                <Text margin="20px 20px" m_margin="20px">{name}</Text>
+                <Grid width="true" margin="8px 20px" m_width="auto">
                   <Button bg={'white'} _onClick={delBtn}>
                     <HiX />
                   </Button>
                 </Grid>
               </Grid>
               <Grid is_flex>
-                <Text margin="20px 20px">{menuPrice}</Text>
-                <Grid width="true" margin="20px 20px">
+                <Text margin="20px 20px" m_margin="20px">{menuPrice}</Text>
+                <Grid width="true" margin="20px 20px" m_width="auto">
                   <Select options={options} defaultValue={options[count-1]}
                     onChange={(value) => {chgCount(value.value)}}/>
                 </Grid>

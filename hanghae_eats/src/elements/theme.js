@@ -6,8 +6,8 @@ const size = {
 };
 
 const device = {
-  mobile: `screen and (max-width: ${size.mobile};)`,
-  tablet: `screen and (max-width: ${size.tabletS};)`,
+  mobile: `only screen and (max-width: ${size.mobile};)`,
+  tablet: `only screen and (max-width: ${size.tabletS};)`,
 };
 
 const theme = {device}

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Image = (props) => {
-  const { width, height, size, margin, back_size, is_circle, cursor, _onClick, is_slide, src, border_radius } = props;
+  const { width, height, m_width, m_height, size, margin, back_size, is_circle, cursor, _onClick, is_slide, src, border_radius } = props;
 
   const styles = {
     width,
@@ -11,7 +11,9 @@ const Image = (props) => {
     border_radius,
     size,
     cursor,
-    back_size
+    back_size,
+    m_width,
+    m_height,
   };
 
   if(is_circle) {
@@ -48,6 +50,8 @@ Image.defaultProps = {
   cursor: "",
   size: 100,
   back_size:null,
+  m_width:"100%",
+  m_height: "100%",
   _onClick: () => {},
 };
 
@@ -61,6 +65,11 @@ const DefaultImage = styled.div`
   background-size: ${(props) => props.back_size};
   background-repeat: no-repeat;
   ${(props) => (props.cursor ? `cursor: pointer;` : "")};
+  
+  @media only screen and (max-width:375px) {
+    width: ${(props) => props.m_width};
+    height: ${(props) => props.m_height};
+  }
 `;
 
 const Slide = styled.div`
@@ -72,6 +81,11 @@ const Slide = styled.div`
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+
+  @media only screen and (max-width:375px) {
+    width: ${(props) => props.m_width};
+    height: ${(props) => props.m_height};
+  }
 `;
 
 const CircleImage = styled.img`
@@ -85,6 +99,11 @@ const CircleImage = styled.img`
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
+
+  @media only screen and (max-width:375px) {
+    width: ${(props) => props.m_width};
+    height: ${(props) => props.m_height};
+  }
 `;
 
 export default Image;
