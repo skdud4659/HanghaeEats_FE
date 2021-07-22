@@ -135,6 +135,7 @@ const StoreDetail = (props) => {
             </Grid>
           </Button>
         </Grid>
+      </Grid>
     </React.Fragment>
   );
 };
