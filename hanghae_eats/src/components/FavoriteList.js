@@ -7,15 +7,12 @@ import {history} from '../redux/configStore';
 import { FaStar} from "react-icons/fa";
 
 const FavoriteList = (props) => {
-  const store_list = useSelector((state) => state.stores.stores)
-  const store_idx = store_list.findIndex((s) => s._id === props.f)
-  const store_info = store_list[store_idx]
+  const store_idx = props.store_list.findIndex((s) => s._id === props.f)
+  const store_info = props.store_list[store_idx]
+  console.log(store_info)
 
   // 별점 소수점 첫째자리까지
-  const [rateStar, setRateStar] = React.useState(0)
-  if(!store_info.avgStar === "0") {
-    setRateStar(Number(store_info.avgStar).toFixed(1))
-  } 
+  const rateStar = Number(store_info.avgStar).toFixed(1)
 
   //각 매장으로 이동
   const storeBtn = () => {

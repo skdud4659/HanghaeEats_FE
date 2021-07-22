@@ -1,10 +1,9 @@
 import React, { useMemo } from 'react';
 import { Grid, Text, Button } from "../elements";
-import {useSelector,useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {delCart, chgItem} from '../redux/modules/cart'
 //삭제 icon
 import { HiX } from "react-icons/hi";
-import { faRProject } from '@fortawesome/free-brands-svg-icons';
 //셀렉트박스
 import Select from "react-select";
 

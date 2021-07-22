@@ -8,10 +8,15 @@ import { history } from "./redux/configStore";
 import store from "./redux/configStore";
 import { Provider } from "react-redux";
 
+import {ThemeProvider} from 'styled-components'
+import theme from './elements/theme';
+
 ReactDOM.render(
   <Provider store={store}>
       <ConnectedRouter history={history}>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </ConnectedRouter>
     </Provider>,
   document.getElementById('root')

@@ -33,12 +33,14 @@ const Main = (props) => {
   //기본 메인화면
   return (
     <React.Fragment>
+      <Grid>
       {/* 검색창 */}
         <Search />
         {/* 프로모션 슬라이드 */}
         <Promotion />
         {/* 카테고리 */}
         <Category />
+      </Grid>
     </React.Fragment>
   );
 }

@@ -30,13 +30,13 @@ const Promotion = (props) => {
     <Grid height="250px" margin="2% auto">
       <Slider {...settings}>
         <Grid>
-          <Image is_slide height="250px;" src={promotionA}/>
+          <Image back_size="100%" height="250px;" src={promotionA}/>
         </Grid>
         <Grid>
-          <Image is_slide height="250px;" src={promotionB}/>
+          <Image back_size="100%" height="250px;" src={promotionB}/>
         </Grid>
         <Grid>
-          <Image is_slide height="250px;" src={promotionC}/>
+          <Image back_size="100%" height="250px;" src={promotionC}/>
         </Grid>
       </Slider>
   </Grid>
