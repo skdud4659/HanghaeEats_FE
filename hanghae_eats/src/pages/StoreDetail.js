@@ -57,6 +57,7 @@ const StoreDetail = (props) => {
 
   return (
     <React.Fragment>
+      <Grid>
       {/* 매장 정보 */}
         <StoreDetailInfo />
         <Grid is_flex margin="5% 0%;" width="25vmin;">
@@ -125,8 +126,14 @@ const StoreDetail = (props) => {
                 <Text size="18px" bold color={'white'}>{ttl_price}원</Text>
               </TtlPrice>
             </Grid>
+<<<<<<< Updated upstream
           </Button>
         </Grid>
+=======
+        </Button>
+      </Grid>
+      </Grid>
+>>>>>>> Stashed changes
     </React.Fragment>
   );
 }

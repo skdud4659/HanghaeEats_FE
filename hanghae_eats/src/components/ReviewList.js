@@ -18,6 +18,7 @@ const ReviewList = (props) => {
   return (
     <React.Fragment>
     <ReviewItem onClick={gotoReview}>
+      <Grid is_flex>
         <Grid width="30%" margin="0px" m_width="30%">
             <Image 
               back_size="cover" 
@@ -27,12 +28,17 @@ const ReviewList = (props) => {
               m_height="80px"
               />
           </Grid>
-          <Grid width="auto" margin="5% 0px">
+          <Grid width="auto" margin="0px" height="50%" m_height="50%">
             <Text>{props.content}</Text>
             <Grid margin="7% 0% 0% 0%">
               <BeautyStars value={props.star} size="15px"/>
             </Grid>
           </Grid>
+<<<<<<< Updated upstream
+=======
+          <Grid width="auto"></Grid>
+        </Grid>
+>>>>>>> Stashed changes
       </ReviewItem>
     </React.Fragment>
   );
