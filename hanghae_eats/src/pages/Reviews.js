@@ -38,6 +38,8 @@ const Reviews = (props) => {
     history.goBack();
   };
 
+  const reviewCount = review_list.length > 0
+
   return (
     <React.Fragment>
       {/* 매장 데이터 가져오기 */}
@@ -61,7 +63,7 @@ const Reviews = (props) => {
       <hr style={{ border: "1px solid #E5E5E5" }} />
       
       {/* 리뷰 맵돌리기 */}
-      {review_list.map((r, idx) => {
+      {reviewCount && review_list.map((r, idx) => {
             return <ReviewItem key={r._id} {...r}/>
       })}
       
