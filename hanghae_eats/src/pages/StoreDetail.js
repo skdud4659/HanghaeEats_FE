@@ -62,6 +62,7 @@ const StoreDetail = (props) => {
 
   return (
     <React.Fragment>
+      <Grid>
       {/* 매장 정보 */}
         <StoreDetailInfo />
         <Grid is_flex margin="5% 0%;" width="25vmin;">
@@ -132,39 +133,8 @@ const StoreDetail = (props) => {
                 <Text size="18px" bold color={'white'}>{ttl_price}원</Text>
               </TtlPrice>
             </Grid>
-
           </Button>
         </Grid>
-      </Grid>
-      <hr />
-      {/* 메뉴 맵돌리기 */}
-
-      {menu_list.map((m, idx) => {
-        return <Menu key={m._id} {...m} />;
-      })}
-
-      <Grid height="50px;" margin="5% 0% 0% 0%;">
-        <Button _onClick={orderBtn}>
-          <Grid is_flex>
-            <Grid width="10vmin"></Grid>
-            <Grid is_flex width="15vmin">
-              <Counting>
-                <Text bold color={"#50A0FF"}>
-                  {cart_list.length}
-                </Text>
-              </Counting>
-              <Text size="18px" bold color={"white"}>
-                카트 보기
-              </Text>
-            </Grid>
-            <TtlPrice>
-              <Text size="18px" bold color={"white"}>
-                {ttl_price}원
-              </Text>
-            </TtlPrice>
-          </Grid>
-        </Button>
-      </Grid>
     </React.Fragment>
   );
 };
