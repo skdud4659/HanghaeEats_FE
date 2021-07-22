@@ -14,10 +14,10 @@ const StoresList = (props) => {
   }
 
   //별점
-  const store_list = useSelector((state) => state.stores.stores)
-  const store_idx = store_list.findIndex((s) => s._id === _id)
-  const store_info = store_list[store_idx]
-  const rateStar = Number(store_info.avgStar).toFixed(1)
+  // const store_list = useSelector((state) => state.stores.stores)
+  // const store_idx = store_list.findIndex((s) => s._id === _id)
+  // const store_info = store_list[store_idx]
+  // const rateStar = Number(store_info.avgStar).toFixed(1)
 
   return (
     <React.Fragment>
@@ -48,9 +48,9 @@ const StoresList = (props) => {
                 m_height="20px"
             />
               <Text size="18px" width="auto" >항해 깊숙한 바닷속km · 배달비 2,000원</Text>
-              <Grid width="30%" margin="4% 0%">
+              {/* <Grid width="30%" margin="4% 0%">
                 <BeautyStars value={rateStar} size="25px" activeColor={'#f7d57f'}/>
-              </Grid>
+              </Grid> */}
             </Grid>
           </Grid>
         </Grid>
