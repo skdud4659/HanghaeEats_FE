@@ -5,6 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import instance from "./instance";
 
 //axios
+//주문하기
 export const OrderDB = (storeId, menu_list) => {
   return function (dispatch, getState, {history}) {
     instance
@@ -21,6 +22,7 @@ export const OrderDB = (storeId, menu_list) => {
   }
 }
 
+//주문 내역 가져오기
 export const getOrderDB = () => {
   return function (dispatch, getState, {history}) {
     instance

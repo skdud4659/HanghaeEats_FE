@@ -3,8 +3,7 @@ import Pagination from "react-js-pagination";
 import '../Paging.css';
 
 import {getStorePageDB} from '../redux/modules/store';
-import {useDispatch, useSelector} from 'react-redux';
-
+import {useDispatch} from 'react-redux';
 
 const PaginationPage = () => {
   const [page, setPage] = React.useState(1)

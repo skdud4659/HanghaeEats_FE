@@ -10,7 +10,6 @@ const FavoriteList = (props) => {
   const store_list = useSelector((state) => state.stores.stores)
   const store_idx = store_list.findIndex((s) => s._id === props.f)
   const store_info = store_list[store_idx]
-  console.log(store_info)
 
   // 별점 소수점 첫째자리까지
   const rateStar = store_info.avgStar==="0" ? 0 : Number(store_info.avgStar).toFixed(1)
