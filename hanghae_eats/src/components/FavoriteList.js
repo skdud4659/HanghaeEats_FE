@@ -23,7 +23,7 @@ const FavoriteList = (props) => {
     <React.Fragment>
       <Grid is_flex padding="2%" _onClick={storeBtn}>
         {/* 매장 이미지 */}
-        <Image width="110%" height="150px"src={store_info.image}/>
+        <Image back_size="cover" width="110%" height="150px"src={store_info.image}/>
         {/* 매장 이름, 별점(후기 수) */}
         <Grid margin="0px 3%">
           <Text bold size="25px" margin="1% 0px">{store_info.name}</Text>
