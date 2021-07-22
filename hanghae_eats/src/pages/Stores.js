@@ -4,7 +4,7 @@ import StoresList from '../components/StoresList';
 
 import {history} from '../redux/configStore';
 import {useDispatch, useSelector} from 'react-redux';
-import {getStores, getStoresDB} from '../redux/modules/store';
+import {getStoresDB} from '../redux/modules/store';
 
 const Stores = (props) => {
   const dispatch = useDispatch();
@@ -19,6 +19,7 @@ const Stores = (props) => {
 
   return (
     <React.Fragment>
+      {/* 동그라미 미니 카테고리 */}
         <MiniCategory category={category}/>
         {/* 매장 목록 맵돌리기 */}
         {store_list.map((s, idx) => {

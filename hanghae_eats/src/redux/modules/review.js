@@ -54,8 +54,14 @@ const getReviewDB = (storeId) => {
     instance
       .get(`/api/review/${storeId}`)
       .then((res) => {
-        let review_list = res.data.review;
-        dispatch(getReview(review_list));
+        console.log(res)
+        if(res.data === "") {
+          window.alert('리뷰가 없어요!')
+          history.goBack()
+        } else {
+          let review_list = res.data.review;
+          dispatch(getReview(review_list));
+        }
       })
       .catch((err) => {
         window.alert("페이지에 오류가 있어요! 관리자에게 문의해주세요.");

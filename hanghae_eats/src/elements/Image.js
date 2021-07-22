@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Image = (props) => {
-  const { width, height, size, margin, is_circle, cursor, _onClick, is_slide, src, border_radius } = props;
+  const { width, height, size, margin, back_size, is_circle, cursor, _onClick, is_slide, src, border_radius } = props;
 
   const styles = {
     width,
@@ -11,6 +11,7 @@ const Image = (props) => {
     border_radius,
     size,
     cursor,
+    back_size
   };
 
   if(is_circle) {
@@ -46,6 +47,7 @@ Image.defaultProps = {
   is_circle: null,
   cursor: "",
   size: 100,
+  back_size:null,
   _onClick: () => {},
 };
 
@@ -56,7 +58,7 @@ const DefaultImage = styled.div`
   border-radius: ${(props) => props.border_radius};
   background-image: url("${(props) => props.src}");
   background-position: center;
-  background-size: cover;
+  background-size: ${(props) => props.back_size};
   background-repeat: no-repeat;
   ${(props) => (props.cursor ? `cursor: pointer;` : "")};
 `;

@@ -17,7 +17,6 @@ const OrderList = (props) => {
   //리뷰를 작성한 상태인가?
   const is_write = props.checkReview
   const [btnDisabled, setBtnDisabled] = React.useState()
-
   const reviewWriteBtn = () => {
     if (is_write) {
       setBtnDisabled('disabled');

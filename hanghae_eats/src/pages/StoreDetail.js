@@ -57,6 +57,7 @@ const StoreDetail = (props) => {
 
   return (
     <React.Fragment>
+      {/* 매장 정보 */}
         <StoreDetailInfo />
         <Grid is_flex margin="5% 0%;" width="25vmin;">
           <Grid width="8vmin;" margin="0px">
@@ -66,6 +67,7 @@ const StoreDetail = (props) => {
           <Grid width="15vmin;" margin="0px">
             <Text margin="5% 0%">2,000원
             <Detail onClick={showModal}> 자세히 </Detail>
+            {/* 모달창 */}
             <Modal visible={visible} width="400px" height="150px" effect="fadeInDown" onClickAway={closeModal}>
               <Grid>
                 <Grid align="center" height="auto" margin="5% auto">
@@ -82,13 +84,15 @@ const StoreDetail = (props) => {
                 </Grid>
               </Grid>
             </Modal>
+            {/* 최소주문 금액 위에서 is_flex 중 */}
             </Text>
             <Text>15,000원</Text>
           </Grid>
         </Grid>
         {/* 리뷰 맵돌리기 */}
         <Grid is_flex>
-          <ReviewList/>
+          <ReviewList />
+          {/* 리뷰 더보기 버튼 */}
           <Grid border="1px solid gray" padding="10px" width="10%" height="80px" margin="0px 0px 5% auto" border_radius="5px" >
             <Button _onClick={gotoReview} bg={'white'} margin="0px auto;">
               <Text margin="0px auto;" cursor bold>리뷰 <br/> 더 보기</Text>

@@ -17,26 +17,21 @@ import { BiEditAlt } from "react-icons/bi";
 
 const ReviewItem = (props) => {
   const dispatch = useDispatch();
-  // 나중에 데이터에 따라 변경해도 무방!
-  const { user_name, star, content, menu, _id } = props;
-  // const review_list = useSelector((state) => state.review.list);
-  const store_id = history.location.pathname.split("/")[2];
 
   const nickname = useSelector((state) => state.user.user_info);
   const reviewMenu = props._id;
-  const menuId = props.menuIdList;
-
+  const menuInfo = props.menuIdList;
 
   //삭제 버튼
   const deleteBtn = () => {
-    dispatch(reviewActions.deleteReviewDB(_id));
+    dispatch(reviewActions.deleteReviewDB(props._id));
   };
 
   //수정 페이지로 이동
   const reviewBtn = () => {
     history.push(`/reviewEdit/${reviewMenu}`)
   }
-
+  
   return (
     <React.Fragment>
       <Wrap>
@@ -59,11 +54,10 @@ const ReviewItem = (props) => {
             주문메뉴
           </Text>
           {/* 메뉴아이디 있을때만 map사용 */}
-          {menuId &&
-            menuId.map((m, idx) => {
+          {menuInfo.map((m, idx) => {
               return (
                 <Grid width="auto" is_flex>
-                  <ReviewMenuItem key={m} {...{ m }} />
+                  <ReviewMenuItem key={m.menuId} {...m} />
                 </Grid>
               );
             })}
@@ -122,12 +116,5 @@ const ReviewItem = (props) => {
 const Wrap = styled.div`
   margin: 5% auto;
 `;
-
-ReviewItem.defaultProps = {
-  user_name: "맛있으면 야옹하는 고양이",
-  star: "4",
-  content: "야야야야양오양야야오야야오ㅑㅇ야야야ㅑ야양오야야오양야옹",
-  menu: "치즈떡볶이",
-};
 
 export default ReviewItem;

@@ -2,8 +2,7 @@ import instance from "./instance";
 import { deleteCookie, getCookie, setCookie } from "../../shared/Cookie";
 import { createSlice } from "@reduxjs/toolkit";
 
-
-
+//회원가입
 export const SignUpDB = (email, password, nickname, phone) => {
   return function (dispatch, getState, {history}) {
     instance
@@ -24,6 +23,7 @@ export const SignUpDB = (email, password, nickname, phone) => {
   }
 }
 
+//로그인
 export const LogInDB = (email, password) => {
   return function(dispatch, getState, {history}) {
     instance
@@ -50,6 +50,7 @@ export const LogInDB = (email, password) => {
   }
 }
 
+//로그인 상태 확인
 export const LogInChk = () => {
   return function (dispatch, getState, {history}) {
     const token = getCookie("token")
@@ -83,16 +84,19 @@ const user = createSlice({
   name: "user",
   initialState,
   reducers: {
+    //로그인 > 토큰은 로컬에 저장중
     SetUser: (state, action) => {
       state.user_info = action.payload.username;
       setCookie("token", action.payload.token);
       state.is_login = true;
     },
+    //로그아웃
     LogOut: (state, action) => {
       deleteCookie("token");
       state.is_login = false;
       window.alert("로그아웃이 완료되었습니다.");
     },
+    // 로그인 시 닉네임이 없어서 닉네임으로 가공해서 웹 내에서 사용
     setUserName: (state, action) => {
       state.user_info = action.payload;
       state.is_login = true;

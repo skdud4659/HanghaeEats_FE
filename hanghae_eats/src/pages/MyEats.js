@@ -5,8 +5,8 @@ import coupon from '../img/coupon.jpg';
 import {history} from '../redux/configStore'
 
 //이모지
-import { FiHeart, FiTag, FiMessageSquare, FiPhone } from "react-icons/fi";
-import { BiWrench, BiFoodMenu } from "react-icons/bi";
+import { FiHeart, FiTag, FiPhone } from "react-icons/fi";
+import { BiFoodMenu } from "react-icons/bi";
 import { useSelector } from 'react-redux';
 
 const MyEats = (props) => {

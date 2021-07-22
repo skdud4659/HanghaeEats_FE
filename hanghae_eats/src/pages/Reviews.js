@@ -7,7 +7,7 @@ import BeautyStars from 'beauty-stars';
 
 import { useSelector, useDispatch} from 'react-redux';
 import { actionCreators as reviewActions } from '../redux/modules/review';
-import {getMenuDB, getOneStoreDB} from '../redux/modules/store'
+import {getOneStoreDB} from '../redux/modules/store'
 
 import {history} from '../redux/configStore'
 
@@ -19,24 +19,19 @@ const Reviews = (props) => {
   const review_list = useSelector((state) => state.review.list);
   const store_Id = history.location.pathname.split('/')[2]
   
-  
   //매장 이름 찾기
   const store_list = useSelector((state) => state.stores.store)
   const store_name = store_list.name
 
   React.useEffect(() => {
-    dispatch(getMenuDB(store_Id))
     dispatch(getOneStoreDB(store_Id))
     dispatch(reviewActions.getReviewDB(store_Id))
-
   }, [])
 
   //뒤로가기
   const GoBack = () => {
     history.goBack();
   };
-
-  console.log(review_list);
 
   return (
     <React.Fragment>
@@ -59,7 +54,7 @@ const Reviews = (props) => {
 
       <hr style={{ border: "1px solid #E5E5E5" }} />
       
-      {/* 리뷰 맵돌리기*/}
+      {/* 리뷰 맵돌리기 */}
       {review_list.map((r, idx) => {
             return <ReviewItem key={r._id} {...r}/>
       })}
