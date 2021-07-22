@@ -10,10 +10,10 @@ import {getAllStoreDB} from '../redux/modules/store';
 const Favorites = (props) => {
   const dispatch = useDispatch()
   const favorite_list = useSelector((state) => state.favorite.favorite_list)
+  const store_list = useSelector((state) => state.stores.stores)
 
   React.useEffect(() => {
     dispatch(getAllStoreDB())
-    dispatch(getAllLikeDB())
   },[])
 
   return (
@@ -26,7 +26,7 @@ const Favorites = (props) => {
       </Wrap>
       {/* 즐겨찾기 맵돌리기*/}
       {favorite_list.map((f, idx) => {
-        return <FavoriteList key={f.idx} {...{f}}/>
+        return <FavoriteList key={f.idx} {...{f}} store_list={store_list}/>
       })}
     </React.Fragment>
   );

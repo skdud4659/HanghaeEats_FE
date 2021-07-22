@@ -18,7 +18,7 @@ const StoresList = (props) => {
         <Grid margin="5% 0%">
           {/* 매장 : Stores에서 맵돌릴 예정 */}
           <Grid is_flex>
-            <Image back_size="cover" _onClick={storeBtn} margin="0% 0% 2% 0%" height="250px" src={props.image} cursor/>
+            <Image back_size="100% 100%" _onClick={storeBtn} margin="0% 0% 2% 0%" height="250px" src={props.image} cursor/>
             <Grid width="40%" margin="0px 5%">
               <Text size="22px" bold width="auto">{props.name}</Text>
               <Image back_size="cover" is_slide width="35%" height="40px" src={delivery}/>
