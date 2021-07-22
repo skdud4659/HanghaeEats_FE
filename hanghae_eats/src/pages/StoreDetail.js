@@ -47,6 +47,8 @@ const StoreDetail = (props) => {
     history.push(`/reviews/${storeId}`);
   };
 
+  const reviewList = _review_list.length > 0
+
   //모달창
   const [visible, setVisible] = React.useState();
   const showModal = () => {
@@ -97,7 +99,7 @@ const StoreDetail = (props) => {
         {/* 리뷰 맵돌리기 */}
         <Grid is_flex>
             <MenuList>
-              {_review_list.map((r, idx) => {
+              {reviewList && _review_list.map((r, idx) => {
                 return <ReviewList key={idx} {...r} />;
               })}
             </MenuList>
