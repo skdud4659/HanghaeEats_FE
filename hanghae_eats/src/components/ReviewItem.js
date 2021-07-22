@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Text, Image, Button } from "../elements";
+import { Grid, Text, Image } from "../elements";
 import BeautyStars from "beauty-stars";
 import styled from "styled-components";
 import logo from "../shared/logo.PNG";
@@ -43,7 +43,7 @@ const ReviewItem = (props) => {
           <BeautyStars value={props.star} size="13px" activeColor={"#f7d57f"} />
         </Grid>
         {/* 우선은 사진업로드 없읍!! 임의로 내 마음에 드는 사진 ㅎㅎㅎ */}
-        <Image height="400px" src={logo} />
+        <Image back_size="cover" height="400px" src={logo} />
         {/* 리뷰 내용 */}
         <Grid margin="2% 0px">
           <Text size="18px">{props.content}</Text>

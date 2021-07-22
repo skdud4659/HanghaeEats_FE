@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Text, Image, Button} from '../elements'
+import {Grid, Text, Image} from '../elements'
 import styled from 'styled-components';
 import {history} from '../redux/configStore'
 import moment from 'moment'
@@ -37,7 +37,7 @@ const OrderList = (props) => {
             <Text color={'gray'} margin="0px 0px 3% 0px">{orderDT}</Text>
             <Text>주문 완료</Text>
           </Grid>
-          <Image width="40%" height="130px"src={props.storeId.image}/>
+          <Image back_size="contain" width="40%" height="130px"src={props.storeId.image}/>
         </Grid>
         {/* 주문한 메뉴 정보 - 맵돌리기*/}
         {menu_list.map((m, idx) => {

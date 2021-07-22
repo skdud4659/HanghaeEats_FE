@@ -17,9 +17,9 @@ const ReviewList = (props) => {
 
   return (
     <React.Fragment>
-      <ReviewItem onClick={gotoReview}>
+    <ReviewItem onClick={gotoReview}>
         <Grid width="30%" margin="0px">
-            <Image src={props.image}/>
+            <Image back_size="cover" src={props.image}/>
           </Grid>
           <Grid width="auto" margin="5% 0px">
             <Text>{props.content}</Text>

@@ -62,7 +62,7 @@ const Menu = (props) => {
           </Grid>
           {/* 중간 - 메뉴 사진 */}
           <Grid width="50%" height="150px">
-            <Image is_slide src={props.image}/>
+            <Image back_size="cover" is_slide src={props.image}/>
           </Grid>
         </Grid>  
       </Grid>

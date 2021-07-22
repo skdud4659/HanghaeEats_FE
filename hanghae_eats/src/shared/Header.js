@@ -44,7 +44,7 @@ const Header = (props) => {
       <React.Fragment>
       <Grid is_flex padding="1% 0%">
         <Grid margin="0px 0px 0px 1%" _onClick={() => {history.push('/')}}>
-          <Image width="13vmin" height="50px" src={logo}/>
+          <Image back_size="contain" width="15vmin" height="50px" src={logo}/>
         </Grid>
         <Button width="15vmin" height="40px" margin="0px 10px 0px 0px" _onClick={gotoMyEats}>
           <Text bold color={"white"}>마이페이지</Text>
@@ -62,7 +62,7 @@ const Header = (props) => {
     <React.Fragment>
       <Grid is_flex padding="1% 0%">
         <Grid margin="0px 0px 0px 1%" _onClick={() => {history.push('/')}}>
-          <Image width="15vmin" height="40px" src={logo}/>
+          <Image back_size="contain" width="15vmin" height="50px" src={logo}/>
         </Grid>
         <Button width="15vmin" height="40px" margin="0px 10px 0px 0px" _onClick={gotoLogin}>
           <Text bold color={"white"}>로그인</Text>
