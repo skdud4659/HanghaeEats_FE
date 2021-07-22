@@ -50,6 +50,7 @@ const Register = (props) => {
     <React.Fragment>
       <Grid padding="16px" align="center" margin="15% 0%">
         <Image
+          back_size="cover"
           height="10vw"
           src={coupang_logo}
           _onClick={() => {

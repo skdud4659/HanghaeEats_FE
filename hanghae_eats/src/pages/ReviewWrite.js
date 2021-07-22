@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Text, Button, Input } from "../elements";
+import { Grid, Text, Button } from "../elements";
 
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,7 +21,6 @@ const ReviewWrite = (props) => {
 
   //메뉴 가져오기 - 내가 고른 것만 가져와야해!!! < 맵 사용 ?!?
   const menu_list = useSelector((state) => state.stores.menus);
-  console.log(menu_list);
 
   //리뷰 콘텐츠
   const [content, setContent] = React.useState();

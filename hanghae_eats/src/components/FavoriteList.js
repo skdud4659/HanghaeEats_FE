@@ -12,7 +12,10 @@ const FavoriteList = (props) => {
   const store_info = store_list[store_idx]
 
   // 별점 소수점 첫째자리까지
-  const rateStar = store_info.avgStar==="0" ? 0 : Number(store_info.avgStar).toFixed(1)
+  const [rateStar, setRateStar] = React.useState(0)
+  if(!store_info.avgStar === "0") {
+    setRateStar(Number(store_info.avgStar).toFixed(1))
+  } 
 
   //각 매장으로 이동
   const storeBtn = () => {
