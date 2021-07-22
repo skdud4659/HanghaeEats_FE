@@ -19,11 +19,11 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 const StoreDetailInfo = (props) => {
   const dispatch = useDispatch()
-  const {name, image, avgStar, orders, countStar} = props
+  const {name, image, avgStar, orders, countStar, _review_list} = props
   const storeInfo = useSelector((state) => state.stores.store)
 
   const storeId = history.location.pathname.split('/')[2]
-
+  console.log(_review_list);
    //로드
   React.useEffect(() => {
     dispatch(getOneStoreDB(storeId))
