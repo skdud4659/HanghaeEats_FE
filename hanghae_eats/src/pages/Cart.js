@@ -15,6 +15,9 @@ const Cart = (props) => {
   const cart_list = useSelector((state)=> state.cart.carts)
   const store_id = cart_list[0].storeId
 
+  const storeName = useSelector((state) => state.stores.store).name
+
+
   //주문금액
   let _price = 0;
   for(let i=0; i<cart_list.length; i++) {
@@ -56,7 +59,7 @@ const Cart = (props) => {
           <Grid padding="8px 0px" bg="#ffffff" m_padding="15px 0px">
             <Grid is_flex>
               <Text width="auto" margin="20px 20px" bold m_margin="10px">
-                {props.order.store_name}
+                {storeName}
               </Text>
               <Image
                 is_slide
