@@ -10,6 +10,7 @@ import {useDispatch} from 'react-redux';
 const OrderList = (props) => {
   const dispatch=useDispatch()
   const menu_list = props.menus
+  console.log(menu_list);
   
   //시간 가공
   const orderDT = moment(props.orderDate).format('YYYY-MM-DD hh:mm a')

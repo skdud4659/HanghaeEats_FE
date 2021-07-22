@@ -29,23 +29,47 @@ const ReviewItem = (props) => {
 
   //수정 페이지로 이동
   const reviewBtn = () => {
-    history.push(`/reviewEdit/${reviewMenu}`)
-  }
-  
+    history.push(`/reviewEdit/${reviewMenu}`);
+  };
+
+  //추천 버튼(각각 2개) - 색괄호 {} -> () 사용해야 적용됨.
+  const [chgLike, setChgLike] = React.useState("#9c9c9c"); //기본색깔
+  const chgLikeColorBtn = () => {
+    setChgLike(() => ("#50A0FF"))
+  };
+
+  const [chgDisLike, setChgDisLike] = React.useState("#9c9c9c");
+  const chgDisLikeColorBtn = () => {
+    setChgDisLike(() => ("#50A0FF"))
+  };
+
   return (
     <React.Fragment>
       <Wrap>
-        <Text size="18px" bold>
-          {nickname}
-        </Text>
-        <Grid margin="1% 0% 0% 0%">
+        <Grid is_flex >
+            <Text size="18px" bold width="70%">
+              {nickname}
+            </Text>
+          {/* 수정, 삭제 버튼 */}
+          <Grid is_flex width="30%" margin="8px">
+            <Text _onClick={reviewBtn} size="15px">
+              <BiEditAlt /> 수정
+            </Text>
+            <Text _onClick={deleteBtn} size="15px">
+              <BsTrashFill />
+              삭제
+            </Text>
+          </Grid>
+        </Grid>
+
+        <Grid margin="1% 0% 0% 0%" padding="10px 0px">
           {/* 별점 데이터 > value에 데이터 넣으면 됨! */}
           <BeautyStars value={props.star} size="13px" activeColor={"#f7d57f"} />
         </Grid>
         {/* 우선은 사진업로드 없읍!! 임의로 내 마음에 드는 사진 ㅎㅎㅎ */}
         <Image back_size="cover" height="400px" src={logo} />
         {/* 리뷰 내용 */}
-        <Grid margin="2% 0px">
+        <Grid margin="2% 0px" padding="10px 0px">
           <Text size="18px">{props.content}</Text>
         </Grid>
         {/* 주문메뉴 */}
@@ -55,29 +79,17 @@ const ReviewItem = (props) => {
           </Text>
           {/* 메뉴아이디 있을때만 map사용 */}
           {menuInfo.map((m, idx) => {
-              return (
-                <Grid width="auto" is_flex>
-                  <ReviewMenuItem key={m.menuId} {...m} />
-                </Grid>
-              );
-            })}
+            return (
+              <Grid width="30%" is_flex >
+                <ReviewMenuItem key={m.menuId} {...m} />
+              </Grid>
+            );
+          })}
           <Grid></Grid>
         </Grid>
-        {/* 수정, 삭제 버튼 */}
-        <Grid is_flex>
-          <Text _onClick={reviewBtn}
-            width="20%">
-            <BiEditAlt /> 수정
-          </Text>
-          <Text
-            _onClick={deleteBtn}
-            width="20%"
-          >
-            <BsTrashFill />
-            삭제
-          </Text>
-        </Grid>
+
         {/* 리뷰가 도움이 되었나요? > 여기 버튼은 그냥 클릭하면 색만 변하도록!!! > useState를 사용하면 가능해요!*/}
+        
         <Grid margin="2% 0px">
           <Text size="15px">리뷰가 도움이 되었나요?</Text>
           <Grid is_flex margin="1% 0px">
@@ -89,8 +101,12 @@ const ReviewItem = (props) => {
               padding="1.5%"
               border_radius="10px"
             >
-              <Text color={"#9c9c9c"}>
-                <FaRegThumbsUp /> 도움이 돼요
+              <Text 
+              color={chgLike} 
+              _onClick={chgLikeColorBtn}
+              >
+                <FaRegThumbsUp
+                /> 도움이 돼요
               </Text>
             </Grid>
             {/* 안돼요!. */}
@@ -101,12 +117,16 @@ const ReviewItem = (props) => {
               padding="1.5%"
               border_radius="10px"
             >
-              <Text color={"#9c9c9c"}>
+              <Text 
+              color={chgDisLike}
+              _onClick={chgDisLikeColorBtn}
+              >
                 <FaRegThumbsDown /> 도움이 안돼요
               </Text>
             </Grid>
           </Grid>
         </Grid>
+
         <hr style={{ border: "1px solid #E5E5E5" }} />
       </Wrap>
     </React.Fragment>
