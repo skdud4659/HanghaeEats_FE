@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as reviewActions } from "../redux/modules/review";
 import Menu from "../components/Menu";
+import OrderMenuList from '../components/OrderMenuList';
 
 //이모지
 import { FaShoppingBasket, FaRegEdit } from "react-icons/fa";
@@ -13,7 +14,7 @@ import BeautyStars from "beauty-stars";
 const ReviewEdit = (props) => {
   const dispatch = useDispatch();
   const { history } = props;
-
+  
   //매장 이름 가져오기
   const storeInfo = useSelector((state) => state.stores.store);
   const storeName = storeInfo.name;
@@ -22,7 +23,11 @@ const ReviewEdit = (props) => {
   const review_list = useSelector((state) => state.review.list);
   const review_id = history.location.pathname.split("/")[2];
 
-  let _review = review_list.find((r) => r._id === review_id);
+  let _review = review_list.findIndex((r) => r._id === review_id);
+
+  //메뉴 가져오기
+  const menu_list = review_list[_review].menuIdList;
+  console.log(menu_list);
 
   //별점
   const [chgRate, setChgRate] = React.useState(_review.star);
@@ -68,12 +73,9 @@ const ReviewEdit = (props) => {
 
         {/* 매장 이름 > 주문 내역 데이터 끌고와서 표출 */}
         <Grid margin="2% 0px">
-          <Text size="18px" margin="0px 0px 1% 0px">
+          <Text size="18px" margin="0px 0px 2% 0px" bold>
             {storeName}
           </Text>
-
-          {/* 메뉴 > 주문 내역 메뉴 데이터 끌고와서 맵돌리기 */}
-          <Grid>신전떡볶이</Grid>
 
           {/* 별점 > value값으로 평점 가져오기 */}
           <BeautyStars
@@ -82,6 +84,12 @@ const ReviewEdit = (props) => {
             size="25px"
             activeColor={"#f7d57f"}
           />
+
+          {/* 메뉴 > 주문 내역 메뉴 데이터 끌고와서 맵돌리기 */}
+          {menu_list.map((m, idx) => {
+            return <Grid key={m.menuId} {...m} margin="2% 0px 0px 0px">
+            {m.name}</Grid>})}
+
         </Grid>
 
         {/* 리뷰 작성 title */}
@@ -117,7 +125,7 @@ const ReviewEdit = (props) => {
           m_height="40px"
         >
           <Text color={"white"} bold>
-            등록하기
+            수정하기
           </Text>
         </Button>
       </Grid>
