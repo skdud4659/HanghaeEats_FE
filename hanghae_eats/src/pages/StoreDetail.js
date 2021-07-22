@@ -9,7 +9,6 @@ import { Button, Grid, Text } from "../elements";
 import { useDispatch, useSelector } from "react-redux";
 import { getMenuDB } from "../redux/modules/store";
 
-import { actionCreators as reviewActions } from "../redux/modules/review";
 import { ttlPrice } from "../redux/modules/cart";
 import { history } from "../redux/configStore";
 
@@ -23,12 +22,9 @@ const StoreDetail = (props) => {
   const cart_list = useSelector((state) => state.cart.carts);
   const _review_list = useSelector((state) => state.review.list);
 
-  console.log(_review_list);
-
   //로드
   React.useEffect(() => {
     dispatch(getMenuDB(storeId));
-    dispatch(reviewActions.getReviewDB(storeId));
   }, []);
 
   //현재 카트에 총 합
@@ -64,6 +60,7 @@ const StoreDetail = (props) => {
     <React.Fragment>
       <Grid>
       {/* 매장 정보 */}
+      {/* //props로 받아오기 자식 페이지에 */}
         <StoreDetailInfo />
         <Grid is_flex margin="5% 0%;" width="25vmin;">
           <Grid width="8vmin;" margin="0px" m_width="25%">
@@ -99,18 +96,22 @@ const StoreDetail = (props) => {
         </Grid>
         {/* 리뷰 맵돌리기 */}
         <Grid is_flex>
-          <ReviewList />
+            <MenuList>
+              {_review_list.map((r, idx) => {
+                return <ReviewList key={idx} {...r} />;
+              })}
+            </MenuList>
           {/* 리뷰 더보기 버튼 */}
           <Grid
             border="1px solid gray"
             padding="10px"
             width="15%"
-            height="80px"
+            height="30px"
             margin="0px 0px 5% auto"
             border_radius="5px"
             m_width="19%">
             <Button _onClick={gotoReview} bg={'white'} margin="0px auto;">
-              <Text margin="0px auto;" cursor bold>리뷰 <br/> 더 보기</Text>
+              <Text margin="0px auto;" cursor bold>></Text>
             </Button>
           </Grid>
         </Grid>
@@ -171,7 +172,6 @@ const Counting = styled.div`
 `;
 
 const MenuList = styled.div`
-  width: "10%";
   overflow-x: scroll;
   display: flex;
   justify-content: space-between;

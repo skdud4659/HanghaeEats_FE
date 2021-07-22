@@ -8,6 +8,7 @@ import axios from 'axios';
 import instance from './instance';
 
 import {getAllLikeDB} from './favorite';
+import {actionCreators as reviewAction} from './review';
 
 //axios
 //특정 카테고리 매장들 가져오기
@@ -83,6 +84,7 @@ export const getMenuDB = (storeId) => {
           return each.storeId === storeId
         })
         dispatch(getMenus(menu_list))
+        dispatch(reviewAction.getReviewDB(storeId))
       })
       .catch((err) => {
         window.alert('매장 정보를 가져오는데 오류가 발생했어요! 관리자에게 문의해주세요.')
