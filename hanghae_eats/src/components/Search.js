@@ -31,7 +31,7 @@ const Search = (props) => {
       {/* 레이아웃 */}
       <Grid is_flex>
         {/* 검색창 */}
-        <Search_media>
+        <Grid>
           {/* 입력인풋 */}
           <Input
             _onChange={input_word}
@@ -45,9 +45,9 @@ const Search = (props) => {
             bg={'#e0e2e1'}
             border="none"
             />
-        </Search_media>
+        </Grid>
         {/* 검색하기 버튼 */}
-        <Grid width="10%">
+        <Grid width="10%" m_width="10%">
           <Button bg="white" _onClick={searchBtn}>
             <FontAwesomeIcon icon={faSearch} size="2x"/>
           </Button>
@@ -57,12 +57,5 @@ const Search = (props) => {
   );
 }
 
-const Search_media = styled.div`
-    width: 90%;
-
-    @media ${(props) => props.theme.mobile} {
-      width: 90%;
-    }
-`;
 
 export default Search;

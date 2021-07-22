@@ -62,7 +62,10 @@ const Menu = (props) => {
           </Grid>
           {/* 중간 - 메뉴 사진 */}
           <Grid width="50%" height="150px">
-            <Image back_size="cover" is_slide src={props.image}/>
+            <Image
+              back_size="cover"
+              is_slide src={props.image}
+              m_height="100px"/>
           </Grid>
         </Grid>  
       </Grid>
@@ -70,23 +73,35 @@ const Menu = (props) => {
       {display && (
         <Grid>
           {/* 수량 선택 */}
-          <Grid is_flex width="20%" margin="2% auto;">
-            <Grid width="auto">
-              <Button width="50px" height="50px" is_circle _onClick={minus}>
+          <Grid is_flex width="20%" margin="2% auto;" m_width="40%">
+            <Grid width="auto" m_width="auto">
+              <Button
+                width="50px"
+                height="50px"
+                is_circle
+                _onClick={minus}
+                m_width="30px"
+                m_height="30px">
                 <Text size="20px"> - </Text>
               </Button>
             </Grid>
             <Grid align="center">
               <Text> {count} </Text>
             </Grid>
-            <Grid>
-              <Button width="50px" height="50px" is_circle _onClick={plus}>
+            <Grid m_width="auto">
+              <Button
+                width="50px"
+                height="50px"
+                is_circle
+                _onClick={plus}
+                m_width="30px"
+                m_height="30px">
                 <Text size="20px"> + </Text>
               </Button>
             </Grid>
           </Grid>
           {/* 카트에 담기 */}
-          <Grid height="50px;">
+          <Grid height="50px;" m_height="30px">
             <Button _onClick={addCartBtn}>
               <Text size="18px" bold color={"white"}>카트에 담기</Text>
             </Button>

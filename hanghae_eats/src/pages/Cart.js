@@ -43,19 +43,19 @@ const Cart = (props) => {
 
   return (
     <React.Fragment>
-        <Grid padding="16px" bg="#E5E5E5">
+        <Grid padding="16px" bg="#E5E5E5" m_width="90%">
           {/* 상단 */}
-          <Grid padding="16px 0px" bg="#ffffff">
-            <Text margin="20px 20px" bold>
+          <Grid padding="16px 0px" bg="#ffffff" m_padding="10px 0px">
+            <Text margin="20px 20px" bold m_margin="10px">
               내 마음속(으)로 배달
             </Text>
           </Grid>
           {/* 레이아웃 */}
-          <Grid height="1vw" bg="#E5E5E5" />
+          <Grid height="1vw" bg="#E5E5E5" m_height="1vw"/>
           {/* 중간 */}
-          <Grid padding="8px 0px" bg="#ffffff">
+          <Grid padding="8px 0px" bg="#ffffff" m_padding="15px 0px">
             <Grid is_flex>
-              <Text width="auto" margin="20px 20px" bold>
+              <Text width="auto" margin="20px 20px" bold m_margin="10px">
                 {props.order.store_name}
               </Text>
               <Image
@@ -64,6 +64,8 @@ const Cart = (props) => {
                 height="30px"
                 margin="8px"
                 src={chita}
+                m_width="15%"
+                m_height="20px"
               />
             </Grid>
             <hr style={{ border: "1px solid #E5E5E5" }} />
@@ -72,7 +74,7 @@ const Cart = (props) => {
               return  <CartMenuList key={c._id} {...c}/>
             })}
             <hr style={{ border: "1px solid #E5E5E5" }}/>
-            <Grid align="center" padding="25px 0px">
+            <Grid align="center" padding="25px 0px" m_padding="20px 0px">
                 <Button bg={'white'} _onClick={addMenu}>
                   <Text bold color="#50A0FF">
                     + 메뉴추가
@@ -80,28 +82,28 @@ const Cart = (props) => {
                 </Button>
             </Grid>
             {/* 레이아웃 */}
-            <Grid height="1vw" bg="#E5E5E5" />
+            <Grid height="1vw" bg="#E5E5E5" m_height="1vw"/>
             {/* 하단 */}
             <Grid padding="8px 0px 0px 0px" bg="#ffffff">
               <Grid is_flex>
-                <Text margin="20px 20px"> 주문금액 </Text>
-                <Text margin="20px 20px"> {_price}원 </Text>
+                <Text margin="20px 20px" m_margin="20px"> 주문금액 </Text>
+                <Text margin="20px 20px" m_margin="20px"> {_price}원 </Text>
               </Grid>
 
               <Grid is_flex>
-                <Text margin="20px 20px"> 배달비 </Text>
-                <Text margin="20px 20px"> + {deliveryPrice}원 </Text>
+                <Text margin="20px 20px" m_margin="20px"> 배달비 </Text>
+                <Text margin="20px 20px" m_margin="20px"> + {deliveryPrice}원 </Text>
               </Grid>
 
               <hr style={{ border: "1px solid #E5E5E5" }} />
 
               <Grid is_flex padding="15px 0px">
-                <Text margin="4px 20px" bold> 총 결제금액 </Text>
-                <Text margin="4px 20px" bold size="20px"> 총 {_price + deliveryPrice}원 </Text>
+                <Text margin="4px 20px" bold m_margin="4px 20px"> 총 결제금액 </Text>
+                <Text margin="4px 20px" bold size="20px" m_margin="4px 20px"> 총 {_price + deliveryPrice}원 </Text>
               </Grid>
             </Grid>
           </Grid>
-          <Button height="70px" _onClick={orderBtn}> 
+          <Button height="70px" _onClick={orderBtn} m_height="30px"> 
             <Text color="#ffffff" bold> 결제하기 </Text> 
           </Button>
         </Grid>

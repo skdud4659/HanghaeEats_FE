@@ -17,12 +17,12 @@ const MyEats = (props) => {
       <Grid>
         {/* 내 정보 */}
         <Grid height="100px">
-          <Text bold size="40px" margin="0% 0% 1% 0%">{user_name}</Text>
+          <Text bold size="40px" margin="0% 0% 1% 0%" m_size="25px">{user_name}</Text>
           <Text size="20px">항해이츠에 오신 것을 환영해요!</Text>
         </Grid>
         {/* 쿠폰 */}
-        <Grid height="190px">
-          <Image back_size="100%" src={coupon}/>
+        <Grid height="190px" >
+          <Image back_size="100%" src={coupon} m_height="100px"/>
         </Grid>
         {/* 목록 */}
         <Grid is_flex margin="3% 0%;" _onClick={() => {history.push(`/order/${user_name}`)}}>

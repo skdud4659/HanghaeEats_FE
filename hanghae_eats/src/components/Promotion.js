@@ -30,13 +30,28 @@ const Promotion = (props) => {
     <Grid height="250px" margin="2% auto">
       <Slider {...settings}>
         <Grid>
-          <Image back_size="100%" height="250px;" src={promotionA}/>
+          <Image
+            back_size="100%"
+            height="250px;"
+            src={promotionA}
+            //모바일
+            m_height="180px"/>
         </Grid>
         <Grid>
-          <Image back_size="100%" height="250px;" src={promotionB}/>
+          <Image
+            back_size="100%"
+            height="250px;"
+            src={promotionB}
+            //모바일
+            m_height="180px"/>
         </Grid>
         <Grid>
-          <Image back_size="100%" height="250px;" src={promotionC}/>
+          <Image
+            back_size="100%"
+            height="250px;" 
+            src={promotionC}
+            //모바일
+            m_height="180px"/>
         </Grid>
       </Slider>
   </Grid>

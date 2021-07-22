@@ -44,13 +44,35 @@ const Header = (props) => {
       <React.Fragment>
           <Grid is_flex padding="1% 0%">
             <Grid margin="0px 0px 0px 1%" _onClick={() => {history.push('/')}}>
-              <Image back_size="contain" width="15vmin" height="50px" src={logo}/>
+              <Image
+                back_size="contain"
+                width="15vmin"
+                height="50px"
+                src={logo}
+                //모바일
+                m_width="15vmin"
+                m_height="30px"
+            />
             </Grid>
-            <Button width="15vmin" height="40px" margin="0px 10px 0px 0px" _onClick={gotoMyEats}>
-              <Text bold color={"white"}>마이페이지</Text>
+            <Button
+              width="15vmin"
+              height="40px"
+              margin="0px 10px 0px 0px"
+              _onClick={gotoMyEats}
+              //모바일
+              m_width="40vmin"
+              >
+              <Text bold color={"white"} m_size="13px">마이페이지</Text>
             </Button>
-            <Button width="15vmin" height="40px" margin="0px 10px 0px 0px" _onClick={logOutBtn}>
-              <Text bold color={"white"}>로그아웃</Text>
+            <Button
+              width="15vmin"
+              height="40px"
+              margin="0px 10px 0px 0px"
+              _onClick={logOutBtn}
+              //모바일
+              m_width="40vmin"
+              >
+              <Text bold color={"white"} m_size="13px">로그아웃</Text>
             </Button>
           </Grid>
           <Hr/>
@@ -62,13 +84,32 @@ const Header = (props) => {
     <React.Fragment>
       <Grid is_flex padding="1% 0%">
         <Grid margin="0px 0px 0px 1%" _onClick={() => {history.push('/')}}>
-          <Image back_size="contain" width="15vmin" height="50px" src={logo}/>
+          <Image
+            back_size="contain"
+            width="15vmin"
+            height="50px"
+            src={logo}
+            //모바일
+            m_width="15vmin"
+            m_height="30px"/>
         </Grid>
-        <Button width="15vmin" height="40px" margin="0px 10px 0px 0px" _onClick={gotoLogin}>
-          <Text bold color={"white"}>로그인</Text>
+        <Button
+          width="15vmin"
+          height="40px"
+          margin="0px 10px 0px 0px"
+          _onClick={gotoLogin}
+          //모바일
+          m_width="40vmin">
+          <Text bold color={"white"} m_size="13px">로그인</Text>
         </Button>
-        <Button width="15vmin" height="40px" margin="0px 10px 0px 0px" _onClick={gotoRegister}>
-          <Text bold color={"white"}>회원가입</Text>
+        <Button
+          width="15vmin"
+          height="40px"
+          margin="0px 10px 0px 0px"
+          _onClick={gotoRegister}
+          //모바일
+          m_width="40vmin">
+          <Text bold color={"white"} m_size="13px">회원가입</Text>
         </Button>
       </Grid>
       <Hr/>
