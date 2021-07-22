@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import {Text, Grid} from '../elements';
 
 const ReviewMenuItem = (props) => {
-  console.log(props)
 
   return (
     <React.Fragment>

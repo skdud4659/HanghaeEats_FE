@@ -22,7 +22,6 @@ const Reviews = (props) => {
   // 별점 등록
   const _store_list = useSelector((state) => state.stores.store);
   const rateStar = Number(_store_list.avgStar).toFixed(1);
-  console.log(rateStar);
 
   //매장 이름 찾기
   const store_list = useSelector((state) => state.stores.store)

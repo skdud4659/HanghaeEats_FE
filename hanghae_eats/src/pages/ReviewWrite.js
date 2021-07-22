@@ -24,12 +24,8 @@ const ReviewWrite = (props) => {
   let _storeId= storeInfo.findIndex((r) => r._id === _orderId); //인덱스
 
   const store_name = storeInfo[_storeId].storeId.name;
-  console.log(storeInfo);
-
   //메뉴 가져오기 
   const menu_name = storeInfo[_storeId].menus; //맵은 배열로 돌린다.
-  console.log(menu_name);
-
 
   //리뷰 콘텐츠
   const [content, setContent] = React.useState();
