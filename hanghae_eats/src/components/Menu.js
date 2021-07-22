@@ -8,7 +8,6 @@ const Menu = (props) => {
   const dispatch = useDispatch();
   const {_id, storeId, name, price, image} = props
   const cart_list = useSelector((state) => state.cart.carts)
-  const count_menu = useSelector((state) => state.cart.count)
 
   // 메뉴 사진 누르면 카트에 담기 버튼 활성화
   const [display, setDisplay] = React.useState(false);

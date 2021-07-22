@@ -70,15 +70,19 @@ const favorite = createSlice({
   name:"favorite",
   initialState,
   reducers:{
+    //즐겨찾기
     likeToggle: (state, action) => {
       state.is_like = true
     },
+    //내가 즐겨찾기 한 가게인지 확인하기
     getLike: (state, action) => {
       state.is_like = action.payload
     },
+    //즐겨찾기 해제
     unlikeToggle: (state, action) => {
       state.is_like = false
     },
+    //즐겨찾기 전체 가져오기
     getAllLike: (state, action) => {
       state.favorite_list = action.payload
     }

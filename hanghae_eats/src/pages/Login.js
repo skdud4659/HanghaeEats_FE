@@ -9,7 +9,6 @@ import { LogInDB, KaKaoLoginDB, GoogleLoginDB } from "../redux/modules/user";
 import coupang_logo from "../img/coupang_logo.jpg";
 
 //소셜로그인
-import KaKaoLogin from 'react-kakao-login';
 import { KAKAO_AUTH_URL, GOOGLE_AUTH_URL } from "../redux/modules/OAuth";
 
 const Login = (props) => {
@@ -46,7 +45,6 @@ const Login = (props) => {
               <Text>아이디</Text>
             </Grid>
 
-            {/* // 아이디 input name="userId" 제외함 이유 찾을때까지! */}
             <Grid width="80%">
               <Input
                 padding="6px"
@@ -80,9 +78,7 @@ const Login = (props) => {
           </Grid>
 
           <Grid padding="16px 0px">
-            <Button _onClick={() => {
-                logIn()
-              }} width="100%" height="40px">
+            <Button _onClick={logIn} width="100%" height="40px">
               <Text 
               bold color="#ffffff">
                 로그인
@@ -90,7 +86,7 @@ const Login = (props) => {
             </Button>
           </Grid>
 
-          {/* 구글로 로그인 */}
+          {/* 소셜 로그인 */}
           <Text margin="2% auto">소설 계정으로 로그인하기</Text>
           <WrapBtn>
             <Grid width="7vmin" margin="0px">
@@ -140,24 +136,6 @@ const WrapBtn = styled.div`
   justify-content: space-between;
   width:30vmin;
   margin: auto;
-`;
-
-const KaKaoBtn = styled(KaKaoLogin)`
-  padding: 0;
-  width: 300px;
-  height: 45px;
-  line-height: 44px;
-  color: #783c00;
-  background-color: #ffeb00;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  &:hover {
-    box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.2);
-  }
 `;
 
 export default Login;

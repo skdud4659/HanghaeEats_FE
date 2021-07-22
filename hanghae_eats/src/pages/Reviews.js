@@ -28,10 +28,6 @@ const Reviews = (props) => {
     dispatch(getMenuDB(store_Id))
     dispatch(getOneStoreDB(store_Id))
     dispatch(reviewActions.getReviewDB(store_Id))
-    if(review_list.length===0) {
-      window.alert('리뷰가 없어요!')
-      history.goBack()
-    }
   }, [])
 
   //뒤로가기

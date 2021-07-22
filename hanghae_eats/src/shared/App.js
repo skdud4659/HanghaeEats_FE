@@ -30,6 +30,7 @@ const App = (props) => {
       is_login = true;
     }
 
+    //로그인 상태 확인
     if(!is_login) {
       dispatch(LogInChk());
     }
@@ -52,15 +53,12 @@ const App = (props) => {
             {/* 로그인 회원가입 */}
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
-
-
             {/* 마이이츠 사이드 */}
             <Route path="/myEats" exact component={MyEats} />
             <Route path="/order/:user_name" exact component={Order} />
             <Route path="/favorites" exact component={Favorites} />
             <Route path="/coupons" exact component={Coupons} />
             <Route path="/reviewWrite/:orderId" exact component={ReviewWrite} />
-            {/* 리뷰 수정 */}
             <Route path="/reviewEdit/:reviewId" exact component={ReviewEdit} />
             <Route path="/aboutus" exact component={Aboutus} />
             {/* 잘못된 주소면 메인으로 돌아가기 */}
