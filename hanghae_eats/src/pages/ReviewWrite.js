@@ -15,13 +15,20 @@ const ReviewWrite = (props) => {
   const dispatch = useDispatch();
   const { history } = props;
 
-  //매장 이름 가져오기
-  const storeInfo = useSelector((state) => state.stores.store);
-  const storeName = storeInfo.name;
+  //useEffect
 
-  //메뉴 가져오기 - 내가 고른 것만 가져와야해!!! < 맵 사용 ?!?
-  const menu_list = useSelector((state) => state.stores.menus);
-  console.log(menu_list);
+  //매장 이름 가져오기
+  const storeInfo = useSelector((state) => state.order.order);
+  const _orderId = history.location.pathname.split("/")[2];
+
+  let _storeId= storeInfo.findIndex((r) => r._id === _orderId); //인덱스
+
+  const store_name = storeInfo[_storeId].storeId.name;
+  console.log(storeInfo[_storeId]);
+
+  //메뉴 가져오기 
+  const menu_name = storeInfo[_storeId].menus; //맵은 배열로 돌린다.
+  console.log(menu_name);
 
   //리뷰 콘텐츠
   const [content, setContent] = React.useState();
@@ -70,7 +77,7 @@ const ReviewWrite = (props) => {
         {/* 매장 이름 > 주문 내역 데이터 끌고와서 표출 */}
         <Grid margin="2% 0px">
           <Text size="18px" margin="0px 0px 1% 0px">
-          {storeName}
+          {store_name}
           </Text>
           {/* 별점 > value값으로 평점 가져오기 */}
           <BeautyStars
@@ -81,7 +88,10 @@ const ReviewWrite = (props) => {
           />
         </Grid>
         {/* 메뉴 > 주문 내역 메뉴 데이터 끌고와서 맵돌리기 */}
-        <Grid>치즈 떡볶이</Grid>
+        {menu_name.map((m, idx) => {
+          return <Grid key={m.menuId} {...m}> {m.name} </Grid>
+        })}
+        
 
         {/* 리뷰 작성 title */}
         <Grid is_flex margin="5% 0px 2% 0px">
