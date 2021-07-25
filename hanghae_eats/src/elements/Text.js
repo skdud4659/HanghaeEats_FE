@@ -39,7 +39,7 @@ const P = styled.p`
     font-weight: ${(props) => (props.bold? "700" : "400")};
     ${(props) => props.cursor ? `cursor : pointer` : ""};
 
-    @media only screen and (max-width:375px) {
+    @media only screen and (max-width:500px) {
         ${(props) => props.m_size ? `font-size : ${props.m_size}` : `font-size : ${props.size}`};
         ${(props) => props.m_margin ? `margin : ${props.m_margin}` : `margin : ${props.margin}`};
     }

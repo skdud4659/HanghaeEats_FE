@@ -150,7 +150,7 @@ const AllBtn = styled.button`
   background-color: #eaeceb;
   font-size: 18px;
   cursor: pointer;
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     width:60px;
     height:60px;
   }

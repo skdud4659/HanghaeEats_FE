@@ -67,7 +67,7 @@ const ReviewItem = styled.div`
   margin: auto 3% 5% auto;
   cursor: pointer;
 
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     width:230px;
     height:80px
   }

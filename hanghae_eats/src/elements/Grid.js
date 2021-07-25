@@ -57,7 +57,7 @@ const Wrapper = styled.div`
   ${(props) => (props.align ? `text-align: ${props.align}` : "")};
   ${(props) => (props.overflowX ? `overflow-x: scroll` : "")};
 
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     ${(props) => (props.m_width ? `width: ${props.m_width}` : `width: ${props.width}`)};
     ${(props) => (props.m_height ? `height: ${props.m_height}` : `width: ${props.width}`)};
     ${(props) => (props.m_padding ? `padding: ${props.m_padding}` : `padding: ${props.padding}`)};

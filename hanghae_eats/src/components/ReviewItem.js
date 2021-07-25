@@ -16,10 +16,16 @@ import { BsTrashFill } from "react-icons/bs";
 import { BiEditAlt } from "react-icons/bi";
 
 const ReviewItem = (props) => {
+  console.log(props)
   const dispatch = useDispatch();
 
   const reviewMenu = props._id;
   const menuInfo = props.menuIdList;
+
+  //닉네임 비교해서 내 글만 수정 삭제 가능하게
+  const review_name = props.nickname
+  const my_name = useSelector((state) => state.user.user_info)
+  const vs = my_name === review_name
 
   //삭제 버튼
   const deleteBtn = () => {
@@ -51,6 +57,8 @@ const ReviewItem = (props) => {
             </Text>
           {/* 수정, 삭제 버튼 */}
           <Grid is_flex width="30%" margin="8px" m_width="40%">
+            {vs &&
+            <React.Fragment>
             <Text _onClick={reviewBtn} size="15px" cursor>
               <BiEditAlt /> 수정
             </Text>
@@ -58,6 +66,8 @@ const ReviewItem = (props) => {
               <BsTrashFill />
               삭제
             </Text>
+            </React.Fragment>
+            }
           </Grid>
         </Grid>
 
@@ -142,7 +152,7 @@ const P = styled.p`
   width:30%;
   color:"#9c9c9c";
 
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     width:40%;
     font-size: 15px;
   }

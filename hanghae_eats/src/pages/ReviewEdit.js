@@ -23,11 +23,12 @@ const ReviewEdit = (props) => {
   const review_list = useSelector((state) => state.review.list);
   const review_id = history.location.pathname.split("/")[2];
 
-  let _review = review_list.findIndex((r) => r._id === review_id);
+  let idx = review_list.findIndex((r) => r._id === review_id);
+  const _review = review_list[idx]
+  console.log(_review)
 
   //메뉴 가져오기
-  const menu_list = review_list[_review].menuIdList;
-  console.log(menu_list);
+  const menu_list = review_list[idx].menuIdList;
 
   //별점
   const [chgRate, setChgRate] = React.useState(_review.star);
@@ -150,7 +151,7 @@ const Textarea = styled.textarea`
     outline: none;
   }
 
-  @media only screen and (max-width:375px) {
+  @media only screen and (max-width:500px) {
     width: 87%
   }
 `;
