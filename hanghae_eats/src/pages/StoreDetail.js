@@ -14,6 +14,7 @@ import { history } from "../redux/configStore";
 
 //자세히 모달창 패키지
 import Modal from "react-awesome-modal";
+import { useMediaQuery} from "@material-ui/core";
 
 const StoreDetail = (props) => {
   const dispatch = useDispatch();
@@ -57,6 +58,7 @@ const StoreDetail = (props) => {
   const closeModal = () => {
     setVisible(false);
   };
+  const is_mobile = useMediaQuery("(max-width: 500px)");
 
   return (
     <React.Fragment>
@@ -71,26 +73,28 @@ const StoreDetail = (props) => {
           </Grid>
           <Grid width="15vmin;" margin="0px">
             <Text margin="5% 0%" m_margin="0%">2,000원
-            <Detail onClick={showModal}> 자세히 </Detail>
             {/* 모달창 */}
-            <Modal visible={visible} width="70%" height="150px" effect="fadeInDown" onClickAway={closeModal}>
-
-              <Grid>
-                <Grid align="center" height="auto" margin="5% auto" m_height="30px">
-                  <Text>배달비 안내</Text>
+            {is_mobile &&
+            <React.Fragment>
+              <Detail onClick={showModal}> 자세히 </Detail>
+              <Modal visible={visible} width="70%" height="250px" effect="fadeInDown" onClickAway={closeModal}>
+                <Grid>
+                  <Grid align="center" height="auto" margin="5% auto" m_height="30px">
+                    <Text>배달비 안내</Text>
+                  </Grid>
+                  <Grid is_flex height="auto" m_height="20px">
+                    <Text>주문금액</Text>
+                    <Text>배달비</Text>
+                  </Grid>
+                  <hr style={{color:"#e2e2e2", width:"90%"}}/>
+                  <Grid is_flex height="auto" m_height="20px">
+                    <Text>5만원 ~</Text>
+                    <Text>무료</Text>
+                  </Grid>
                 </Grid>
-                <Grid is_flex height="auto" m_height="20px">
-                  <Text>주문금액</Text>
-                  <Text>배달비</Text>
-                </Grid>
-
-                <hr style={{color:"#e2e2e2", width:"90%"}}/>
-                <Grid is_flex height="auto" m_height="20px">
-                  <Text>5만원 ~</Text>
-                  <Text>무료</Text>
-                </Grid>
-              </Grid>
-            </Modal>
+              </Modal>
+            </React.Fragment>
+            }
             {/* 최소주문 금액 위에서 is_flex 중 */}
             </Text>
             <Text>15,000원</Text>
